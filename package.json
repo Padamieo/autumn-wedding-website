@@ -2,15 +2,11 @@
   "name": "autumn-wedding-website",
   "version": "0.0.1",
   "private": true,
-  "engines": {
-    "pnpm": ">=10"
-  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "release": "standard-version"
+    "lint": "next lint"
   },
   "dependencies": {
     "firebase": "^12.8.0",

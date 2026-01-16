@@ -3,6 +3,10 @@
 @tailwind utilities; */
 @import "tailwindcss";
 
+@theme {
+  --color-winter-green: oklch(0.439 0.0392 204.73);
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -23,3 +27,5 @@ body {
       transparent,
       rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 }
+
+
