@@ -2,6 +2,9 @@
   "name": "autumn-wedding-website",
   "version": "0.0.1",
   "private": true,
+  "engines": {
+    "pnpm": ">=10"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -10,8 +13,8 @@
     "release": "standard-version"
   },
   "dependencies": {
-    "firebase": "^12.7.0",
-    "next": "^16.1.1",
+    "firebase": "^12.8.0",
+    "next": "^16.1.2",
     "react": "^19.2.3",
     "react-dom": "19.2.0"
   },
