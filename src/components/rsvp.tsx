@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 
 // // Initialize Firebase auth instance
 // const auth = getAuth(firebase_app);
@@ -13,9 +13,9 @@ export default function Rsvp() {
     console.log('init');
   }, []);
 
-  const handleSearch = (e) => {
-    if (e.target.value.length > 2) {
-      console.log('start searching', e.target.value.length);
+  const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
+    if (event.target.value.length > 2) {
+      console.log('start searching', event.target.value.length);
     }
     // setSearchTerm(e.target.value);
 
@@ -34,7 +34,7 @@ export default function Rsvp() {
     <input
       type="text"
       placeholder={'Adam'}
-      className="border py-2 px-3 rounded w-full max-lg:max-w-[500px] mb-1"
+      className="border py-2 px-3 rounded w-full max-lg:max-w-[800px] mb-1"
       // value={searchTerm}
       onChange={handleSearch}
       autoComplete="on"

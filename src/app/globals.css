@@ -5,6 +5,7 @@
 
 @theme {
   --color-winter-green: oklch(0.439 0.0392 204.73);
+  --color-ivory: #F5EEE3;
 }
 
 :root {
@@ -23,9 +24,11 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(to bottom,
+  background: var(--color-ivory);
+  
+  /* linear-gradient(to bottom,
       transparent,
-      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb)); */
 }
 
 
