@@ -5,6 +5,8 @@ import {
   Menu,
   Rsvp,
   Header,
+  FAQ,
+  GuestList,
 } from "../components/";
 
 export default function Home() {
@@ -48,9 +50,16 @@ export default function Home() {
             <div 
         className="relative flex "
       >
+        <GuestList />
+      </div>
 
+                  <div 
+        className="relative flex "
+      >
         <Rsvp />
       </div>
+
+      <FAQ />
 
     </main>
   )
