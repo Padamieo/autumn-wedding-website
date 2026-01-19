@@ -32,9 +32,10 @@ export default function GuestList() {
   // Provide the authentication context to child components
   return (
     <input
+      id="guestList"
       type="text"
       placeholder={'Adam'}
-      className="border py-2 px-3 rounded w-full max-lg:max-w-[800px] mb-1"
+      className="block w-full rounded-md bg-white py-2 px-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6 w-full mb-1"
       // value={searchTerm}
       onChange={handleSearch}
       autoComplete="on"

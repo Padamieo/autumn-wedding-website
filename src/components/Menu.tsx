@@ -6,9 +6,9 @@ import { useAuthContext } from '@/context/AuthContext';
 
 const navigation = [
   { name: 'Welcome', href: '#' },
-  { name: 'RSVP', href: '#' },
+  { name: 'RSVP', href: '#guestList' },
   { name: 'Details', href: '#' },
-  { name: 'Contact', href: '#' },
+  { name: 'Contact', href: '#contact' },
 ]
 
 export default function Menu() {
