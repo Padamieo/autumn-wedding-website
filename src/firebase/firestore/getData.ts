@@ -5,7 +5,7 @@ import { getFirestore, doc, getDoc } from "firebase/firestore";
 const db = getFirestore(firebase_app);
 
 // Function to retrieve a document from a Firestore collection
-export default async function getDocument(collection, id) {
+export default async function getDocument(collection: string, id: string) {
   // Create a document reference using the provided collection and ID
   const docRef = doc(db, collection, id);
   // Variable to store the result of the operation

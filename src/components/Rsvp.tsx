@@ -132,7 +132,7 @@ export default function Rsvp() {
                   )}
                   {radioOption(
                     `attendance-${i}`,
-                    `not-attending-${i}`,
+                    `attending-not-${i}`,
                     'I am NOT attending.'
                   )}
                 </div>

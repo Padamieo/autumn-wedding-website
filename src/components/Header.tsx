@@ -6,7 +6,7 @@
 export default function Header() {
 
   return (
-      <div className="relative isolate px-6 pt-14 lg:px-8">
+      <div className="relative isolate px-6 pt-14 lg:px-8 h-screen">
         <div
           aria-hidden="true"
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
@@ -33,6 +33,12 @@ export default function Header() {
               Surprising I know! In this day and age, crazy, who does that? either way if you're here we probably want you to attend.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
+              <a
+                href="#guestList"
+                className="rounded-md bg-winter-green px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              >
+                login
+              </a>
               <a
                 href="#guestList"
                 className="rounded-md bg-winter-green px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"

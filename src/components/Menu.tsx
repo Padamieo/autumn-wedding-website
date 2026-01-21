@@ -13,10 +13,10 @@ const navigation = [
 
 export default function Menu() {
   const { user } = useAuthContext() as { user: any }; // Use 'as' to assert the type as { user: any }
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  // console.log(user);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-
       <header className="absolute inset-x-0 top-0 z-50">
         <nav aria-label="Global" className="flex items-center justify-between p-6 lg:px-8">
           <div className="flex lg:flex-1">
