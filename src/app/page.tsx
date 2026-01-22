@@ -8,6 +8,7 @@ import {
   FAQ,
   GuestList,
   Contact,
+  Register,
   Wip,
 } from "../components/";
 
@@ -45,6 +46,12 @@ export default function Home() {
   //         height={37}
   //         priority
   //       />
+  //     </div>
+
+  //     <div 
+  //       className="relative flex "
+  //     >
+  //       <Register />
   //     </div>
 
   //     <div 

@@ -18,7 +18,9 @@ const id = 0;
 const code = 1;
 const firstName = 2;
 const surname = 3;
-const relationships = 4;
+const nickName = 4;
+const participation = 5;
+const relationships = 6;
 
 const dataAdd = (dataArray: any[], relationNumbers: number[]) => {
     const e = {
@@ -26,6 +28,8 @@ const dataAdd = (dataArray: any[], relationNumbers: number[]) => {
         code: dataArray[code],
         firstName: dataArray[firstName],
         surname: dataArray[surname],
+        alt: dataArray[nickName],
+        participation: Number(dataArray[participation]),
         relationships: relationNumbers,
         replied: '',
         paid: false
