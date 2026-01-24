@@ -1,6 +1,7 @@
 import { AuthContextProvider } from '@/context/AuthContext';
 import { Inter } from 'next/font/google';
 import './globals.css';
+import { NextIntlClientProvider } from 'next-intl';
 
 // Load the Inter font with 'latin' subset
 const inter = Inter({ subsets: ['latin'] });
@@ -13,6 +14,8 @@ export const metadata = {
 
 // Root layout component for the application
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  // console.log(navigator.language);
+
   return (
     <html lang="en">
       {/*
@@ -24,7 +27,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         {/* Wrap the children with the AuthContextProvider to provide authentication context */}
         <AuthContextProvider>
-          {children}
+          <NextIntlClientProvider>
+            {children}
+          </NextIntlClientProvider>
         </AuthContextProvider>
       </body>
     </html>

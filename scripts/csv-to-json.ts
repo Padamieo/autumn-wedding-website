@@ -8,6 +8,7 @@ const decoder = new TextDecoder();
 let remainingData = "";
 let lines: string[] = [];
 
+// @ts-ignore
 for await (const chunk of stream ) {
     const str = decoder.decode(chunk);
     remainingData += str;
