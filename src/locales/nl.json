@@ -3,5 +3,26 @@
     "top": "Helaass Pinkdercass!",
     "title": "Er wordt gewerkt",
     "description": "Sorry, Adam is ermee bezig."
+  },
+  "menu": {
+    "rsvp": "RSVP",
+    "details": "Details",
+    "contact": "Contact",
+    "music": "Music",
+    "closeMenu": "Close menu",
+    "openMenu": "Open menu"
+  },
+  "auth" :{
+    "login": "Log In",
+    "logout": "Log Out"
+  },
+  "header": {
+    "top": "Heather & Adam are very HAPPY to announce",
+    "title": "WE ARE GETTING MARRIED, FOR REAL",
+    "description": "Surprising I know! In this day and age, crazy, who does that? either way if you're here we probably want you to attend.",
+    "button": {
+      "rsvp": "RSVP (Répondez s'il vous plaît)",
+      "details": "Give me the deets"
+    }
   }
 }

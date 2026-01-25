@@ -1,3 +1,4 @@
+import { GuestData } from '@/types';
 import Bun from 'bun';
 
 const path = "./scripts/export.csv";
@@ -27,14 +28,17 @@ const dataAdd = (dataArray: any[], relationNumbers: number[]) => {
     const e = {
         id: Number(dataArray[id]),
         code: dataArray[code],
-        firstName: dataArray[firstName],
+        first: dataArray[firstName],
         surname: dataArray[surname],
         alt: dataArray[nickName],
+        stay: 0,
         participation: Number(dataArray[participation]),
         relationships: relationNumbers,
-        replied: '',
-        paid: false
-    };
+        // following restricted
+        replied: undefined,
+        dietary: undefined,
+        paid: false,
+    } as GuestData;
     return JSON.stringify(e);
 };
 

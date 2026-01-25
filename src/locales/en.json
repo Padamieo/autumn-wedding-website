@@ -3,5 +3,65 @@
     "top": "Oh No, Spagetti-Ohs!",
     "title": "Work In Progress",
     "description": " Sorry, I'm working on it."
+  },
+  "menu": {
+    "rsvp": "RSVP",
+    "details": "Details",
+    "contact": "Contact",
+    "music": "Music",
+    "closeMenu": "Close menu",
+    "openMenu": "Open menu"
+  },
+  "auth": {
+    "login": "Log In",
+    "logout": "Log Out"
+  },
+  "header": {
+    "top": "Heather & Adam are very HAPPY to announce",
+    "title": "WE ARE GETTING MARRIED, FOR REAL",
+    "description": "Surprising I know! In this day and age, crazy, who does that? either way if you're here we probably want you to attend.",
+    "button": {
+      "rsvp": "RSVP (Répondez s'il vous plaît)",
+      "details": "Give me the deets"
+    }
+  },
+  "guest": {
+    "search": {
+      "label": "Find your",
+      "placeholder": "Search for your name, or the code included in your invite",
+      "tooltip": " we need at least three character to get started"
+    },
+    "results": {
+      "responded": "responded",
+      "unresponded": "awaiting response",
+      "tip": "you will need to log in / register to complete"
+    },
+    "form": {
+      "title": "RSVP",
+      "unknown": "no form",
+      "intro": "To help us plan our day, we would like to get a little bit of information from you, this will help us plan food, accomidation and costs.",
+      "input": {
+        "dietary":{
+          "label": "Dietary requirements.",
+          "info": "Please let us know of any dietry concerns we need to pass onto our caterors."
+        },
+        "attendance":{
+          "label": "Attendance decision for",
+          "info": "Lets us know if we can expect",
+          "yes": "Will be accompanying parents",
+          "no": "Will not be attending",
+          "weekend": "I would like to attend, the weekend",
+          "weekend-info": "Arrive Friday (30th Oct), leaveing on Sunday (1st Nov)",
+          "day": "I would like to attend, just the ceremony day",
+          "day-info": "I would like to attend, just the ceremony day",
+          "not": "I am NOT attending."
+        },
+        "optional":{
+          "section": "Optional Involvement",
+          "label": "I would like to participate in the childrens treasure hunt game",
+          "info": " Weddings can/are boring for children, so we've decided to put together a treasure hunt for them. You will be supplied candy and a new clue for when a child finds you."
+        }
+      }
+    }
   }
 }

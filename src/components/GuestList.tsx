@@ -1,95 +1,78 @@
 'use client'
-import { ChangeEvent, useEffect, useMemo, useState } from 'react';
-// import addData from '@/firebase/firestore/addData';
-// import getDocument from '@/firebase/firestore/getData';
-// import output from '../../scripts/output.json';
-import {GuestList2} from './GuestList2';
+import { Popover, PopoverPanel } from '@headlessui/react'
+import { FC, useEffect, useState } from 'react';
+import { GuestData } from '@/types';
+import { useSearchContext } from '@/context/SearchContext';
+import { useTranslations } from 'next-intl';
 
-// // Initialize Firebase auth instance
-// const auth = getAuth(firebase_app);
+export interface Props {
+  filterGuests: GuestData[];
+}
 
-export default function GuestList() {
-  // Set up state to track the authenticated user and loading status
-  const [guests, setGuests] = useState<any[]>([]);
-  const [search, setSearch] = useState<string | undefined>();
-  const [loading, setLoading] = useState(true);
+export const GuestList: FC<Props> = ({ filterGuests }) => {
+  const t = useTranslations();
+  const { setUserCode } = useSearchContext();
 
-  const users = useMemo(
-    () => (guests.filter((person) => {
-      return search && person.participation !== 1 && (
-        person.firstName.toLowerCase().includes(search.toLowerCase())
-        || person.surname.toLowerCase().includes(search.toLowerCase())
-        || person.alt.toLowerCase().includes(search.toLowerCase())
-      )
-    })),
-    [search],
-  );
+  //  const buttonRef = useRef();
 
-  const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
-    if (event.target.value.length > 2) {
-      setSearch(event.target.value);
-    }
-    // setSearchTerm(e.target.value);
+   const callsToAction = [{name: 'test', href: 'test', }];
 
-    // If the search term changes, reset the selected guest and related states
-    // if (selectedGuest) {
-    //   setSelectedGuest(null);
-    //   setGuestsToRsvp([]);
-    //   setSubmitted(false);
-    //   setErrorMessage("");
-    //   setSpecialRequests("");
-    // }
+  const doThing = (code: any, close: () => void) => {
+    
+    setUserCode(code);
+    close();
+    // console.log(close)
   };
 
-  const b = async () => {
-    console.log('ADD');
-    // const a = await addData('asasdasdasd', '', {
-    //   id: 4,
-    //   code: 'LUV',
-    //   firstName: 'Heather',
-    //   surname: 'Heather',
-    //   relationships: [],
-    //   replied: '',
-    //   paid: false
-    // });
-    // const a = await getDocument('asasdasdasd', '') 
-    // console.log('ADD:', a);
 
-    // const y = a.result?.data()
-    // console.log('DDD,', y);
-   
-
-    // const y = a.result?.docs.map((doc) => doc.data());
-    // console.log('DDD,', y);
-  }
-
-  useEffect(() => {
-    // console.log('init');
-    // NOTE: get user data
-    setGuests([]);
-    setLoading(false);
-    // setGuests(output);
-  }, []);
-
-
-  // Provide the authentication context to child components
   return (
-    <div className="block">
-      <a key={'test'} onClick={() => b()} className="text-sm/6 font-semibold text-gray-900">
-        test
-      </a>
-      <input
-        id="guestList"
-        type="text"
-        placeholder={'Adam'}
-        disabled={loading}
-        className="block w-full rounded-md bg-white py-2 px-3 text-base text-gray-800 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6 w-full mb-2"
-        // value={searchTerm}
-        onChange={handleSearch}
-        autoComplete="on"
-        translate="no"
-      />
-      <GuestList2 guests={users} />
-    </div>
-  );
+    <Popover className="relative">
+      {({close}) => (
+      <PopoverPanel
+        // ref={setPopoverElement}
+        static
+        className="absolute left-1/2 z-10 mt-2 flex w-screen max-w-max -translate-x-1/2 bg-transparent px-4 transition data-closed:translate-y-1 data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-150 data-leave:ease-in"
+      >
+         
+        <div className="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-gray-300 text-sm/6 outline-1 -outline-offset-1 outline-white/10">
+          <div className="p-4">
+            
+            {filterGuests && filterGuests.map((item: any) => (
+              <div key={item.id} className="group relative flex gap-x-6 rounded-lg p-2 hover:bg-white/50" onClick={() => doThing(item.code, close)}>
+                <div className="mt-1 flex size-11 flex-none items-center justify-center rounded-lg bg-gray-700/50 group-hover:bg-gray-100">
+                  {item.code}
+                </div>
+                <div>
+                  <a href={item.href} className="font-semibold text-white">
+                    {item.first} {item.surname}
+                    <span className="absolute inset-0" />
+                  </a>
+                  <p className="mt-1 text-gray-400">{item.replied ? t("guest.results.responded") : t("guest.results.unresponded")}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="grid grid-cols-2 divide-x divide-white/10 bg-gray-700/50">
+            <p className="flex items-center justify-center gap-x-2.5 p-3 font-semibold text-white">
+              {t("guest.results.tip")}
+            </p>
+            {callsToAction.map((item) => (
+              <a
+                key={item.name}
+                href={item.href}
+                className="flex items-center justify-center gap-x-2.5 p-3 font-semibold text-white hover:bg-gray-700/50"
+              >
+                bb
+                {item.name}
+              </a>
+            ))}
+          </div>
+        </div>
+        
+      </PopoverPanel>
+    )}
+    </Popover>
+  )
 }
+
+export default GuestList;
