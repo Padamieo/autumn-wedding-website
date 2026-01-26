@@ -1,8 +1,8 @@
 'use client'
+
 import { ChangeEvent, FC, useEffect, useMemo, useState } from 'react';
 // import addData from '@/firebase/firestore/addData';
 // import getDocument from '@/firebase/firestore/getData';
-// import output from '../../scripts/output.json';
 import { GuestList } from './GuestList';
 import { GuestData } from '@/types';
 import { useTranslations } from 'next-intl';

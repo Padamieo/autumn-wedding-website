@@ -1,35 +1,17 @@
 'use client'
 
-import { ReadonlyURLSearchParams, useSearchParams } from 'next/navigation'
-import { default as signIn, completeSignIn } from "@/firebase/auth/signin";
+import { useSearchParams } from 'next/navigation'
+import { signIn, completeSignIn } from "@/firebase/auth/signin";
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from "react";
 import { useAuthContext } from '@/context/AuthContext';
 
-function useGetAllSearchParams(searchParams: ReadonlyURLSearchParams) {
-  const params: { [anyProp: string]: string } = {};
-  searchParams.forEach((value, key) => {
-    params[key] = value;
-  });
-
-  return params;
-};
-
-export const buildQueryString = (obj: any) => {
-  const queryString = Object.keys(obj)
-  .filter((key) => obj[key] !== "" && obj[key] !== undefined && obj[key] !== null)
-  .map((key: string) => `${encodeURIComponent(key)}=${encodeURIComponent(obj[key])}`)
-  .join("&");
-
-  return queryString;
-};
+const storedAuthEmail = 'authEmail'
 
 function Page() {
   const { user } = useAuthContext() as { user: any };
   const router = useRouter();
   const searchParams = useSearchParams();
-  const pathname = useGetAllSearchParams(searchParams)
-
   const [email, setEmail] = useState('');
   const [storedEmail, setStoredEmail] = useState<string>();
  
@@ -39,31 +21,39 @@ function Page() {
     if (!apiKey || user) {
       return;
     }
-    console.log(      storedEmail,
-      buildQueryString(pathname), window.location.href)
 
     const { result, error } = await completeSignIn(
       storedEmail,
-      buildQueryString(pathname)
+      window.location.href
     );
 
     if (error) {
-    // Display and log any sign-in errors
-    console.log(error);
-    return;
+      // Display and log any sign-in errors
+      console.log(error);
+      return;
     }
 
     // clear email stored
+    localStorage.removeItem(storedAuthEmail);
     router.push("/");
     console.log(result);
   }
 
+  const back = () => {
+    router.push("/");
+  }
+
+  const clear = () => {
+    localStorage.removeItem(storedAuthEmail);
+    router.push("/auth");
+  }
+
   useEffect(() => {
-    const localStorageEmail = localStorage.getItem('email');
-    
+    const localStorageEmail = localStorage.getItem(storedAuthEmail);
+
     if (localStorageEmail) {
       setStoredEmail(localStorageEmail);
-      apiKey && fetchMyAPI(localStorageEmail);
+      // apiKey && fetchMyAPI(localStorageEmail);
     }
   }, [apiKey])
 
@@ -71,8 +61,7 @@ function Page() {
   const handleForm = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
     
-
-    // Attempt to sign in with provided email and password
+    // Attempt to sign in with provided email
     const { result, error } = await signIn(email);
 
     if (error) {
@@ -81,12 +70,22 @@ function Page() {
       return;
     }
 
-    localStorage.setItem('email', email);
+    localStorage.setItem(storedAuthEmail, email);
     setStoredEmail(email);
 
     // Sign in successful
     console.log(result);
   }
+
+  const Complete = (x:string, storedEmail:string) => (
+    <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+      <h1 className="text-3xl font-bold mb-6 text-black">Complete</h1>
+      <div className="mb-6">
+        <p>Please check your email: <b>{storedEmail}</b> account for a link, including spam folders.</p>
+      </div>
+      <button className="w-full bg-blue-500 text-white font-semibold py-2 rounded" onClick={() => fetchMyAPI(storedEmail)}>Sign In</button>
+    </div>
+  );
 
   const loginBox = (x:string, storedEmail:string) => (
     <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
@@ -94,7 +93,7 @@ function Page() {
       <div className="mb-6">
         <p>Please check your email: <b>{storedEmail}</b> account for a link, including spam folders.</p>
       </div>
-      <button className="w-full bg-blue-500 text-white font-semibold py-2 rounded">That email address is wrong!</button>
+      <button className="w-full bg-blue-500 text-white font-semibold py-2 rounded" onClick={() => clear()}>That email address is wrong!</button>
     </div>
   );
 
@@ -104,14 +103,14 @@ function Page() {
       <div className="mb-6">
         <p>I honestly don't know how you ended up here.</p>
       </div>
-      <button className="w-full bg-blue-500 text-white font-semibold py-2 rounded">Return to main site</button>
+      <button className="w-full bg-blue-500 text-white font-semibold py-2 rounded" onClick={() => back()}>Return to main site</button>
     </div>
   );
 
   return (
     <div className="flex flex-col items-center justify-center h-screen">
       <div className="w-full max-w-xs">
-        {user ? alreadyAuth() : storedEmail ? loginBox('Email sent!', storedEmail) :
+        {user ? alreadyAuth() : storedEmail ? apiKey ? Complete('', storedEmail) : loginBox('Email sent!', storedEmail) :
           <form onSubmit={handleForm} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
             <h1 className="text-3xl font-bold mb-6 text-black">Log In / Register</h1>
             <div className="mb-6">

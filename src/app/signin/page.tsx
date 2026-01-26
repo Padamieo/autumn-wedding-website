@@ -1,5 +1,5 @@
 'use client'
-import signIn from "@/firebase/auth/signin";
+import { signIn } from "@/firebase/auth/signin";
 import { useRouter } from 'next/navigation';
 import { useState } from "react";
 

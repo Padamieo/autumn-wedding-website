@@ -6,7 +6,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Button, GuestSearch, Response } from "./";
 import { useSearchContext } from "@/context/SearchContext";
 
-import output from '../../scripts/output.json';
+// import output from '../../scripts/output.json';
 import { GuestConstruct } from "./Response";
 import { useAuthContext } from "@/context/AuthContext";
 import { useRouter } from 'next/navigation';
@@ -44,7 +44,7 @@ export default function Rsvp() {
   }
 
   const getGuestsDataLocal = async () => {
-    setGuests(output as unknown as GuestData[]);
+    // setGuests(output as unknown as GuestData[]);
     setLoading(false);
   }
 
