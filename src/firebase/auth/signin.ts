@@ -1,26 +1,15 @@
+// 'use server'
+
 import firebase_app from "../config";
 import {
   sendSignInLinkToEmail,
   signInWithEmailLink,
   getAuth
 } from "firebase/auth";
+import actionCodeSettings from "./config";
 
 // Get the authentication instance using the Firebase app
 const auth = getAuth(firebase_app);
-
-var actionCodeSettings = {
-  url: 'https://finallygettingmarried.nl/auth',
-  handleCodeInApp: true,
-  iOS: {
-    bundleId: 'com.example.ios'
-  },
-  android: {
-    packageName: 'com.example.android',
-    installApp: true,
-    minimumVersion: '12'
-  },
-  dynamicLinkDomain: 'example.page.link'
-};
 
 // Function to sign in with email and password
 export async function signIn(email: string, password?: string) {

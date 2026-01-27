@@ -34,7 +34,7 @@ function Page() {
     <div className="flex flex-col items-center justify-center h-screen">
       <div className="w-full max-w-xs">
         <form onSubmit={handleForm} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-          <h1 className="text-3xl font-bold mb-6 text-black">Sign In</h1>
+          <h2 className="text-3xl font-bold mb-6 text-black">Sign In (Admin)</h2>
           <div className="mb-4">
             <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2">
               Email

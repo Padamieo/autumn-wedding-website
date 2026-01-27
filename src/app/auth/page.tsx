@@ -1,10 +1,12 @@
 'use client'
 
 import { useSearchParams } from 'next/navigation'
-import { signIn, completeSignIn } from "@/firebase/auth/signin";
+import { completeSignIn } from "@/firebase/auth/signin";
+import { signIn } from "@/firebase/auth/linkCustom";
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from "react";
 import { useAuthContext } from '@/context/AuthContext';
+import { Button } from '@/components';
 
 const storedAuthEmail = 'authEmail'
 
@@ -45,6 +47,7 @@ function Page() {
 
   const clear = () => {
     localStorage.removeItem(storedAuthEmail);
+    setStoredEmail(undefined);
     router.push("/auth");
   }
 
@@ -79,11 +82,11 @@ function Page() {
 
   const Complete = (x:string, storedEmail:string) => (
     <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-      <h1 className="text-3xl font-bold mb-6 text-black">Complete</h1>
+      <h1 className="text-3xl font-bold mb-6 text-black">Complete Process</h1>
       <div className="mb-6">
         <p>Please check your email: <b>{storedEmail}</b> account for a link, including spam folders.</p>
       </div>
-      <button className="w-full bg-blue-500 text-white font-semibold py-2 rounded" onClick={() => fetchMyAPI(storedEmail)}>Sign In</button>
+      <button className="w-full bg-blue-500 text-white font-semibold py-2 rounded" onClick={() => fetchMyAPI(storedEmail)}>Complete Sign In</button>
     </div>
   );
 
@@ -91,26 +94,32 @@ function Page() {
     <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
       <h1 className="text-3xl font-bold mb-6 text-black">{x}</h1>
       <div className="mb-6">
-        <p>Please check your email: <b>{storedEmail}</b> account for a link, including spam folders.</p>
+        <p>Please check your email: <b>{storedEmail}</b> account for a link, including spam folders as it most likley got blocked.</p>
       </div>
       <button className="w-full bg-blue-500 text-white font-semibold py-2 rounded" onClick={() => clear()}>That email address is wrong!</button>
     </div>
   );
 
-  const alreadyAuth = () => (
-    <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-      <h1 className="text-3xl font-bold mb-6 text-black">Already signed in!</h1>
-      <div className="mb-6">
-        <p>I honestly don't know how you ended up here.</p>
+  if (user) {
+    return (
+      <div className="flex flex-col items-center justify-center h-screen">
+        <div className="w-full max-w-xs">
+          <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <h1 className="text-3xl font-bold mb-6 text-black">Already logged in!</h1>
+            <div className="mb-6">
+              <p>You probably logged in via another tab / window, you can still use this one.</p>
+            </div>
+            <Button onClick={() => back()}>Return to home page</Button>
+          </div>
+        </div>
       </div>
-      <button className="w-full bg-blue-500 text-white font-semibold py-2 rounded" onClick={() => back()}>Return to main site</button>
-    </div>
-  );
+    );
+  }
 
   return (
     <div className="flex flex-col items-center justify-center h-screen">
       <div className="w-full max-w-xs">
-        {user ? alreadyAuth() : storedEmail ? apiKey ? Complete('', storedEmail) : loginBox('Email sent!', storedEmail) :
+        {storedEmail ? apiKey ? Complete('', storedEmail) : loginBox('Email sent!', storedEmail) :
           <form onSubmit={handleForm} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
             <h1 className="text-3xl font-bold mb-6 text-black">Log In / Register</h1>
             <div className="mb-6">
