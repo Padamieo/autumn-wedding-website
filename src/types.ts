@@ -9,6 +9,8 @@ export type GuestData = {
   participation: number;
   relationships: number[];
   // limit following
+  user: string | undefined,
+  opt: boolean | undefined,
   replied: string | undefined;
   dietary: string | undefined;
   paid: boolean;

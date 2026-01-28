@@ -16,8 +16,7 @@ export interface Props {
 
 export const GuestSearch: FC<Props> = ({ guests }) => {
    const t = useTranslations();
-  // Set up state to track the authenticated user and loading status
-  // const [guests, setGuests] = useState<any[]>([]);
+
   const [search, setSearch] = useState<string | undefined>();
   const [loading, setLoading] = useState(true);
 
@@ -37,15 +36,6 @@ export const GuestSearch: FC<Props> = ({ guests }) => {
       setSearch(event.target.value);
     }
     // setSearchTerm(e.target.value);
-
-    // If the search term changes, reset the selected guest and related states
-    // if (selectedGuest) {
-    //   setSelectedGuest(null);
-    //   setGuestsToRsvp([]);
-    //   setSubmitted(false);
-    //   setErrorMessage("");
-    //   setSpecialRequests("");
-    // }
   };
 
   const b = async () => {
@@ -71,22 +61,16 @@ export const GuestSearch: FC<Props> = ({ guests }) => {
   }
 
   useEffect(() => {
-    // console.log('init');
-    // NOTE: get user data
-    // setGuests([]);
     setLoading(false);
-    // setGuests(output);
   }, []);
-
 
   // Provide the authentication context to child components
   return (
-    <div className="block">
-      <label htmlFor="dietary" className="block text-sm/6 font-medium text-gray-900">
+    <div id="guestList" className="block">
+      <label htmlFor="guestList" className="block text-sm/6 font-medium text-gray-900">
         {t("guest.search.label")}
       </label>
       <input
-        id="guestList"
         type="text"
         placeholder={t("guest.search.placeholder")}
         disabled={loading}

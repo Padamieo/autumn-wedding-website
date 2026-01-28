@@ -33,10 +33,10 @@ export default function Contact() {
             If you are unsure about anything, or need to contact us about a wedding related thing and strangly dont have out details
           </p>
         </div>
-        <ul role="list" className="grid gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2">
+        <ul role="list" className="grid gap-x-8 gap-y-12 break-all sm:grid-cols-2 sm:gap-y-16 xl:col-span-2">
           {people.map((person) => (
             <li key={person.name}>
-              <div className="flex items-center gap-x-6">
+              <div className="flex items-center max-md:flex-col gap-x-6">
                 <img
                   alt=""
                   src={person.imageUrl}

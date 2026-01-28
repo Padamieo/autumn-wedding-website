@@ -6,6 +6,7 @@
   },
   "menu": {
     "rsvp": "RSVP",
+    "faq": "FAQ",
     "details": "Details",
     "contact": "Contact",
     "music": "Music",
@@ -32,9 +33,13 @@
       "tooltip": " we need at least three character to get started"
     },
     "results": {
-      "responded": "responded",
-      "unresponded": "awaiting response",
-      "tip": "you will need to log in / register to complete"
+      "responded": "Responded",
+      "unresponded": "Awaiting response"
+    },
+    "process": {
+      "title": " Hello {name}, before we get started.",
+      "body": "We will need you to login into this site, it only requires an email address. We will not keep any details we collect from you beyond",
+      "button": "Log in / Register here"
     },
     "form": {
       "title": "RSVP",

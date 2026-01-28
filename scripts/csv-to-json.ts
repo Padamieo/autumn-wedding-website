@@ -35,6 +35,8 @@ const dataAdd = (dataArray: any[], relationNumbers: number[]) => {
         participation: Number(dataArray[participation]),
         relationships: relationNumbers,
         // following restricted
+        user: undefined,
+        opt: undefined,
         replied: undefined,
         dietary: undefined,
         paid: false,

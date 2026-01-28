@@ -3,14 +3,13 @@
 import { useState } from 'react'
 import { Dialog, DialogPanel } from '@headlessui/react';
 import { useAuthContext } from '@/context/AuthContext';
-import { Translation, Button } from './';
+import { Translation, Button } from '..';
 import { useTranslations } from 'next-intl';
 import signOut from "@/firebase/auth/signout";
 import { useRouter } from 'next/navigation';
 
 export default function Menu() {
   const { user } = useAuthContext() as { user: any }; // Use 'as' to assert the type as { user: any }
-  // console.log(user);
   const t = useTranslations();
   const router = useRouter();
   
@@ -18,6 +17,7 @@ export default function Menu() {
   
   const navigation = [
     { name: t('menu.details'), href: '#details' },
+    { name: t('menu.faq'), href: '#faq', mobile: true },
     { name: t('menu.rsvp'), href: '#guestList' },
     { name: t('menu.music'), href: '#music' },
     { name: t('menu.contact'), href: '#contact' },
@@ -74,7 +74,6 @@ export default function Menu() {
            {siteLogo()}
           </div>
           <div className="flex lg:hidden">
-
             <button
               type="button"
               onClick={() => setMobileMenuOpen(true)}
@@ -89,7 +88,7 @@ export default function Menu() {
           </div>
           <div className="hidden lg:flex lg:gap-x-12">
             {navigation.map((item) => (
-              <a key={item.name} href={item.href} className="text-sm/6 font-semibold text-gray-900">
+              !item.mobile && <a key={item.name} href={item.href} className="text-sm/6 font-semibold text-gray-900">
                 {item.name}
               </a>
             ))}
@@ -129,7 +128,7 @@ export default function Menu() {
                     </a>
                   ))}
                 </div>
-                <div className="py-6">
+                <div className="flex py-6 gap-x-6 py-6">
                   {rightMenu(!!user)}
                 </div>
               </div>

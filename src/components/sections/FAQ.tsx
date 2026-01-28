@@ -46,7 +46,7 @@ export default function FAQ() {
   ]
 
   return (
-    <div id="FAQ">
+    <div id="faq">
       <div className="px-4 sm:px-0">
         <h2 className="text-base/7 font-semibold text-gray-900">Frequently Asked Questions.</h2>
         <p className="mt-1 max-w-2xl text-sm/6 text-gray-500">If you can't find an answer here to a question you have; please just message us directly.</p>
