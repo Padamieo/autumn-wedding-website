@@ -8,7 +8,7 @@ import { getAuth } from "firebase/auth";
 
 const auth = getAuth(firebase_app);
 const db = getFirestore(firebase_app);
-const path = process.env.NEXT_PUBLIC_FIREBASE_GUEST_COLLECTION;
+const path = process.env.FIREBASE_GUEST_COLLECTION;
 
 const obscurity = (data: GuestData[], auth: boolean) =>
   data && auth ? data : data.map((guest) => {
@@ -23,7 +23,7 @@ export default async function getGuests() {
   let error = null;
 
   if (!path) {
-    return { result, error: 'No NEXT_PUBLIC_FIREBASE_GUEST_COLLECTION setup' };
+    return { result, error: 'No FIREBASE_GUEST_COLLECTION setup' };
   }
 
   const guestsCollectionRef = collection(db, path);
