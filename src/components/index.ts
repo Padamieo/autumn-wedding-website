@@ -11,6 +11,7 @@ export { default as Wip } from "./sections/Wip";
 export { default as Response } from "./sections/Response";
 export { default as About } from "./sections/About";
 export { default as Music } from "./sections/Music";
+export { default as Admin } from "./sections/Admin";
 
 // smaller components
 export { default as Translation } from "./Translation";

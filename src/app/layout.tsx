@@ -1,7 +1,9 @@
 import { AuthContextProvider } from '@/context/AuthContext';
 import { Inter } from 'next/font/google';
-import './globals.css';
 import { NextIntlClientProvider } from 'next-intl';
+import { SearchContextProvider } from '@/context/SearchContext';
+
+import './globals.css';
 
 // Load the Inter font with 'latin' subset
 const inter = Inter({ subsets: ['latin'] });
@@ -28,7 +30,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Wrap the children with the AuthContextProvider to provide authentication context */}
         <AuthContextProvider>
           <NextIntlClientProvider>
-            {children}
+            <SearchContextProvider>
+              {children}
+            </SearchContextProvider>
           </NextIntlClientProvider>
         </AuthContextProvider>
       </body>

@@ -37,7 +37,7 @@
       "unresponded": "Awaiting response"
     },
     "process": {
-      "title": " Hello {name}, before we get started.",
+      "title": "Hello {name}, before we get started.",
       "body": "We will need you to login into this site, it only requires an email address. We will not keep any details we collect from you beyond",
       "button": "Log in / Register here"
     },
@@ -45,28 +45,105 @@
       "title": "RSVP",
       "unknown": "no form",
       "intro": "To help us plan our day, we would like to get a little bit of information from you, this will help us plan food, accomidation and costs.",
+      "submit": "Send RSVP",
+      "cancel": "Cancel",
       "input": {
         "dietary":{
           "label": "Dietary requirements.",
           "info": "Please let us know of any dietry concerns we need to pass onto our caterors."
         },
         "attendance":{
-          "label": "Attendance decision for",
-          "info": "Lets us know if we can expect",
+          "label": "Attendance decision for {name}",
+          "info": "Lets us know if we can expect you.",
           "yes": "Will be accompanying parents",
           "no": "Will not be attending",
           "weekend": "I would like to attend, the weekend",
-          "weekend-info": "Arrive Friday (30th Oct), leaveing on Sunday (1st Nov)",
-          "day": "I would like to attend, just the ceremony day",
-          "day-info": "I would like to attend, just the ceremony day",
+          "weekend-info": "Arrive Friday (30th Oct), leaveing on Sunday (1st Nov, before 11am)",
+          "day": "I would like to attend, the ceremony day",
+          "day-info": "Arrive on the day, (before 11:30 please) for ceremony, wedding breakfast and party.",
           "not": "I am NOT attending."
         },
         "optional":{
           "section": "Optional Involvement",
-          "label": "I would like to participate in the childrens treasure hunt game",
-          "info": " Weddings can/are boring for children, so we've decided to put together a treasure hunt for them. You will be supplied candy and a new clue for when a child finds you."
+          "label": "I would like to participate in the childrens treasure hunt game.",
+          "info": " Weddings can be boring for children, so we've decided to put together a treasure hunt for them. You will be supplied candy and a new clue for when a child finds you."
         }
       }
+    },
+    "confirmation": {
+      "title": "Submitted by {name}, on {date}",
+      "not": "{name} has indicated they are not coming",
+      "day": "{name} is coming on the day",
+      "weekend": "{name} is coming for the weekend"
     }
+  },
+  "about": {
+    "little": "About - Details - Important stuff",
+    "title": "What's happening?",
+    "intro": "Yes it's finally happening, Heather and Adam are getting married, 16 years in the making.",
+    "content": "example of something here",
+    "bullet": {
+      "when": {
+        "bold": "When? 31st October 2026",
+        "body": " the ceremony will start at midday so if you’re arriving on the day please arrive by 11:30 so you have time to get seated and comfortable"
+      },
+      "where": {
+        "bold": "Where?",
+        "body" :" Bore Place, Bore Place Road, Chiddingstone, Edenbridge, Kent, TN8 7AR detailed directions and maps can be found here"
+      },
+      "what": {
+        "bold": "What’s the dress code?",
+        "body": " Although this is a Halloween wedding, this is not a costume party. Please dress (UK) formally. The bridal party will be dressed in autumnal colours, but feel free to dress  in any colours you like (except white). Weather permitting we hope to hold the ceremony outdoors and on grass so sensible shoes would be advised."
+      }
+    }
+  },
+  "faq": {
+    "intro": {
+      "title": "Frequently Asked Questions.",
+      "subtext": "If you can't find an answer here to a question you have; please just message us directly."
+    },
+    "deadline" :{
+      "question": "When is the RSVP deadline?",
+      "answer": "tbd we need to give a date"
+    },
+    "plan" :{
+      "question": "What is the plan?",
+      "answer": "We have hired a venue from friday night to sunday morning, we hope to accomidate as many as possible. The ceremony will be held on the saturday at the \"hide\", with wedding breakfast and reception in the \"large barn\". All within the venue grounds"
+    },
+    "location" :{
+      "question": "How do I get to the venue?",
+      "answer": "The should be plenty of parking if you want to drive. For those comming abroad Gatwick is the closest airport."
+    },
+    "dress" :{
+      "question": "What is the dress code?",
+      "answer": "Although its a halloween wedding, its not a costume party, its a formal event, to be in theme we are thinking autumunal colors, but at the end of the day we trust you. Weather permitting we hope to hold the ceremony outdoors and on grass so sensible shoes would be advised."
+    },
+    "weather" :{
+      "question": "What is the weather like?",
+      "answer": "We are hoping for an outdoor ceremony, weather permitting, other parts will be held indoors. Autumn in the UK can be cold and rainy so sensible shoes would be advised. We will fall back to a indoor location if we have to, umbrellas will be suppied but we are a hardy outdoor bunch so make sure you have something to keep warm if necessery."
+    },
+    "plusOne" :{
+      "question": "Can I bring plus one",
+      "answer": "we have limited space so can only really accomidate named invitees at current"
+    },
+    "food" :{
+      "question": "What is a the food situation?",
+      "answer": "Breakfast will be supplied saturday and sunday, friday evening will be tbd for when you arrive. Ceremony day itself will be catored by homegurrown, who will provide canapes, wedding breakfast and evening food."
+    },
+    "drink" :{
+      "question": "What is a the drink situation?",
+      "answer": "We will supply wine / bubbles / beer / and non-alcholic varieits on the ceremony day, however if the is a specific drink you'd like to consume your welcome to bring it."
+    },
+    "gift" :{
+      "question": "Is there a gift registery?",
+      "answer": "No! and please dont bring gifts or money to the venue. We have been together for 16 years we have everything we need, including multiple bottle openers. Your presence is the gift we're after!"
+    },
+    "accomidation" :{
+      "question": "What is the cost accomidation?",
+      "answer": "Although we would love to pay for everyone, it would be appriciate if guests help us cover a little of the cost"
+    }
+  },
+  "email": {
+    "signoff": "If you have any issues please feel free to contact us, Love Heather & Adam"
   }
 }

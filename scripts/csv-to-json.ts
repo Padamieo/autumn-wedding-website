@@ -22,7 +22,8 @@ const firstName = 2;
 const surname = 3;
 const nickName = 4;
 const participation = 5;
-const relationships = 6;
+const stay = 6;
+const relationships = 7;
 
 const dataAdd = (dataArray: any[], relationNumbers: number[]) => {
     const e = {
@@ -31,12 +32,13 @@ const dataAdd = (dataArray: any[], relationNumbers: number[]) => {
         first: dataArray[firstName],
         surname: dataArray[surname],
         alt: dataArray[nickName],
-        stay: 0,
+        stay: Number(dataArray[stay]),
         participation: Number(dataArray[participation]),
         relationships: relationNumbers,
         // following restricted
+        date: '',
         user: undefined,
-        opt: undefined,
+        opt: false,
         replied: undefined,
         dietary: undefined,
         paid: false,

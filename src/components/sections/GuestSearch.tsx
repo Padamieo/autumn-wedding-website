@@ -1,21 +1,13 @@
 'use client'
 
 import { ChangeEvent, FC, useEffect, useMemo, useState } from 'react';
-// import addData from '@/firebase/firestore/addData';
-// import getDocument from '@/firebase/firestore/getData';
 import { GuestList } from './GuestList';
-import { GuestData } from '@/types';
 import { useTranslations } from 'next-intl';
+import { useSearchContext } from '@/context/SearchContext';
 
-// // Initialize Firebase auth instance
-// const auth = getAuth(firebase_app);
-
-export interface Props {
-  guests: GuestData[];
-}
-
-export const GuestSearch: FC<Props> = ({ guests }) => {
+export const GuestSearch: FC = () => {
    const t = useTranslations();
+   const { guests } = useSearchContext();
 
   const [search, setSearch] = useState<string | undefined>();
   const [loading, setLoading] = useState(true);
@@ -34,7 +26,17 @@ export const GuestSearch: FC<Props> = ({ guests }) => {
   const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.value.length > 2) {
       setSearch(event.target.value);
+    } else {
+      setSearch(undefined);
     }
+
+    // if (event.target.value.length > 2) {
+    //   setSearch(event.target.value);
+    // }
+    // if ( search && search > event.target.value) {
+    // console.log(event.target.value, search, search && search > event.target.value)
+    // setSearch(event.target.value);
+    // }
     // setSearchTerm(e.target.value);
   };
 

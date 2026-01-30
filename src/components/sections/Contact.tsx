@@ -1,21 +1,21 @@
 'use client'
 
+import Image from 'next/image'
+
 const people = [
   {
     name: 'Heather Alison Comer',
     role: 'Bride',
     email: 'heater.comer1989@googlemail.com',
-    mobile: '+31611436211',
-    imageUrl:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+    mobile: '+3111111111',
+    imageUrl: "/heather.webp"
   },
   {
     name: 'Michael Adam Lockwood',
     role: 'Groom',
     email: 'michaeladamlockwood@googlemail.com',
-    mobile: '+31611436211',
-    imageUrl:
-      'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+    mobile: '+3111111111',
+    imageUrl: "/adam.webp"
   },
 ]
 
@@ -37,10 +37,13 @@ export default function Contact() {
           {people.map((person) => (
             <li key={person.name}>
               <div className="flex items-center max-md:flex-col gap-x-6">
-                <img
-                  alt=""
-                  src={person.imageUrl}
+                <Image
                   className="size-16 rounded-full outline-1 -outline-offset-1 outline-black/5"
+                  src={person.imageUrl}
+                  alt="picture of"
+                  width={150}
+                  height={150}
+                  priority
                 />
                 <div>
                   <p className="text-sm/6 font-semibold text-indigo-600">{person.role}</p>

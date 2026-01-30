@@ -7,18 +7,20 @@ import { Translation, Button } from '..';
 import { useTranslations } from 'next-intl';
 import signOut from "@/firebase/auth/signout";
 import { useRouter } from 'next/navigation';
+import { useSearchContext } from '@/context/SearchContext';
 
 export default function Menu() {
-  const { user } = useAuthContext() as { user: any }; // Use 'as' to assert the type as { user: any }
+  const { user } = useAuthContext() as { user: any };
   const t = useTranslations();
   const router = useRouter();
+  const { submittedCode } = useSearchContext();
   
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   
   const navigation = [
     { name: t('menu.details'), href: '#details' },
     { name: t('menu.faq'), href: '#faq', mobile: true },
-    { name: t('menu.rsvp'), href: '#guestList' },
+    { name: t('menu.rsvp'), href: '#guestList', checked: submittedCode },
     { name: t('menu.music'), href: '#music' },
     { name: t('menu.contact'), href: '#contact' },
   ]
@@ -66,6 +68,12 @@ export default function Menu() {
     );
   };
 
+  const tick = () =>  (
+    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f">
+      <path d="M400-304 240-464l56-56 104 104 264-264 56 56-320 320Z"/>
+    </svg>
+  );
+
   return (
       <header className="absolute inset-x-0 top-0 z-50">
 
@@ -88,8 +96,8 @@ export default function Menu() {
           </div>
           <div className="hidden lg:flex lg:gap-x-12">
             {navigation.map((item) => (
-              !item.mobile && <a key={item.name} href={item.href} className="text-sm/6 font-semibold text-gray-900">
-                {item.name}
+              !item.mobile && <a key={item.name} href={item.href} className="text-sm/6 font-semibold text-gray-900 flex items-center">
+                {item.name}{item.checked && tick()}
               </a>
             ))}
           </div>
@@ -122,9 +130,9 @@ export default function Menu() {
                       key={item.name}
                       href={item.href}
                       // onClick={() => setMobileMenuOpen(false)}
-                      className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
+                      className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 flex items-center"
                     >
-                      {item.name}
+                      {item.name}{item.checked && tick()}
                     </a>
                   ))}
                 </div>

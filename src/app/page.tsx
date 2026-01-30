@@ -21,12 +21,10 @@ const filters = (await searchParams);
     return (<Wip />);
   } else {
     return (
-      <main className="flex min-h-screen flex-col items-center justify-between p-24">
+      <main className="flex flex-col">
         <Menu />
         <Header />
-        <SearchContextProvider>
-          <Rsvp />
-        </SearchContextProvider>
+        <Rsvp />
         <About />
         <FAQ />
         <Music />

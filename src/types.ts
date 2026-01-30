@@ -1,5 +1,5 @@
 
-export type GuestData = {
+export type MinimalGuestData = {
   id: number;
   code: string;
   first: string;
@@ -8,23 +8,15 @@ export type GuestData = {
   stay: number;
   participation: number;
   relationships: number[];
-  // limit following
+  replied: ExpectedResponses | undefined;
   user: string | undefined,
+}
+
+export type GuestData = MinimalGuestData & {
+  date: string | undefined,
   opt: boolean | undefined,
-  replied: string | undefined;
   dietary: string | undefined;
   paid: boolean;
 };
 
-// {
-// id: Number(dataArray[id]),
-// code: dataArray[code],
-// firstName: dataArray[firstName],
-// surname: dataArray[surname],
-// alt: dataArray[nickName],
-// participation: Number(dataArray[participation]),
-// relationships: relationNumbers,
-// replied: '',
-// Dietary
-// paid: false
-// }
+export type ExpectedResponses = "not" | "day" | "weekend";

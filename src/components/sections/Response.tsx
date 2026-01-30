@@ -1,20 +1,17 @@
 'use client'
 
 import { useAuthContext } from "@/context/AuthContext";
+import { GuestConstruct } from "@/context/SearchContext";
+import updatedGuests from "@/firebase/firestore/updateGuests";
 import { GuestData } from "@/types";
 import { useTranslations } from "next-intl";
 import { FC } from "react";
 
-export type GuestConstruct = {
-  code: string;
-  guests: GuestData[],
-}
-
 export interface Props {
-  guests?: GuestConstruct;
+  construct?: GuestConstruct;
 }
 
-const Response: FC<Props> = ({ guests }) => {
+const Response: FC<Props> = ({ construct }) => {
   const { user } = useAuthContext() as { user: any };
   const t = useTranslations();
 
@@ -23,19 +20,30 @@ const Response: FC<Props> = ({ guests }) => {
 
     if (event.target instanceof HTMLFormElement) {
         const formData = new FormData(event.target);
-        console.log(event, formData);
+        // console.log(event, formData);
 
-        const a = guests?.guests.map((x:GuestData, i) => ({
-          ...x,
+        const updateData = construct?.guests.map((x, i) => ({
+          // ...x,
+          code: x.code,
           dietary: formData.get(`dietary-${i}`),
           replied: formData.get(`attendance-${i}`),
-          opt: formData.get(`optional-${i}`) || undefined,
-          user: guests.code === x.code ? user.uid || 'BBB' : undefined,
-        } as GuestData))
+          opt: formData.get(`optional-${i}`) ? true : false || false,
+          user: construct.code === x.code ? user?.uid : `(${x.code})`,
+          date: new Date().toUTCString(),
+        } as Partial<GuestData>))
         
-        console.log('submit', a);
+        console.log('submit', updateData);
+        b(updateData);
     }
   };
+
+  const b = async (updateData: Partial<GuestData>[] | undefined) => {
+    console.log('ADD');
+    if (updateData && updateData[0]) {
+      const a = await updatedGuests('vgKGh7hgejMJp9uiUshW', updateData[0]);
+      console.log(a);
+    }
+  }
 
   const radioOption = (
     name: string,
@@ -110,39 +118,36 @@ const Response: FC<Props> = ({ guests }) => {
     </>
   );
 
-  if (!guests) {
+  if (!construct) {
     return <p>{t("guest.form.unknown")}</p>
   }
 
-
-
   return (
-    <form className="rounded-md border border-gray-900 pt-5 " onSubmit={rsvpResponse}>
-      <div className="space-y-12">
-        <div className="px-5 border-b border-gray-900/10 pb-12">
+    <form className="rounded-md border bg-white border-gray-300 pt-6 " onSubmit={rsvpResponse}>
+        <div className="px-6 border-b border-gray-900/10">
         
           <h2 className="text-base/7 font-semibold text-gray-900">{t("guest.form.title")}</h2>
           <p className="mt-1 text-sm/6 text-gray-600">
             {t("guest.form.intro")}
           </p>
           
-          <div role="list" className="mt-6 divide-y divide-gray-900 rounded-md border border-gray-900">
-          {guests.guests.map((guest, i) => (
-            <div className="mt-2 space-y-10 mb-20 rounded-md border" key={guest.id}>
+          <div role="list" className="mt-6 divide-y">
+          {construct.guests.map((guest, i) => (
+            <div className="space-y-4 mb-6 px-6 py-3 rounded-md border text-gray-600 bg-gray-100" key={guest.id}>
               
               <fieldset>
-                <legend className="text-sm/6 font-semibold text-gray-900">{t("guest.form.input.attendance.label")} {guest.first}</legend>
-                <p className="mt-1 text-sm/6 text-gray-600">{t("guest.form.input.attendance.info")} {guest.first}.</p>
-                <div className="mt-4 space-y-6">
+                <legend className="text-sm/6 font-semibold text-gray-900">{`${i+1}. `}{t("guest.form.input.attendance.label", { name: guest.first })}</legend>
+                <p className="mt-1 text-sm/6 text-gray-600">{t("guest.form.input.attendance.info", { name: guest.first })}</p>
+                <div className="mt-4 space-y-4">
                   {guest.participation === 1 ? child(i) : adult(i, guest.stay)}
                 </div>
               </fieldset>
 
-              <div className="col-span-full">
+              <fieldset>
                 <label htmlFor={`dietary-${i}`} className="block text-sm/6 font-medium text-gray-900">
                    {t("guest.form.input.dietary.label")}
                 </label>
-                <div className="mt-1">
+                <div className="mt-2 px-3">
                   <textarea
                     id={`dietary-${i}`}
                     name={`dietary-${i}`}
@@ -151,8 +156,8 @@ const Response: FC<Props> = ({ guests }) => {
                     defaultValue={''}
                   />
                 </div>
-                <p className="mt-3 text-sm/6 text-gray-600">{t("guest.form.input.dietary.info")}</p>
-              </div>
+                <p className="mt-2 px-3 text-sm/6 text-gray-600">{t("guest.form.input.dietary.info")}</p>
+              </fieldset>
 
               {guest.participation <= 0 &&
                 <fieldset>
@@ -208,11 +213,9 @@ const Response: FC<Props> = ({ guests }) => {
 
             </div>
           ))}
-          </div>
 
-
-         <div className="mt-10 space-y-10">
-            <p className="mt-1 text-sm/6 text-gray-600">
+         <div className="mb-6 space-y-10">
+            <p className="text-sm/6 text-gray-600">
               Any information we have already or you provide us will only be stored until the event, after which it will deleted.
             </p>
           </div>
@@ -222,14 +225,14 @@ const Response: FC<Props> = ({ guests }) => {
 
       <div className="flex items-center justify-end gap-x-6 px-6 py-6">
         <button type="button" className="text-sm/6 font-semibold text-gray-900">
-          Cancel
+          {t("guest.form.cancel")}
         </button>
         <button
           type="submit"
           disabled={false}
           className="rounded-md bg-winter-green px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
         >
-          Submit
+          {t("guest.form.submit")}
         </button>
       </div>
     </form>

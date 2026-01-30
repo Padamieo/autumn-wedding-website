@@ -13,10 +13,12 @@ export default async ({ email, privateLink, firstName }: AuthEmail ) => {
         return { result, error: 'No Link Provided' };
     }
 
+    const date = new Date().toUTCString();
+
     const { data, error } = await resend.emails.send({
         from: 'Adam <noreply@email.finallygettingmarried.nl>',
         to: [email],
-        subject: 'Hello world',
+        subject: `Log in request on ${date}`,
         react: AuthEmailTemplate({ privateLink, firstName }),
     });
 
