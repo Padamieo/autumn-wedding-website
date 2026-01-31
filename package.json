@@ -13,6 +13,7 @@
     "@headlessui/react": "^2.2.9",
     "@react-email/components": "^1.0.6",
     "@react-email/render": "^2.0.4",
+    "classnames": "^2.5.1",
     "firebase": "^12.8.0",
     "firebase-admin": "^13.6.0",
     "next": "^16.1.2",

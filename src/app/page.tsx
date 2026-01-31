@@ -1,4 +1,4 @@
-import { SearchContextProvider } from "@/context/SearchContext";
+
 import {
   Menu,
   Rsvp,

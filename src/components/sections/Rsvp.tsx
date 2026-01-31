@@ -4,12 +4,10 @@ import { useMemo } from "react";
 import { GuestSearch, Response } from "..";
 import { useSearchContext } from "@/context/SearchContext";
 import { useAuthContext } from "@/context/AuthContext";
-import { useTranslations } from "next-intl";
 import Encourage from "./Encourage";
 import Confirmation from "./Confirmation";
 
 export default function Rsvp() {
-  const t = useTranslations();
   const { user } = useAuthContext() as { user: any };
   const { guestConstruct, userCode, submittedCode } = useSearchContext();
 

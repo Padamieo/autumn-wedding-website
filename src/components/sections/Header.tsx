@@ -6,7 +6,7 @@ export default function Header() {
   const t = useTranslations();
 
   return (
-      <div className="relative grid min-h-screen items-center justify-content">
+      <div className="relative grid min-h-screen items-center justify-content px-6">
         <div
           aria-hidden="true"
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"

@@ -1,37 +1,38 @@
 'use client'
 
+import { useTranslations } from 'next-intl';
 import Image from 'next/image'
 
-const people = [
-  {
-    name: 'Heather Alison Comer',
-    role: 'Bride',
-    email: 'heater.comer1989@googlemail.com',
-    mobile: '+3111111111',
-    imageUrl: "/heather.webp"
-  },
-  {
-    name: 'Michael Adam Lockwood',
-    role: 'Groom',
-    email: 'michaeladamlockwood@googlemail.com',
-    mobile: '+3111111111',
-    imageUrl: "/adam.webp"
-  },
-]
-
 export default function Contact() {
+  const t = useTranslations('contact');
+
+  const people = [
+    {
+      name: t('bride.name'),
+      role: t('bride.role'),
+      email: t('bride.email'),
+      mobile: t('bride.tel'),
+      imageUrl: "/heather.webp"
+    },
+    {
+      name: t('groom.name'),
+      role: t('groom.role'),
+      email: t('groom.email'),
+      mobile: t('groom.tel'),
+      imageUrl: "/adam.webp"
+    },
+  ];
+  
   return (
     <>
     
-    <div id="contact" className="w-full bg-white sm:py-32">
+    <div id="contact" className="w-full bg-white py-8 sm:py-24">
       <div className="mx-auto grid max-w-7xl gap-20 px-6 lg:px-8 xl:grid-cols-3">
         <div className="max-w-xl">
           <h2 className="text-3xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-4xl">
-            Contact Information
+            {t('title')}
           </h2>
-          <p className="mt-6 text-lg/8 text-gray-600">
-            If you are unsure about anything, or need to contact us about a wedding related thing and strangly dont have out details
-          </p>
+          <p className="mt-6 text-lg/8 text-gray-600">{t('body')}</p>
         </div>
         <ul role="list" className="grid gap-x-8 gap-y-12 break-all sm:grid-cols-2 sm:gap-y-16 xl:col-span-2">
           {people.map((person) => (
@@ -45,7 +46,7 @@ export default function Contact() {
                   height={150}
                   priority
                 />
-                <div>
+                <div className="">
                   <p className="text-sm/6 font-semibold text-indigo-600">{person.role}</p>
                   <h3 className="text-base/7 font-semibold tracking-tight text-gray-900">{person.name}</h3>
                   <p className="text-sm/6 font-semibold text-gray-400">{person.email}</p>

@@ -3,8 +3,10 @@
 import emails from "@/resend/email";
 import { initializeAdmin } from "@/firebase/admin";
 import actionCodeSettings from "./config";
+import { EmailContent } from "@/components/emails/auth";
 
-export async function signIn(email: string, firstName?: string) {
+// sign in with email passwordless custom email
+export async function signIn(email: string, emailContent: EmailContent) {
   let result = null, error = null;
   let privateLink = null;
 
@@ -12,15 +14,15 @@ export async function signIn(email: string, firstName?: string) {
 
   try {
     privateLink = await admin.auth().generateSignInWithEmailLink(email, actionCodeSettings);
-  } catch (error) {
-    return { result, error };
+  } catch (e) {
+    return { result, error: e };
   }
 
   if (privateLink) {
     try {
-      result = await emails({ email, privateLink, firstName });
-    } catch (error) {
-      return { result, error };
+      result = await emails({ email, privateLink, emailContent });
+    } catch (e) {
+      result = e;
     }
   }
   

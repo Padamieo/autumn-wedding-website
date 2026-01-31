@@ -1,11 +1,12 @@
 'use client'
 
 import { useAuthContext } from "@/context/AuthContext";
-import { GuestConstruct } from "@/context/SearchContext";
-import updatedGuests from "@/firebase/firestore/updateGuests";
+import { GuestConstruct, useSearchContext } from "@/context/SearchContext";
+import updateGuests from "@/firebase/firestore/updateGuests";
 import { GuestData } from "@/types";
 import { useTranslations } from "next-intl";
 import { FC } from "react";
+import Button from "../Button";
 
 export interface Props {
   construct?: GuestConstruct;
@@ -14,6 +15,7 @@ export interface Props {
 const Response: FC<Props> = ({ construct }) => {
   const { user } = useAuthContext() as { user: any };
   const t = useTranslations();
+  const { clearUser } = useSearchContext();
 
   const rsvpResponse = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -40,7 +42,7 @@ const Response: FC<Props> = ({ construct }) => {
   const b = async (updateData: Partial<GuestData>[] | undefined) => {
     console.log('ADD');
     if (updateData && updateData[0]) {
-      const a = await updatedGuests('vgKGh7hgejMJp9uiUshW', updateData[0]);
+      const a = await updateGuests('vgKGh7hgejMJp9uiUshW', updateData[0]);
       console.log(a);
     }
   }
@@ -53,7 +55,7 @@ const Response: FC<Props> = ({ construct }) => {
     checked?: boolean,
   ) => {
     return (
-      <label className="flex items-center gap-x-3 hover:bg-winter-green px-3" htmlFor={`${name}-${id}`} >
+      <label className="flex items-center gap-x-3 hover:bg-winter-green pl-1 sm:pl-3" htmlFor={`${name}-${id}`} >
         <input
           required
           // defaultChecked={checked}
@@ -61,7 +63,7 @@ const Response: FC<Props> = ({ construct }) => {
           name={name}
           type="radio"
           value={id}
-          className="relative size-6 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden"
+          className="relative size-6 shrink-0 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden"
         />
         <div className="text-sm/6" >
           <p className="font-medium text-gray-900">
@@ -123,8 +125,8 @@ const Response: FC<Props> = ({ construct }) => {
   }
 
   return (
-    <form className="rounded-md border bg-white border-gray-300 pt-6 " onSubmit={rsvpResponse}>
-        <div className="px-6 border-b border-gray-900/10">
+    <form className="rounded-md border bg-white border-gray-300 pt-6" onSubmit={rsvpResponse}>
+        <div className="px-6 border-b border-gray-200">
         
           <h2 className="text-base/7 font-semibold text-gray-900">{t("guest.form.title")}</h2>
           <p className="mt-1 text-sm/6 text-gray-600">
@@ -133,10 +135,12 @@ const Response: FC<Props> = ({ construct }) => {
           
           <div role="list" className="mt-6 divide-y">
           {construct.guests.map((guest, i) => (
-            <div className="space-y-4 mb-6 px-6 py-3 rounded-md border text-gray-600 bg-gray-100" key={guest.id}>
+            <div className="space-y-4 mb-6 px-3 py-3 rounded-md border text-gray-400 bg-gray-100 sm:px-6" key={guest.id}>
               
               <fieldset>
-                <legend className="text-sm/6 font-semibold text-gray-900">{`${i+1}. `}{t("guest.form.input.attendance.label", { name: guest.first })}</legend>
+                <legend className="text-sm/6 font-semibold text-gray-900">
+                  {`${i+1}. `}{t("guest.form.input.attendance.label", { name: guest.first })}
+                </legend>
                 <p className="mt-1 text-sm/6 text-gray-600">{t("guest.form.input.attendance.info", { name: guest.first })}</p>
                 <div className="mt-4 space-y-4">
                   {guest.participation === 1 ? child(i) : adult(i, guest.stay)}
@@ -147,7 +151,7 @@ const Response: FC<Props> = ({ construct }) => {
                 <label htmlFor={`dietary-${i}`} className="block text-sm/6 font-medium text-gray-900">
                    {t("guest.form.input.dietary.label")}
                 </label>
-                <div className="mt-2 px-3">
+                <div className="mt-2 pl-1 sm:pl-3">
                   <textarea
                     id={`dietary-${i}`}
                     name={`dietary-${i}`}
@@ -156,15 +160,17 @@ const Response: FC<Props> = ({ construct }) => {
                     defaultValue={''}
                   />
                 </div>
-                <p className="mt-2 px-3 text-sm/6 text-gray-600">{t("guest.form.input.dietary.info")}</p>
+                <p className="mt-2 pl-3 text-sm/6 text-gray-600">{t("guest.form.input.dietary.info")}</p>
               </fieldset>
 
               {guest.participation <= 0 &&
                 <fieldset>
-                  <legend className="text-sm/2 font-semibold text-gray-900">{t("guest.form.input.optional.section")}</legend>
+                  <legend className="text-sm/2 font-semibold text-gray-900">
+                  {t("guest.form.input.optional.section")}
+                  </legend>
                   <div className="mt-4 space-y-6">
-                    <div className="flex gap-3">
-                      <div className="flex h-6 shrink-0 items-center px-3">
+                    <div className="flex gap-3 pl-1 sm:pl-3">
+                      <div className="flex h-6 shrink-0 items-center">
                         <div className="group grid size-6 grid-cols-1">
                           <input
                             id={`optional-${i}`}
@@ -224,16 +230,20 @@ const Response: FC<Props> = ({ construct }) => {
       </div>
 
       <div className="flex items-center justify-end gap-x-6 px-6 py-6">
-        <button type="button" className="text-sm/6 font-semibold text-gray-900">
+        <button
+          type="button"
+          className="text-sm/6 font-semibold text-gray-900"
+          onClick={() => clearUser()}
+        >
           {t("guest.form.cancel")}
         </button>
-        <button
+        <Button
           type="submit"
           disabled={false}
-          className="rounded-md bg-winter-green px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          className="shadow-xs"
         >
           {t("guest.form.submit")}
-        </button>
+        </Button>
       </div>
     </form>
   )

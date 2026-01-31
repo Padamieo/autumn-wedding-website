@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ['latin'] });
 
 // Metadata for the application
 export const metadata = {
-  title: 'Heather & Adams wedding website',
+  title: 'Heather & Adam\'s wedding website',
   description: 'RSVP and info site for wedding of Heather & Adam happening on the 31st October 2026',
 };
 

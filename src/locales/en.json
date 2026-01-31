@@ -13,10 +13,6 @@
     "closeMenu": "Close menu",
     "openMenu": "Open menu"
   },
-  "auth": {
-    "login": "Log In",
-    "logout": "Log Out"
-  },
   "header": {
     "top": "Heather & Adam are very HAPPY to announce",
     "title": "WE ARE GETTING MARRIED, FOR REAL",
@@ -28,9 +24,9 @@
   },
   "guest": {
     "search": {
-      "label": "Find your",
+      "label": "Find yourself",
       "placeholder": "Search for your name, or the code included in your invite",
-      "tooltip": " we need at least three character to get started"
+      "tooltip": "we need at least three character to get started"
     },
     "results": {
       "responded": "Responded",
@@ -97,6 +93,22 @@
       }
     }
   },
+  "contact": {
+    "title": "Contact Information",
+    "body": "If you are unsure about anything, or need to contact us about a wedding related thing and strangly dont have out details",
+    "bride": {
+      "role":"Bride",
+      "name": "Heather Alison Comer",
+      "email": "heather@email.com",
+      "tel": "+31111111111"
+    },
+    "groom": {
+      "role": "Groom",
+      "name": "Michael Adam Lockwood",
+      "email": "michaeladamlockwood@googlemail.com",
+      "tel": "+31111111111"
+    }
+  },
   "faq": {
     "intro": {
       "title": "Frequently Asked Questions.",
@@ -143,7 +155,47 @@
       "answer": "Although we would love to pay for everyone, it would be appriciate if guests help us cover a little of the cost"
     }
   },
+  "auth":{
+    "login": "Log In",
+    "logout": "Log Out",
+    "start": {
+      "title": "Log In / Register",
+      "body": "To make things simple we setup a password-less log in and registration process.",
+      "input" : {
+        "label": "Email",
+        "placeholder": "name@email.co.uk",
+        "loading": "loading",
+        "submit": "Submit"
+      }
+    },
+    "sent": {
+      "title": "Email sent!",
+      "body": "Please check your email: <b>{email}</b> email account for a link, including spam folders as it most likely got blocked.",
+      "wait": "If you made a mistake you will be able to correct in {time} seconds.",
+      "button": "Clear email and restart"
+    },
+    "already": {
+      "title": "Already logged in!",
+      "body": "You probably logged in via another tab / window, you can still use this one.",
+      "button": "Return to home page"
+    },
+    "complete": {
+      "title": "Complete log in",
+      "body": "Welcome back? You are attempting to log in with the email: <b>{email}</b>, please click button continue.",
+      "button": "Continue"
+    },
+    "notRecognized": {
+      "title": "Sorry! Auth fail.",
+      "body": "You will need to start and end the auth process on the same browser and device.",
+      "button": "Restart on this device"
+    }
+  },
   "email": {
+    "title": "Login magic link",
+    "hello": "Hello,",
+    "dear": "Dear {name},",
+    "please": "Please use the link below to login to our site.",
+    "link": "Sign in to finallygettingmarried.nl",
     "signoff": "If you have any issues please feel free to contact us, Love Heather & Adam"
   }
 }

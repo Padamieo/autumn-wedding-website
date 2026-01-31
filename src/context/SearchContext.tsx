@@ -17,6 +17,7 @@ export interface SearchThing {
   userCode: string | undefined;
   setUserCode: Dispatch<SetStateAction<string | undefined>>;
   submittedCode: string | undefined;
+  clearUser: () => void;
   setSubmittedCode: Dispatch<SetStateAction<string | undefined>>;
   guestConstruct: GuestConstruct | undefined;
   guests: GuestDataVariable;
@@ -27,6 +28,7 @@ export const initialState: SearchThing = {
   setUserCode: () => {},
   submittedCode: undefined,
   setSubmittedCode: () => {},
+  clearUser: () => {},
   guestConstruct: undefined,
   guests: [],
 };
@@ -80,6 +82,16 @@ export function SearchContextProvider({ children }: SearchContextProviderProps) 
     // setLoading(false);
   };
 
+  const clearUser = () => {
+    setCodes(undefined);
+    setGuestConstruct(undefined);
+  };
+
+  const setCodes = (value: string | undefined ) => {
+    setSubmittedCode(value);
+    setUserCode(value);
+  };
+
   useEffect(() => {
     if (!userCode || !filterGuest) {
       return;
@@ -103,8 +115,7 @@ export function SearchContextProvider({ children }: SearchContextProviderProps) 
   useEffect(() => {
     // console.log(xx);
     if (returningUser && returningUser.code) {
-      setSubmittedCode(returningUser.code);
-      setUserCode(returningUser.code);
+      setCodes(returningUser.code);
     }
   }, [returningUser]);
 
@@ -117,7 +128,7 @@ export function SearchContextProvider({ children }: SearchContextProviderProps) 
   }, []);
 
   return (
-    <SearchContext.Provider value={{ guests, guestConstruct, userCode, setUserCode, submittedCode, setSubmittedCode }}>
+    <SearchContext.Provider value={{ guests, guestConstruct, userCode, setUserCode, clearUser, submittedCode, setSubmittedCode }}>
       {children}
     </SearchContext.Provider>
   );

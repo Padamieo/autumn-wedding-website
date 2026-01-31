@@ -1,4 +1,6 @@
 'use client'
+
+import { Button } from "@/components";
 import { signIn } from "@/firebase/auth/signin";
 import { useRouter } from 'next/navigation';
 import { useState } from "react";
@@ -64,12 +66,12 @@ function Page() {
             />
           </div>
           <div className="flex items-center justify-between">
-            <button
+            <Button
               type="submit"
-              className="w-full bg-blue-500 text-white font-semibold py-2 rounded"
+              className="w-full"
             >
               Sign In
-            </button>
+            </Button>
           </div>
         </form>
       </div>
