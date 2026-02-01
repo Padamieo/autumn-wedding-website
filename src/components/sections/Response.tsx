@@ -2,11 +2,12 @@
 
 import { useAuthContext } from "@/context/AuthContext";
 import { GuestConstruct, useSearchContext } from "@/context/SearchContext";
-import updateGuests from "@/firebase/firestore/updateGuests";
-import { GuestData } from "@/types";
+import updateGuest from "@/firebase/firestore/updateGuest";
+import { GuestUpdatePayload } from "@/types";
 import { useTranslations } from "next-intl";
-import { FC } from "react";
+import { FC, useState } from "react";
 import Button from "../Button";
+import { useConfettiContext } from "@/context/ConfettiContext";
 
 export interface Props {
   construct?: GuestConstruct;
@@ -15,108 +16,89 @@ export interface Props {
 const Response: FC<Props> = ({ construct }) => {
   const { user } = useAuthContext() as { user: any };
   const t = useTranslations();
-  const { clearUser } = useSearchContext();
+  const { clearUser, updateGuestsStore } = useSearchContext();
+  const { setConfetti } = useConfettiContext();
+  const [loading, setLoading] = useState(false);
 
   const rsvpResponse = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
+    setLoading(true);
+    
     if (event.target instanceof HTMLFormElement) {
-        const formData = new FormData(event.target);
-        // console.log(event, formData);
+      const formData = new FormData(event.target);
 
-        const updateData = construct?.guests.map((x, i) => ({
-          // ...x,
-          code: x.code,
-          dietary: formData.get(`dietary-${i}`),
-          replied: formData.get(`attendance-${i}`),
-          opt: formData.get(`optional-${i}`) ? true : false || false,
-          user: construct.code === x.code ? user?.uid : `(${x.code})`,
-          date: new Date().toUTCString(),
-        } as Partial<GuestData>))
-        
-        console.log('submit', updateData);
-        b(updateData);
+      const output = construct?.guests.reduce((acc, guest, i) => ({ ...acc, [guest.code]: {
+        dietary: formData.get(`dietary-${i}`),
+        replied: formData.get(`attendance-${i}`),
+        opt: formData.get(`optional-${i}`) ? true : false || false,
+        user: construct.code === guest.code ? user?.uid : `==${construct.code}`,
+        date: new Date().toUTCString(),
+      }}), {}) as GuestUpdatePayload;
+
+      sendResponse(output);
     }
   };
 
-  const b = async (updateData: Partial<GuestData>[] | undefined) => {
-    console.log('ADD');
-    if (updateData && updateData[0]) {
-      const a = await updateGuests('vgKGh7hgejMJp9uiUshW', updateData[0]);
-      console.log(a);
+  const sendResponse = async (updateData: GuestUpdatePayload | undefined) => {
+    if (updateData) {
+      try {
+        for (const code in updateData) {
+          const { error } = await updateGuest(code, updateData[code]);
+          if (error) {
+            // Need to show error
+            console.log(error);
+            return;
+          }
+        }
+      } catch (e) {
+        console.log(e);
+        return e;
+      }
+
+      updateGuestsStore(updateData);
+      if (construct?.code && updateData[construct.code].replied !== 'not') {
+        setConfetti(true)
+      }
     }
   }
 
-  const radioOption = (
-    name: string,
-    id: string,
-    label: string,
-    description?: string,
-    checked?: boolean,
-  ) => {
-    return (
-      <label className="flex items-center gap-x-3 hover:bg-winter-green pl-1 sm:pl-3" htmlFor={`${name}-${id}`} >
-        <input
-          required
-          // defaultChecked={checked}
-          id={`${name}-${id}`}
-          name={name}
-          type="radio"
-          value={id}
-          className="relative size-6 shrink-0 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden"
-        />
-        <div className="text-sm/6" >
-          <p className="font-medium text-gray-900">
-            {label}
-          </p>
-          {description && (
-            <p id={`${id}-attending-description`} className="text-gray-500">
-              {description}
-            </p>
-          )}
-        </div>
-      </label>
-    );
-  };
-
-
   const child = (i: number) => (
     <>
-      {radioOption(
-        `attendance-${i}`,
-        `confirm`,
-        t("guest.form.input.attendance.yes"),
-        undefined,
-        true,
-      )}
-      {radioOption(
-        `attendance-${i}`,
-        `not`,
-        t("guest.form.input.attendance.no"),
-      )}
+      <RadioOption
+        name={`attendance-${i}`}
+        id={`yes`}
+        label={t("guest.form.input.attendance.yes")}
+      />
+      <RadioOption
+        name={`attendance-${i}`}
+        id={`no`}
+        label={t("guest.form.input.attendance.no")}
+      />
     </>
   );
 
   const adult = (i:number, stay: number) => (
     <>
-      {stay <= 0 && radioOption(
-        `attendance-${i}`,
-        `weekend`,
-        t("guest.form.input.attendance.weekend"),
-        t("guest.form.input.attendance.weekend-info"),
-        true,
-      )}
-      {radioOption(
-        `attendance-${i}`,
-        `day`,
-        t("guest.form.input.attendance.day"),
-        t("guest.form.input.attendance.day-info"),
-      )}
-      {radioOption(
-        `attendance-${i}`,
-        `not`,
-        t("guest.form.input.attendance.not"),
-      )}
+      {stay <= 0 && 
+        <RadioOption
+          name={`attendance-${i}`}
+          id={`weekend`}
+          label={t("guest.form.input.attendance.weekend")}
+          description={t("guest.form.input.attendance.weekend-info")}
+        />
+      }
+      <RadioOption
+        name={`attendance-${i}`}
+        id={`day`}
+        label={t("guest.form.input.attendance.day")}
+        description={t("guest.form.input.attendance.day-info")}
+      />
+      <RadioOption
+        name={`attendance-${i}`}
+        id={`not`}
+        label={t("guest.form.input.attendance.not")}
+        // description={t("guest.form.input.attendance.not-info")}
+      />
     </>
   );
 
@@ -128,7 +110,9 @@ const Response: FC<Props> = ({ construct }) => {
     <form className="rounded-md border bg-white border-gray-300 pt-6" onSubmit={rsvpResponse}>
         <div className="px-6 border-b border-gray-200">
         
-          <h2 className="text-base/7 font-semibold text-gray-900">{t("guest.form.title")}</h2>
+          <h2 className="text-base/7 font-semibold text-gray-900">
+            {t("guest.form.title")}
+          </h2>
           <p className="mt-1 text-sm/6 text-gray-600">
             {t("guest.form.intro")}
           </p>
@@ -179,26 +163,7 @@ const Response: FC<Props> = ({ construct }) => {
                             aria-describedby="comments-description"
                             className="col-start-1 row-start-1 appearance-none rounded-sm border border-gray-300 bg-white checked:border-indigo-600 checked:bg-indigo-600 indeterminate:border-indigo-600 indeterminate:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:checked:bg-gray-100 forced-colors:appearance-auto"
                           />
-                          <svg
-                            fill="none"
-                            viewBox="0 0 14 14"
-                            className="pointer-events-none col-start-1 row-start-1 size-3.5 self-center justify-self-center stroke-white group-has-disabled:stroke-gray-950/25"
-                          >
-                            <path
-                              d="M3 8L6 11L11 3.5"
-                              strokeWidth={2}
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              className="opacity-0 group-has-checked:opacity-100"
-                            />
-                            <path
-                              d="M3 7H11"
-                              strokeWidth={2}
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              className="opacity-0 group-has-indeterminate:opacity-100"
-                            />
-                          </svg>
+                          <CheckBox />
                         </div>
                       </div>
                       <div className="text-sm/6">
@@ -210,7 +175,6 @@ const Response: FC<Props> = ({ construct }) => {
                             {t("guest.form.input.optional.info")} 
                           </p>
                         </label>
-
                       </div>
                     </div>
                   </div>
@@ -232,6 +196,7 @@ const Response: FC<Props> = ({ construct }) => {
       <div className="flex items-center justify-end gap-x-6 px-6 py-6">
         <button
           type="button"
+          disabled={loading}
           className="text-sm/6 font-semibold text-gray-900"
           onClick={() => clearUser()}
         >
@@ -239,7 +204,7 @@ const Response: FC<Props> = ({ construct }) => {
         </button>
         <Button
           type="submit"
-          disabled={false}
+          disabled={loading}
           className="shadow-xs"
         >
           {t("guest.form.submit")}
@@ -250,3 +215,63 @@ const Response: FC<Props> = ({ construct }) => {
 }
 
 export default Response;
+
+
+const CheckBox =() => (
+  <svg
+    fill="none"
+    viewBox="0 0 14 14"
+    className="pointer-events-none col-start-1 row-start-1 size-3.5 self-center justify-self-center stroke-white group-has-disabled:stroke-gray-950/25"
+  >
+    <path
+      d="M3 8L6 11L11 3.5"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="opacity-0 group-has-checked:opacity-100"
+    />
+    <path
+      d="M3 7H11"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="opacity-0 group-has-indeterminate:opacity-100"
+    />
+  </svg>
+)
+
+export interface Props1 {
+  name: string,
+  id: string,
+  label: string,
+  description?: string,
+  checked?: boolean,
+}
+
+const RadioOption: FC<Props1> = ({
+    name, id, label, description
+}) => {
+  return (
+    <label className="flex items-center gap-x-3 hover:bg-winter-green pl-1 sm:pl-3" htmlFor={`${name}-${id}`} >
+      <input
+        required
+        // defaultChecked={checked}
+        id={`${name}-${id}`}
+        name={name}
+        type="radio"
+        value={id}
+        className="relative size-6 shrink-0 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden"
+      />
+      <div className="text-sm/6" >
+        <p className="font-medium text-gray-900">
+          {label}
+        </p>
+        {description && (
+          <p id={`${id}-attending-description`} className="text-gray-500">
+            {description}
+          </p>
+        )}
+      </div>
+    </label>
+  );
+};

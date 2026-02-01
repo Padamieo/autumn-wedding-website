@@ -4,6 +4,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { SearchContextProvider } from '@/context/SearchContext';
 
 import './globals.css';
+import { ConfettiContextProvider } from '@/context/ConfettiContext';
 
 // Load the Inter font with 'latin' subset
 const inter = Inter({ subsets: ['latin'] });
@@ -31,7 +32,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <AuthContextProvider>
           <NextIntlClientProvider>
             <SearchContextProvider>
-              {children}
+              <ConfettiContextProvider>
+                {children}
+              </ConfettiContextProvider>
             </SearchContextProvider>
           </NextIntlClientProvider>
         </AuthContextProvider>

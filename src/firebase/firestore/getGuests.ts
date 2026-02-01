@@ -4,18 +4,20 @@ import { GuestData, MinimalGuestData } from "@/types";
 import firebase_app from "../config";
 import { getFirestore, collection, getDocs } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
+import { GuestDataVariable } from "@/context/SearchContext";
 // import output from '../../../scripts/output.json';
 
 const auth = getAuth(firebase_app);
 const db = getFirestore(firebase_app);
 const path = process.env.FIREBASE_GUEST_COLLECTION;
 
+// only need to supply this guests user and any with ==
 const obscurity = (data: GuestData[], auth: boolean) =>
   data && auth ? data : data.map((guest) => {
     const { date, user, opt, paid, dietary, ...rest } = guest;
     return { ...rest, user: '' } as MinimalGuestData;
   },
-);
+) as GuestDataVariable;
 
 // Function to retrieve a all guest data from a Firestore collection
 export default async function getGuests() {

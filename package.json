@@ -19,6 +19,7 @@
     "next": "^16.1.2",
     "next-intl": "^4.7.0",
     "react": "^19.2.3",
+    "react-confetti-boom": "^2.0.1",
     "react-dom": "19.2.0",
     "resend": "^6.8.0"
   },

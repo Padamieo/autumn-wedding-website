@@ -19,9 +19,7 @@ export default function Rsvp() {
   );
 
   if (submittedCode) {
-    return (
-      <Confirmation firstName={firstName} construct={guestConstruct} />
-    )
+    return (<Confirmation firstName={firstName} construct={guestConstruct} />)
   }
 
   return (

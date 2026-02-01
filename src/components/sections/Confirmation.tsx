@@ -1,6 +1,6 @@
 'use client'
 
-import { FC, Fragment } from 'react';
+import { FC, Fragment, useEffect } from 'react';
 import { GuestConstruct } from '@/context/SearchContext';
 import { useTranslations } from 'next-intl';
 import { isGuestType } from './Admin';
@@ -12,11 +12,20 @@ export interface Props {
 
 export const Confirmation: FC<Props> = ({ firstName, construct }) => {
   const t = useTranslations();
+
+  useEffect(() => {
+    const element = document.getElementById("test123");
+    console.log(element);
+    element?.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+  },[])
+
   if (!construct) {
     return 
   }
+
   return (
-    <div 
+    <div
+      id="test123"
       className="relative bg-white w-full mx-auto max-w-3xl my-6 mx-6 px-4 py-6 sm:px-6 lg:px-8"
     >
       {construct.guests.map((guest, i) => {

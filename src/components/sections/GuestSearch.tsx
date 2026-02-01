@@ -1,9 +1,9 @@
 'use client'
 
-import { ChangeEvent, FC, useEffect, useMemo, useState } from 'react';
+import { ChangeEvent, FC, useMemo, useState } from 'react';
 import { GuestList } from './GuestList';
 import { useTranslations } from 'next-intl';
-import { useSearchContext } from '@/context/SearchContext';
+import { GuestDataVariable, useSearchContext } from '@/context/SearchContext';
 
 export const GuestSearch: FC = () => {
    const t = useTranslations();
@@ -17,7 +17,7 @@ export const GuestSearch: FC = () => {
         || person.surname.toLowerCase().includes(search.toLowerCase())
         || person.alt.toLowerCase().includes(search.toLowerCase())
       )
-    })),
+    })) as GuestDataVariable,
     [search],
   );
 

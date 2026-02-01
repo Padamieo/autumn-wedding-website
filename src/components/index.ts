@@ -6,7 +6,6 @@ export { default as FAQ } from "./sections/FAQ";
 export { default as GuestSearch } from "./sections/GuestSearch";
 export { default as GuestList } from "./sections/GuestList";
 export { default as Contact } from "./sections//Contact";
-export { default as Register } from "./sections/Register";
 export { default as Wip } from "./sections/Wip";
 export { default as Response } from "./sections/Response";
 export { default as About } from "./sections/About";

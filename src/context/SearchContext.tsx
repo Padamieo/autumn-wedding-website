@@ -1,12 +1,11 @@
 'use client'
 
 import getGuests from '@/firebase/firestore/getGuests';
-import { GuestData, MinimalGuestData } from '@/types';
+import { GuestData, GuestUpdatePayload, MinimalGuestData } from '@/types';
 import { createContext, useContext, useEffect, useState, ReactNode, Dispatch, SetStateAction, useMemo } from 'react';
 import { useAuthContext } from './AuthContext';
 
-
-export type GuestDataVariable = MinimalGuestData[] | GuestData[];
+export type GuestDataVariable = MinimalGuestData[] & GuestData[];
 
 export type GuestConstruct = {
   code: string;
@@ -14,23 +13,25 @@ export type GuestConstruct = {
 }
 
 export interface SearchThing {
-  userCode: string | undefined;
-  setUserCode: Dispatch<SetStateAction<string | undefined>>;
-  submittedCode: string | undefined;
   clearUser: () => void;
-  setSubmittedCode: Dispatch<SetStateAction<string | undefined>>;
   guestConstruct: GuestConstruct | undefined;
   guests: GuestDataVariable;
+  setSubmittedCode: Dispatch<SetStateAction<string | undefined>>;
+  setUserCode: Dispatch<SetStateAction<string | undefined>>;
+  submittedCode: string | undefined;
+  updateGuestsStore: ( guestsData: GuestUpdatePayload ) => void;
+  userCode: string | undefined;
 };
 
 export const initialState: SearchThing = {
-  userCode: undefined,
-  setUserCode: () => {},
-  submittedCode: undefined,
-  setSubmittedCode: () => {},
   clearUser: () => {},
   guestConstruct: undefined,
   guests: [],
+  setSubmittedCode: () => {},
+  setUserCode: () => {},
+  submittedCode: undefined,
+  updateGuestsStore: () => {},
+  userCode: undefined,
 };
 
 export const SearchContext = createContext<SearchThing>(initialState);
@@ -43,11 +44,8 @@ interface SearchContextProviderProps {
 
 export function SearchContextProvider({ children }: SearchContextProviderProps) {
   const { user } = useAuthContext() as { user: any };
-
   const [userCode, setUserCode] = useState<string | undefined>(undefined);
   const [submittedCode, setSubmittedCode] = useState<string | undefined>(undefined);
-
-  // const [loading, setLoading] = useState(true);
   const [guests, setGuests] = useState<GuestDataVariable>([]);
   const [guestConstruct, setGuestConstruct] = useState<GuestConstruct | undefined>(undefined);
 
@@ -72,15 +70,24 @@ export function SearchContextProvider({ children }: SearchContextProviderProps) 
 
     if (error) {
       console.log(error);
-      // setLoading(false);
       return; 
     }
 
     // console.log('data', result)
-
     result && Array.isArray(result) && setGuests(result);
-    // setLoading(false);
   };
+
+  const updateGuestsStore = ( guestsUpdateData: GuestUpdatePayload ) => {
+    const ids = Object.keys(guestsUpdateData).map((key) => key);
+
+    const updated = guests.map(guest => {
+      return ids.includes(guest.code) ? {
+        ...guest,
+        ...guestsUpdateData[guest.code]
+      } : guest;
+    }) as GuestDataVariable;
+    setGuests(updated);
+  }
 
   const clearUser = () => {
     setCodes(undefined);
@@ -108,7 +115,7 @@ export function SearchContextProvider({ children }: SearchContextProviderProps) 
 
     setGuestConstruct({
       code: filterGuest.code,
-      guests: [filterGuest, ...guestGroup],
+      guests: [filterGuest, ...guestGroup] as GuestDataVariable,
     });
   }, [filterGuest]);
 
@@ -128,7 +135,16 @@ export function SearchContextProvider({ children }: SearchContextProviderProps) 
   }, []);
 
   return (
-    <SearchContext.Provider value={{ guests, guestConstruct, userCode, setUserCode, clearUser, submittedCode, setSubmittedCode }}>
+    <SearchContext.Provider value={{
+      clearUser,
+      guestConstruct,
+      guests,
+      setSubmittedCode,
+      setUserCode,
+      submittedCode,
+      updateGuestsStore,
+      userCode
+    }}>
       {children}
     </SearchContext.Provider>
   );

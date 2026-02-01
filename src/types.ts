@@ -1,5 +1,5 @@
 
-export type MinimalGuestData = {
+export type MinimalGuestData = Response & {
   id: number;
   code: string;
   first: string;
@@ -8,15 +8,22 @@ export type MinimalGuestData = {
   stay: number;
   participation: number;
   relationships: number[];
-  replied: ExpectedResponses | undefined;
-  user: string | undefined,
 }
 
-export type GuestData = MinimalGuestData & {
-  date: string | undefined,
-  opt: boolean | undefined,
+export type ExpectedResponses = "not" | "day" | "weekend" | 'yes' | 'no';
+
+type Response = {
+  user: string | undefined;
+  replied: ExpectedResponses | undefined;
+};
+
+export type GuestUpdate = Response & {
   dietary: string | undefined;
+  opt: boolean | undefined,
+  date: string | undefined,
   paid: boolean;
 };
 
-export type ExpectedResponses = "not" | "day" | "weekend";
+export type GuestUpdatePayload = { [id:string]: GuestUpdate };
+
+export type GuestData = MinimalGuestData & GuestUpdate;
