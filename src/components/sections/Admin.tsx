@@ -1,5 +1,6 @@
 'use client'
 
+import { useNotificationContext } from "@/context/NotificationContext";
 import getGuests from "@/firebase/firestore/getGuests";
 import { ExpectedResponses, GuestData, MinimalGuestData } from "@/types";
 import { useEffect, useMemo, useState } from "react";
@@ -17,6 +18,7 @@ export const isGuestType = (keyInput: object ): keyInput is GuestData => {
 }
 
 export default function Admin() {
+  const { createError } = useNotificationContext();
   const [guests, setGuests] = useState<MinimalGuestData[] | GuestData[]>([]);
 
   const readResponses = (r: ExpectedResponses, acc: Stats) => {
@@ -45,6 +47,7 @@ export default function Admin() {
 
     if (error) {
       console.log(error);
+      createError();
       return; 
     }
 

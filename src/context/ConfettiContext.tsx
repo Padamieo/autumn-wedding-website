@@ -24,10 +24,10 @@ interface ConfettiContextProviderProps {
 export function ConfettiContextProvider({ children }: ConfettiContextProviderProps) {
   const [showConfetti, setConfetti] = useState(false);
 
-  // Provide the authentication context to child components
   return (
     <ConfettiContext.Provider value={{
-      showConfetti, setConfetti
+      showConfetti,
+      setConfetti
     }}>
       <ConfettiOverlay />
       {children}

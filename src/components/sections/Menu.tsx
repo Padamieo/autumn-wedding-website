@@ -8,12 +8,14 @@ import { useTranslations } from 'next-intl';
 import signOut from "@/firebase/auth/signout";
 import { useRouter } from 'next/navigation';
 import { useSearchContext } from '@/context/SearchContext';
+import { useNotificationContext } from '@/context/NotificationContext';
 
 export default function Menu() {
   const { user } = useAuthContext() as { user: any };
   const t = useTranslations();
   const router = useRouter();
   const { submittedCode, clearUser } = useSearchContext();
+  const { createError } = useNotificationContext();
   
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   
@@ -30,8 +32,8 @@ export default function Menu() {
     const { error } = await signOut();
 
     if (error) {
-      // Display and log any sign-out errors, maybe show something
       console.log(error);
+      createError();
       return;
     }
     // Succesful sign out
@@ -60,7 +62,7 @@ export default function Menu() {
     return (
       <a href="#" className="-m-1.5 p-1.5">
         <span className="sr-only">Your Company</span>
-        <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#1f1f1f">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor" className="size-7">
           <path d="M40-120v-160q0-34 23.5-57t56.5-23h131q20 0 38 10t29 27q29 39 71.5 61t90.5 22q49 0 91.5-22t70.5-61q13-17 30.5-27t36.5-10h131q34 0 57 23t23 57v160H640v-91q-35 25-75.5 38T480-160q-43 0-84-13.5T320-212v92H40Zm120-280q-50 0-85-35t-35-85q0-51 35-85.5t85-34.5q51 0 85.5 34.5T280-520q0 50-34.5 85T160-400Zm640 0q-50 0-85-35t-35-85q0-51 35-85.5t85-34.5q51 0 85.5 34.5T920-520q0 50-34.5 85T800-400Zm-320-80q-68-62-111-104.5T302-658q-24-31-33-54.5t-9-47.5q0-50 35-85t86-35q28 0 54 12.5t45 33.5q19-21 45-33.5t54-12.5q51 0 86 35t35 85q0 24-9 47.5T658-658q-24 31-67 73.5T480-480Zm0-108q72-66 106-107.5t34-64.5q0-17-12-28.5T579-800q-12 0-23.5 7T532-772l-51 59-51-57q-14-16-25.5-23t-23.5-7q-17 0-29 11.5T340-760q0 23 34 64.5T480-588Zm0 0Z"/>
         </svg>
       </a>
@@ -68,7 +70,7 @@ export default function Menu() {
   };
 
   const tick = () =>  (
-    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor" data-slot="icon" aria-hidden="true" className="size-6">
       <path d="M400-304 240-464l56-56 104 104 264-264 56 56-320 320Z"/>
     </svg>
   );

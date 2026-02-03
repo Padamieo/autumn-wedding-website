@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import { useTranslations } from "next-intl";
+import classNames from 'classnames';
 
 const Location = ({ className }: { className: string }) => (
   <svg className={className} xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f">
@@ -11,6 +12,17 @@ const Location = ({ className }: { className: string }) => (
 
 export default function About() {
   const t = useTranslations();
+
+  // const b = [{
+  //   id: 'when',
+  //   icon: Location,
+  // }, {
+  //   id: 'when',
+  //   icon: Location,
+  // }, {
+  //   id: 'when',
+  //   icon: Location,
+  // }]
 
   return (
     <div id="details" className="relative isolate overflow-hidden bg-white px-6 py-24 sm:py-32 lg:overflow-visible lg:px-0">
@@ -33,11 +45,6 @@ export default function About() {
           </div>
         </div>
         <div className="-mt-12 -ml-12 p-12 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
-          {/* <img
-            alt=""
-            src="https://tailwindcss.com/plus-assets/img/component-images/dark-project-app-screenshot.png"
-            className="w-3xl max-w-none rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 sm:w-228"
-          /> */}
         <Image
           className="w-3xl max-w-none rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 sm:w-228"
           src="/test.webp"
@@ -47,19 +54,25 @@ export default function About() {
           priority
         />
         </div>
-        <div className="lg:col-span-2 lg:col-start-1 lg:row-start-2 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
+        <div className={classNames(
+          "lg:col-span-2 lg:col-start-1 lg:row-start-2 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8"
+        )}
+        >
           <div className="lg:pr-4">
             <div className="max-w-xl text-base/7 text-gray-600 lg:max-w-lg">
               <p>
                 {t('about.content')}
               </p>
               <ul role="list" className="mt-8 space-y-8 text-gray-600">
-                <li className="flex gap-x-3">
+                {/* {b.map(x => (
+                  <li className="flex gap-x-3">
                   <Location className="mt-1 size-5 flex-none text-indigo-600" />
                   <span>
-                    <strong className="font-semibold text-gray-900">{t('about.bullet.when.bold')}</strong>{t('about.bullet.when.body')}
+                    <strong className="font-semibold text-gray-900">{t(`about.bullet.${x.id}.bold`)}</strong>{t(`about.bullet.${x.id}.body`)}
                   </span>
                 </li>
+                ))} */}
+
                 <li className="flex gap-x-3">
                   <Location className="mt-1 size-5 flex-none text-indigo-600" />
                   <span>

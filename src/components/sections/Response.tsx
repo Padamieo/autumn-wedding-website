@@ -8,6 +8,8 @@ import { useTranslations } from "next-intl";
 import { FC, useState } from "react";
 import Button from "../Button";
 import { useConfettiContext } from "@/context/ConfettiContext";
+import classNames from "classnames";
+import { useNotificationContext } from "@/context/NotificationContext";
 
 export interface Props {
   construct?: GuestConstruct;
@@ -17,6 +19,7 @@ const Response: FC<Props> = ({ construct }) => {
   const { user } = useAuthContext() as { user: any };
   const t = useTranslations();
   const { clearUser, updateGuestsStore } = useSearchContext();
+  const { createError } = useNotificationContext();
   const { setConfetti } = useConfettiContext();
   const [loading, setLoading] = useState(false);
 
@@ -32,7 +35,7 @@ const Response: FC<Props> = ({ construct }) => {
         replied: formData.get(`attendance-${i}`),
         opt: formData.get(`optional-${i}`) ? true : false || false,
         user: construct.code === guest.code ? user?.uid : `==${construct.code}`,
-        date: new Date().toUTCString(),
+        date: new Date().valueOf(),
       }}), {}) as GuestUpdatePayload;
 
       sendResponse(output);
@@ -44,85 +47,71 @@ const Response: FC<Props> = ({ construct }) => {
       try {
         for (const code in updateData) {
           const { error } = await updateGuest(code, updateData[code]);
+
           if (error) {
-            // Need to show error
             console.log(error);
+            createError();
+            setLoading(false);
             return;
           }
         }
       } catch (e) {
         console.log(e);
-        return e;
+        createError();
+        setLoading(false);
+        return;
       }
 
       updateGuestsStore(updateData);
       if (construct?.code && updateData[construct.code].replied !== 'not') {
         setConfetti(true)
       }
+      setLoading(false);
     }
   }
 
-  const child = (i: number) => (
-    <>
-      <RadioOption
-        name={`attendance-${i}`}
-        id={`yes`}
-        label={t("guest.form.input.attendance.yes")}
-      />
-      <RadioOption
-        name={`attendance-${i}`}
-        id={`no`}
-        label={t("guest.form.input.attendance.no")}
-      />
-    </>
-  );
+  const child = (i: number) => ['yes', 'no'].map(opt => (
+    <RadioOption
+      key={opt}
+      name={`attendance-${i}`}
+      id={opt}
+      label={t(`guest.form.input.attendance.${opt}`)}
+    />
+  ));
 
-  const adult = (i:number, stay: number) => (
-    <>
-      {stay <= 0 && 
-        <RadioOption
-          name={`attendance-${i}`}
-          id={`weekend`}
-          label={t("guest.form.input.attendance.weekend")}
-          description={t("guest.form.input.attendance.weekend-info")}
-        />
-      }
-      <RadioOption
-        name={`attendance-${i}`}
-        id={`day`}
-        label={t("guest.form.input.attendance.day")}
-        description={t("guest.form.input.attendance.day-info")}
-      />
-      <RadioOption
-        name={`attendance-${i}`}
-        id={`not`}
-        label={t("guest.form.input.attendance.not")}
-        // description={t("guest.form.input.attendance.not-info")}
-      />
-    </>
-  );
+  const baseOptions = ['day', 'not'] ;
+  const adult = (i: number, stay: number) => 
+    (stay <= 0 ? ['weekend', ...baseOptions] : baseOptions).map(opt => (
+    <RadioOption
+      key={opt}
+      name={`attendance-${i}`}
+      id={opt}
+      label={t(`guest.form.input.attendance.${opt}`)}
+      description={t(`guest.form.input.attendance.${opt}-info`)}
+    />
+  ));
 
   if (!construct) {
-    return <p>{t("guest.form.unknown")}</p>
+    return <div className="py-8">{t("guest.form.unknown")}</div>
   }
 
   return (
     <form className="rounded-md border bg-white border-gray-300 pt-6" onSubmit={rsvpResponse}>
-        <div className="px-6 border-b border-gray-200">
+      <div className="px-6 border-b border-gray-200">
         
-          <h2 className="text-base/7 font-semibold text-gray-900">
-            {t("guest.form.title")}
-          </h2>
-          <p className="mt-1 text-sm/6 text-gray-600">
-            {t("guest.form.intro")}
-          </p>
+        <h2 className="text-base/7 font-semibold text-gray-900">
+          {t("guest.form.title")}
+        </h2>
+        <p className="mt-1 text-sm/7 text-gray-600">
+          {t("guest.form.intro")}
+        </p>
           
-          <div role="list" className="mt-6 divide-y">
+        <div role="list" className="mt-6 divide-y">
           {construct.guests.map((guest, i) => (
             <div className="space-y-4 mb-6 px-3 py-3 rounded-md border text-gray-400 bg-gray-100 sm:px-6" key={guest.id}>
               
               <fieldset>
-                <legend className="text-sm/6 font-semibold text-gray-900">
+                <legend className="block text-sm/6 font-medium text-gray-900">
                   {`${i+1}. `}{t("guest.form.input.attendance.label", { name: guest.first })}
                 </legend>
                 <p className="mt-1 text-sm/6 text-gray-600">{t("guest.form.input.attendance.info", { name: guest.first })}</p>
@@ -140,7 +129,12 @@ const Response: FC<Props> = ({ construct }) => {
                     id={`dietary-${i}`}
                     name={`dietary-${i}`}
                     rows={2}
-                    className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                    className={classNames(
+                      "block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900",
+                      "outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400",
+                      "focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600",
+                      "sm:text-sm/6"
+                    )}
                     defaultValue={''}
                   />
                 </div>
@@ -149,7 +143,7 @@ const Response: FC<Props> = ({ construct }) => {
 
               {guest.participation <= 0 &&
                 <fieldset>
-                  <legend className="text-sm/2 font-semibold text-gray-900">
+                  <legend className="block text-sm/6 font-medium text-gray-900">
                   {t("guest.form.input.optional.section")}
                   </legend>
                   <div className="mt-4 space-y-6">
@@ -161,7 +155,14 @@ const Response: FC<Props> = ({ construct }) => {
                             name={`optional-${i}`}
                             type="checkbox"
                             aria-describedby="comments-description"
-                            className="col-start-1 row-start-1 appearance-none rounded-sm border border-gray-300 bg-white checked:border-indigo-600 checked:bg-indigo-600 indeterminate:border-indigo-600 indeterminate:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:checked:bg-gray-100 forced-colors:appearance-auto"
+                            className={classNames(
+                              "col-start-1 row-start-1 appearance-none rounded-sm border border-gray-300",
+                              "bg-white checked:border-indigo-600 checked:bg-indigo-600 indeterminate:border-indigo-600",
+                              "indeterminate:bg-indigo-600 focus-visible:outline-2",
+                              "focus-visible:outline-offset-2 focus-visible:outline-indigo-600 hover:bg-winter-green",
+                              "disabled:border-gray-300 disabled:bg-gray-100 disabled:checked:bg-gray-100",
+                              "forced-colors:appearance-auto",
+                            )}
                           />
                           <CheckBox />
                         </div>
@@ -180,11 +181,10 @@ const Response: FC<Props> = ({ construct }) => {
                   </div>
                 </fieldset>
               }
-
             </div>
           ))}
 
-         <div className="mb-6 space-y-10">
+          <div className="mb-6 space-y-10">
             <p className="text-sm/6 text-gray-600">
               Any information we have already or you provide us will only be stored until the event, after which it will deleted.
             </p>
@@ -221,7 +221,10 @@ const CheckBox =() => (
   <svg
     fill="none"
     viewBox="0 0 14 14"
-    className="pointer-events-none col-start-1 row-start-1 size-3.5 self-center justify-self-center stroke-white group-has-disabled:stroke-gray-950/25"
+    className={classNames(
+      "pointer-events-none col-start-1 row-start-1 size-3.5 self-center justify-self-center",
+      "stroke-white group-has-disabled:stroke-gray-950/25"
+    )}
   >
     <path
       d="M3 8L6 11L11 3.5"
@@ -252,7 +255,7 @@ const RadioOption: FC<Props1> = ({
     name, id, label, description
 }) => {
   return (
-    <label className="flex items-center gap-x-3 hover:bg-winter-green pl-1 sm:pl-3" htmlFor={`${name}-${id}`} >
+    <label className="flex items-center gap-x-3  pl-1 sm:pl-3" htmlFor={`${name}-${id}`} >
       <input
         required
         // defaultChecked={checked}
@@ -260,7 +263,7 @@ const RadioOption: FC<Props1> = ({
         name={name}
         type="radio"
         value={id}
-        className="relative size-6 shrink-0 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden"
+        className="relative size-6 shrink-0 appearance-none rounded-full border border-gray-300 hover:bg-winter-green bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden"
       />
       <div className="text-sm/6" >
         <p className="font-medium text-gray-900">

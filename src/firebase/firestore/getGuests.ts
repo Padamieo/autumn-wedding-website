@@ -45,7 +45,7 @@ export default async function getGuests() {
   }
 
   // const c = output as GuestData[];
-  // result = obscurity(c, !!auth)
+  // result = obscurity(c, !!auth);
   
   return { result, error };
 }

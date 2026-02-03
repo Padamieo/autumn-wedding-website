@@ -4,6 +4,7 @@ import getGuests from '@/firebase/firestore/getGuests';
 import { GuestData, GuestUpdatePayload, MinimalGuestData } from '@/types';
 import { createContext, useContext, useEffect, useState, ReactNode, Dispatch, SetStateAction, useMemo } from 'react';
 import { useAuthContext } from './AuthContext';
+import { useNotificationContext } from './NotificationContext';
 
 export type GuestDataVariable = MinimalGuestData[] & GuestData[];
 
@@ -44,6 +45,7 @@ interface SearchContextProviderProps {
 
 export function SearchContextProvider({ children }: SearchContextProviderProps) {
   const { user } = useAuthContext() as { user: any };
+  const { createError } = useNotificationContext();
   const [userCode, setUserCode] = useState<string | undefined>(undefined);
   const [submittedCode, setSubmittedCode] = useState<string | undefined>(undefined);
   const [guests, setGuests] = useState<GuestDataVariable>([]);
@@ -70,6 +72,7 @@ export function SearchContextProvider({ children }: SearchContextProviderProps) 
 
     if (error) {
       console.log(error);
+      createError();
       return; 
     }
 
@@ -120,7 +123,6 @@ export function SearchContextProvider({ children }: SearchContextProviderProps) 
   }, [filterGuest]);
 
   useEffect(() => {
-    // console.log(xx);
     if (returningUser && returningUser.code) {
       setCodes(returningUser.code);
     }

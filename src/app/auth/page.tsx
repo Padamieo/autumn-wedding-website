@@ -9,6 +9,7 @@ import { useAuthContext } from '@/context/AuthContext';
 import { Button } from '@/components';
 import { useNow, useTranslations } from 'next-intl';
 import { authEmailArray } from '@/components/emails/auth';
+import { useNotificationContext } from '@/context/NotificationContext';
 
 const storedAuthEmail = 'authEmail'
 
@@ -19,6 +20,7 @@ type StoredEmail = {
 
 function Page() {
   const t = useTranslations();
+  const { createError } = useNotificationContext();
   const { user } = useAuthContext() as { user: any };
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -28,7 +30,7 @@ function Page() {
  
   const apiKey = searchParams.get('apiKey');
 
-  async function fetchMyAPI(storedEmail: string) {
+  async function completeProcess(storedEmail: string) {
     if (!apiKey || user) {
       return;
     }
@@ -40,6 +42,7 @@ function Page() {
 
     if (error) {
       // Display and log any sign-in errors
+      createError();
       console.log(error);
       return;
     }
@@ -70,7 +73,7 @@ function Page() {
 
     if (localStorageEmail) {
       setStoredEmail(JSON.parse(localStorageEmail));
-      // apiKey && fetchMyAPI(localStorageEmail);
+      // apiKey && completeProcess(localStorageEmail);
     }
   }, [apiKey])
 
@@ -94,6 +97,7 @@ function Page() {
     if (error) {
       // Display and log any sign-in errors
       console.log(error);
+      createError();
       setLoading(false);
       return;
     }
@@ -160,7 +164,7 @@ function Page() {
     <div className="flex flex-col items-center justify-center h-screen">
       <div className="w-full max-w-xs">
         {storedEmail ? (
-          apiKey ? <CompleteEmail email={storedEmail.email} complete={fetchMyAPI} /> : <SentEmail stored={storedEmail} clear={clear} />
+          apiKey ? <CompleteEmail email={storedEmail.email} complete={completeProcess} /> : <SentEmail stored={storedEmail} clear={clear} />
         ) :
           apiKey ? <NotRecognized reAuth={reAuth} /> : form()
         }

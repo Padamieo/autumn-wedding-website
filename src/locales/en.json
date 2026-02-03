@@ -57,7 +57,8 @@
           "weekend-info": "Arrive Friday (30th Oct), leaveing on Sunday (1st Nov, before 11am)",
           "day": "I would like to attend, the ceremony day",
           "day-info": "Arrive on the day, (before 11:30 please) for ceremony, wedding breakfast and party.",
-          "not": "I am NOT attending."
+          "not": "I am NOT attending.",
+          "not-info": "You will be missed"
         },
         "optional":{
           "section": "Optional Involvement",
@@ -91,6 +92,20 @@
         "bold": "What’s the dress code?",
         "body": " Although this is a Halloween wedding, this is not a costume party. Please dress (UK) formally. The bridal party will be dressed in autumnal colours, but feel free to dress  in any colours you like (except white). Weather permitting we hope to hold the ceremony outdoors and on grass so sensible shoes would be advised."
       }
+    }
+  },
+  "music": {
+    "out": {
+      "subtitle": "'Follow me, to where the party people are' - That Bulgarian Guy",
+      "title": "MUSIC",
+      "description": "Sorry, You will need to log in to suggest songs."
+    },
+    "in": {
+      "artist": "Artist",
+      "artist-placeholder": "Artist",
+      "title": "Song Title",
+      "title-placeholder": "Song Title",
+      "submit": "Send"
     }
   },
   "contact": {
@@ -197,5 +212,12 @@
     "please": "Please use the link below to login to our site.",
     "link": "Sign in to finallygettingmarried.nl",
     "signoff": "If you have any issues please feel free to contact us, Love Heather & Adam"
+  },
+  "notifications" :{
+    "defaultError": "Something went wrong, If its blocking you please contact Adam.",
+    "user": {
+      "submitted": "We already have a response for this guest!"
+    },
+    "close": "Close"
   }
 }

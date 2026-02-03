@@ -29,7 +29,10 @@ const Button: FC<ButtonProps> = ({
     return (
       <button
         className={classNames(
-          'px-3 py-2 rounded bg-winter-green text-white font-semibold hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white disabled:bg-gray-400',
+          'px-3 py-2 rounded font-semibold',
+          'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white',
+          'hover:bg-indigo-500 disabled:bg-gray-400',
+          'bg-winter-green text-white',
           className
         )}
         {...ownProps}

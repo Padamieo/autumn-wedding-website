@@ -1,11 +1,13 @@
 'use client'
 
 import { Button } from "@/components";
+import { useNotificationContext } from "@/context/NotificationContext";
 import { signIn } from "@/firebase/auth/signin";
 import { useRouter } from 'next/navigation';
 import { useState } from "react";
 
 function Page() {
+  const { createError } = useNotificationContext();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const router = useRouter();
@@ -19,6 +21,7 @@ function Page() {
 
     if (error) {
       // Display and log any sign-in errors
+      createError();
       console.log(error);
       return;
     }

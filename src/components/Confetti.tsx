@@ -9,9 +9,11 @@ const ConfettiOverlay: FC = () => {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50 pointer-events-none">
-      {showConfetti &&  <Confetti mode="boom" particleCount={150} colors={[
-        '#ff577f', '#ff884b', '#ffd384', '#fff9b0'
-      ]} />}
+      {showConfetti && 
+        <Confetti mode="boom" particleCount={150} colors={[
+          '#ff577f', '#ff884b', '#ffd384', '#fff9b0'
+        ]} />
+      }
     </div>
   )
 };
