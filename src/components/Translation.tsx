@@ -3,6 +3,7 @@
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import classNames from 'classnames';
 import { FC } from 'react';
+import Button from './Button';
 
 const languages = [
   { lang: 'en', label: 'English'},
@@ -14,14 +15,16 @@ export default function Translation() {
 
   return (
     <Menu as="div" className="relative inline-block">
+      {/* <Button >English</Button> */}
       <MenuButton
         className={classNames(
-          "inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2",
-          "text-sm font-semibold text-gray-900 shadow-xs inset-ring-1 inset-ring-gray-300 hover:bg-gray-50"
+          "inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 items-center",
+          // "text-sm shadow-xs ",
+          "font-semibold text-gray-900 inset-ring-1 inset-ring-gray-300 hover:bg-gray-100"
         )}
       >
         English
-        <ChevronDown className="size-6" />
+        <ChevronDown className="size-5" />
       </MenuButton>
 
       <MenuItems

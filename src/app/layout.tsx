@@ -1,14 +1,20 @@
 import { AuthContextProvider } from '@/context/AuthContext';
-import { Open_Sans } from 'next/font/google';
+import { Open_Sans, Dancing_Script } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
 import { SearchContextProvider } from '@/context/SearchContext';
 
 import './globals.css';
 import { ConfettiContextProvider } from '@/context/ConfettiContext';
 import { NotificationContextProvider } from '@/context/NotificationContext';
+import classNames from 'classnames';
 
-// Load the Inter font with 'latin' subset
-const inter = Open_Sans({ subsets: ['latin']});
+export const inter = Open_Sans({ subsets: ['latin']});
+
+export const titleFont = Dancing_Script({
+  // weight: ["500", "600", "700"],
+  subsets: ["latin"],
+  variable:"--font-dancing"
+});
 
 // Metadata for the application
 export const metadata = {
@@ -22,8 +28,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <html 
-      lang="en" 
-      className={inter.className}
+      lang="en"
+      className={classNames(
+        inter.className,
+        titleFont.variable        
+      )}
     >
       {/*
         The <head /> component will contain the components returned by the nearest parent

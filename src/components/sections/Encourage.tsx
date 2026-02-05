@@ -21,10 +21,11 @@ const Encourage: FC<Props> = ({ firstName }) => {
 
   return (
     <div className="mx-auto max-w-2xl py-2">
-      <div className={classNames(
-        "relative isolate overflow-hidden bg-white px-6 py-16",
-        "shadow-2xl sm:rounded-3xl sm:px-16 md:py-8 lg:flex lg:gap-x-20 lg:px-24"
-      )}
+      <div
+        className={classNames(
+          "relative isolate overflow-hidden bg-white px-6 py-16",
+          "shadow-2xl sm:rounded-3xl sm:px-16 md:py-8 lg:flex lg:gap-x-20 lg:px-24"
+        )}
       >
 
         <div className="mx-auto max-w-md text-center lg:mx-0 lg:flex-auto lg:py-3 lg:text-left">

@@ -54,7 +54,11 @@ export const GuestList: FC<Props> = ({ filterGuests }) => {
         )}
       >
          
-        <div className="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-winter-green text-sm/6 outline-1 -outline-offset-1 outline-white/10">
+        <div
+          className={classNames(
+            "w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-winter-green text-sm/6 outline-1 -outline-offset-1 outline-white/10"
+          )}
+        >
           <div className="p-4">
             {filterGuests && filterGuests.map((guest: any) => (
               <div key={guest.id} className="group relative flex gap-x-6 rounded-lg p-2 hover:bg-white/10" onClick={() => handle(guest)}>

@@ -3,25 +3,25 @@
 import { Admin } from "@/components";
 import { useAuthContext } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 function Page() {
-  const { user } = useAuthContext() as { user: any }; // Use 'as' to assert the type as { user: any }
+  const { user } = useAuthContext() as { user: any };
   const router = useRouter();
+  const [show, setShow] = useState<boolean>(false);
 
   useEffect(() => {
+    if (user && !user.reloadUserInfo.emailLinkSignin) {
+      setShow(true);
+      return;
+    }
+    
     // Redirect to the home page if the user is not logged in
-    if (user == null) {
-      router.push("/");
-    }
-
-    if (user.reloadUserInfo.emailLinkSignin){
-      router.push("/");
-    }
-  }, [user, router]);
+    router.push("/");
+  }, [user]);
 
   return (
-    <Admin />
+    show && <Admin />
   );
 }
 

@@ -108,7 +108,10 @@ const Response: FC<Props> = ({ construct }) => {
           
         <div role="list" className="mt-6 divide-y">
           {construct.guests.map((guest, i) => (
-            <div className="space-y-4 mb-6 px-3 py-3 rounded-md border text-gray-400 bg-gray-100 sm:px-6" key={guest.id}>
+            <div
+              className="space-y-4 mb-6 px-3 py-3 rounded-md border text-gray-400 bg-gray-100 sm:px-6"
+              key={guest.id}
+            >
               
               <fieldset>
                 <legend className="block text-sm/6 font-medium text-gray-900">
@@ -144,7 +147,7 @@ const Response: FC<Props> = ({ construct }) => {
               {guest.participation <= 0 &&
                 <fieldset>
                   <legend className="block text-sm/6 font-medium text-gray-900">
-                  {t("guest.form.input.optional.section")}
+                    {t("guest.form.input.optional.section")}
                   </legend>
                   <div className="mt-4 space-y-6">
                     <div className="flex gap-3 pl-1 sm:pl-3">
@@ -263,7 +266,15 @@ const RadioOption: FC<Props1> = ({
         name={name}
         type="radio"
         value={id}
-        className="relative size-6 shrink-0 appearance-none rounded-full border border-gray-300 hover:bg-winter-green bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden"
+        className={classNames(
+          "relative size-6 shrink-0 appearance-none",
+          "rounded-full border border-gray-300 hover:bg-winter-green",
+          "bg-white before:absolute before:inset-1 before:rounded-full",
+          "before:bg-white not-checked:before:hidden checked:border-indigo-600",
+          "checked:bg-indigo-600",
+          "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600",
+          "disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden"
+        )}
       />
       <div className="text-sm/6" >
         <p className="font-medium text-gray-900">

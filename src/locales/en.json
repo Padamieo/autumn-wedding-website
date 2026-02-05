@@ -14,7 +14,7 @@
     "openMenu": "Open menu"
   },
   "header": {
-    "top": "Heather & Adam are very HAPPY to announce",
+    "top": "<mobile>Heather & Adam are very HAPPY</mobile> to announce",
     "title": "WE ARE GETTING MARRIED, FOR REAL",
     "description": "Surprising I know! In this day and age, crazy, who does that? either way if you're here we probably want you to attend.",
     "button": {
@@ -78,20 +78,11 @@
     "little": "About - Details - Important stuff",
     "title": "What's happening?",
     "intro": "Yes it's finally happening, Heather and Adam are getting married, 16 years in the making.",
-    "content": "example of something here",
+    "content": "We are planning a weekend away event in Kent (England), and look forward to be joined by friends and family (including kids) to help us celebrate, We will accomidate who we can onsite.",
     "bullet": {
-      "when": {
-        "bold": "When? 31st October 2026",
-        "body": " the ceremony will start at midday so if you’re arriving on the day please arrive by 11:30 so you have time to get seated and comfortable"
-      },
-      "where": {
-        "bold": "Where?",
-        "body" :" Bore Place, Bore Place Road, Chiddingstone, Edenbridge, Kent, TN8 7AR detailed directions and maps can be found here"
-      },
-      "what": {
-        "bold": "What’s the dress code?",
-        "body": " Although this is a Halloween wedding, this is not a costume party. Please dress (UK) formally. The bridal party will be dressed in autumnal colours, but feel free to dress  in any colours you like (except white). Weather permitting we hope to hold the ceremony outdoors and on grass so sensible shoes would be advised."
-      }
+      "when": "<strong>When? 31st October 2026</strong> The ceremony will start at midday so if you're arriving on the day please arrive by 11:30 so you have time to get seated and comfortable",
+      "where":"<strong>Where?</strong> Bore Place, Bore Place Road, Chiddingstone, Edenbridge, Kent, <strong>TN8 7AR</strong> you can find <a>detailed directions here</a> and <a>google maps</a>",
+      "what": "<strong>What's</strong> the dress code? Although this is a Halloween wedding, this is not a costume party. Please dress (UK) formally. The bridal party will be dressed in <strong>autumnal colours</strong>, but feel free to dress  in any colours you like (except white). Weather permitting we hope to hold the ceremony outdoors and on grass so sensible shoes would be advised."
     }
   },
   "music": {

@@ -13,28 +13,40 @@ const Location = ({ className }: { className: string }) => (
 export default function About() {
   const t = useTranslations();
 
-  // const b = [{
-  //   id: 'when',
-  //   icon: Location,
-  // }, {
-  //   id: 'when',
-  //   icon: Location,
-  // }, {
-  //   id: 'when',
-  //   icon: Location,
-  // }]
+  const points = [{
+    id: 'when',
+    icon: <Location className="mt-1 size-5 flex-none text-indigo-600" />,
+  }, {
+    id: 'where',
+    icon: <Location className="mt-1 size-5 flex-none text-indigo-600" />,
+  }, {
+    id: 'what',
+    icon: <Location className="mt-1 size-5 flex-none text-indigo-600" />,
+  }];
 
   return (
     <div id="details" className="relative isolate overflow-hidden bg-white px-6 py-24 sm:py-32 lg:overflow-visible lg:px-0">
       <div className="absolute inset-0 -z-10 overflow-hidden">
         {/* <First /> */}
-        test
+                {/* <Image
+                  className={classNames(
+                    "relative left-[calc(50%-20rem)] aspect-4775/4750 w-550 min-w-7xl -translate-x-1/2 rotate-195",
+                    "sm:left-[calc(50%-0rem)]",
+                  )}
+                  src="/bouquet_33.png"
+                  alt="pretty watercolor wreath of flowers"
+                  width={4775}
+                  height={4750}
+                  priority
+                /> */}
       </div>
       <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-start lg:gap-y-10">
         <div className="lg:col-span-2 lg:col-start-1 lg:row-start-1 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
           <div className="lg:pr-4">
             <div className="lg:max-w-lg">
-              <p className="text-base/7 font-semibold text-indigo-600">{t('about.little')}</p>
+              <p className="dancing text-base/7 font-semibold text-indigo-600">
+              {t('about.little')}
+              </p>
               <h1 className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl">
                 {t('about.title')}
               </h1>
@@ -45,14 +57,17 @@ export default function About() {
           </div>
         </div>
         <div className="-mt-12 -ml-12 p-12 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
-        <Image
-          className="w-3xl max-w-none rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 sm:w-228"
-          src="/test.webp"
-          alt="Next.js Logo"
-          width={1120}
-          height={836}
-          priority
-        />
+          <Image
+            className={classNames(
+              "ring-1 bg-gray-900 ring-gray-400/10",
+              "w-3xl rounded-xl shadow-xl max-w-none sm:w-220",
+              "w-200 -translate-x-1/5 sm:translate-none",
+            )}
+            src="/us.webp"
+            alt="a picture of Heather & Adam"
+            width={1120}
+            height={836}
+          />
         </div>
         <div className={classNames(
           "lg:col-span-2 lg:col-start-1 lg:row-start-2 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8"
@@ -64,27 +79,17 @@ export default function About() {
                 {t('about.content')}
               </p>
               <ul role="list" className="mt-8 space-y-8 text-gray-600">
-                {/* {b.map(x => (
-                  <li className="flex gap-x-3">
-                  <Location className="mt-1 size-5 flex-none text-indigo-600" />
-                  <span>
-                    <strong className="font-semibold text-gray-900">{t(`about.bullet.${x.id}.bold`)}</strong>{t(`about.bullet.${x.id}.body`)}
-                  </span>
-                </li>
-                ))} */}
-
-                <li className="flex gap-x-3">
-                  <Location className="mt-1 size-5 flex-none text-indigo-600" />
-                  <span>
-                    <strong className="font-semibold text-gray-900">{t('about.bullet.where.bold')}</strong>{t('about.bullet.where.body')}
-                  </span>
-                </li>
-                <li className="flex gap-x-3">
-                  <Location className="mt-1 size-5 flex-none text-indigo-600" />
-                  <span>
-                    <strong className="font-semibold text-gray-900">{t('about.bullet.what.bold')}</strong>{t('about.bullet.what.body')}
-                  </span>
-                </li>
+                {points.map(point => (
+                  <li key={point.id} className="flex gap-x-3">
+                    {point.icon}
+                    <span>
+                      {t.rich(`about.bullet.${point.id}`, {
+                        strong: (chunks) => <strong className="font-semibold text-gray-900">{chunks}</strong>,
+                        a: (chunks) => <a href="#aaa" className="underline text-blue-600 hover:text-blue-800 visited:text-gray-900">{chunks}</a>
+                      })}
+                    </span>
+                  </li>
+                ))}
               </ul>
               {/* <p className="mt-8">
                 Et vitae blandit facilisi magna lacus commodo. Vitae sapien duis odio id et. Id blandit molestie auctor

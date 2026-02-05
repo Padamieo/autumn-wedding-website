@@ -9,6 +9,7 @@ import signOut from "@/firebase/auth/signout";
 import { useRouter } from 'next/navigation';
 import { useSearchContext } from '@/context/SearchContext';
 import { useNotificationContext } from '@/context/NotificationContext';
+import classNames from 'classnames';
 
 export default function Menu() {
   const { user } = useAuthContext() as { user: any };
@@ -105,9 +106,9 @@ export default function Menu() {
           </button>
 
         </div>
-        <div className="hidden lg:flex lg:gap-x-12">
-          {navigation.map((item) => (
-            !item.mobile && <a key={item.name} href={item.href} className="text-sm/6 font-semibold text-gray-900 flex items-center">
+        <div className="hidden lg:flex lg:gap-x-12 lg:bg-ivory px-8 py-2">
+          {navigation.map((item) => ( !item.mobile &&
+            <a key={item.name} href={item.href} className="text-sm/6 font-semibold text-gray-900 flex items-center">
               {item.name}{item.checked && tick()}
             </a>
           ))}
@@ -119,7 +120,11 @@ export default function Menu() {
 
       <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
         <div className="fixed inset-0 z-50" />
-        <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+        <DialogPanel
+          className={classNames(
+            "fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
+          )}
+        >
           <div className="flex items-center justify-between">
             {siteLogo()}
             <button
@@ -139,7 +144,9 @@ export default function Menu() {
                     key={item.name}
                     href={item.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 flex items-center"
+                    className={classNames(
+                      "-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 flex items-center"
+                    )}
                   >
                     {item.name}{item.checked && tick()}
                   </a>

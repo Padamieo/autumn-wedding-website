@@ -37,17 +37,17 @@ const dataAdd = (dataArray: any[], relationNumbers: number[]) => {
         relationships: relationNumbers,
         // following restricted
         date: '',
-        user: undefined,
+        user: '',
         opt: false,
-        replied: undefined,
-        dietary: undefined,
+        replied: '',
+        dietary: '',
         paid: false,
     } as GuestData;
     return JSON.stringify(e);
 };
 
-const splitIdealData = (x: string | undefined) => {
-    const b = x?.split(",");
+const splitIdealData = (entry: string | undefined) => {
+    const b = entry?.split(",");
     if(!b || b.length < relationships){
         return;
     }

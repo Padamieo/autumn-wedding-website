@@ -31,4 +31,10 @@ body {
       rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb)); */
 }
 
+html {
+  .dancing {
+    font-family: var(--font-dancing);
+  }
+}
+
 

@@ -6,6 +6,7 @@ import { useSearchContext } from "@/context/SearchContext";
 import { useAuthContext } from "@/context/AuthContext";
 import Encourage from "./Encourage";
 import Confirmation from "./Confirmation";
+import classNames from "classnames";
 
 export default function Rsvp() {
   const { user } = useAuthContext() as { user: any };
@@ -24,7 +25,9 @@ export default function Rsvp() {
 
   return (
     <div 
-      className="relative w-full mx-auto max-w-5xl px-4 py-6 sm:px-6 lg:px-8"
+      className={classNames(
+        "relative w-full mx-auto max-w-5xl px-4 py-6 sm:px-6 lg:px-8"
+      )}
     >
       <GuestSearch />
       {userCode && !user ? <Encourage firstName={firstName} /> : <Response construct={guestConstruct} />}

@@ -4,6 +4,7 @@ import { FC, Fragment, useEffect } from 'react';
 import { GuestConstruct } from '@/context/SearchContext';
 import { useTranslations } from 'next-intl';
 import { isGuestType } from './Admin';
+import classNames from 'classnames';
 
 export interface Props {
   firstName?: string;
@@ -15,25 +16,34 @@ export const Confirmation: FC<Props> = ({ firstName, construct }) => {
 
   useEffect(() => {
     const element = document.getElementById("test123");
-    console.log(element);
+    // console.log(element);
     element?.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
-  },[])
+  }, []);
 
   if (!construct) {
-    return 
+    return;
   }
 
   return (
     <div
       id="test123"
-      className="relative bg-white w-full mx-auto max-w-3xl my-6 mx-6 px-4 py-6 sm:px-6 lg:px-8"
+      className={classNames(
+        "relative bg-white w-full mx-auto max-w-3xl my-6 mx-6 px-4 py-6 sm:px-6 lg:px-8"
+      )}
     >
       {construct.guests.map((guest, i) => {
         if (isGuestType(guest)) {
+          const time = guest.date ? new Date(guest.date) : undefined;
           return (
             <Fragment key={i}>
-              {!i && <p key={`by-${guest.id}`}>{t("guest.confirmation.title", { name: firstName || '', date: guest.date || '' })}</p>}
-              <p key={guest.id}>{t(`guest.confirmation.${guest.replied}`, { name: guest.first || '' })}</p>
+              {!i && 
+                <p key={`by-${guest.id}`}>
+                  {t("guest.confirmation.title", { name: firstName || '', date: time?.toUTCString() || '?' })}
+                </p>
+              }
+              <p key={guest.id}>
+                {t(`guest.confirmation.${guest.replied}`, { name: guest.first || '' })}
+              </p>
             </ Fragment>
           )
         }

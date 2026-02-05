@@ -68,7 +68,7 @@ export function SearchContextProvider({ children }: SearchContextProviderProps) 
   );
 
   const getGuestsData = async () => {
-    const { result, error } = await getGuests();
+    const { result, error } = await getGuests(user ?  user.uid : undefined);
 
     if (error) {
       console.log(error);
@@ -76,7 +76,6 @@ export function SearchContextProvider({ children }: SearchContextProviderProps) 
       return; 
     }
 
-    // console.log('data', result)
     result && Array.isArray(result) && setGuests(result);
   };
 

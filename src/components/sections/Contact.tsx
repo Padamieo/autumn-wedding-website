@@ -32,7 +32,9 @@ export default function Contact() {
           <h2 className="text-3xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-4xl">
             {t('title')}
           </h2>
-          <p className="mt-6 text-lg/8 text-gray-600">{t('body')}</p>
+          <p className="mt-6 text-lg/8 text-gray-600">
+            {t('body')}
+          </p>
         </div>
         <ul role="list" className="grid gap-x-8 gap-y-12 break-all sm:grid-cols-2 sm:gap-y-16 xl:col-span-2">
           {people.map((person) => (
@@ -47,7 +49,7 @@ export default function Contact() {
                   priority
                 />
                 <div className="">
-                  <p className="text-sm/6 font-semibold text-indigo-600">{person.role}</p>
+                  <p className="dancing text-sm/6 font-semibold text-indigo-600">{person.role}</p>
                   <h3 className="text-base/7 font-semibold tracking-tight text-gray-900">{person.name}</h3>
                   <p className="text-sm/6 font-semibold text-gray-400">{person.email}</p>
                   <p className="text-sm/6 font-semibold text-gray-400">{person.mobile}</p>

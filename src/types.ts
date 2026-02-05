@@ -14,13 +14,13 @@ export type ExpectedResponses = "not" | "day" | "weekend" | 'yes' | 'no';
 
 type Response = {
   user: string | undefined;
-  replied: ExpectedResponses | undefined;
+  replied: ExpectedResponses | "";
 };
 
 export type GuestUpdate = Response & {
-  dietary: string | undefined;
-  opt: boolean | undefined,
-  date: string | undefined,
+  dietary: string;
+  opt: boolean,
+  date: string,
   paid: boolean;
 };
 

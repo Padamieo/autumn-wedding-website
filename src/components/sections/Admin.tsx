@@ -1,9 +1,12 @@
 'use client'
 
 import { useNotificationContext } from "@/context/NotificationContext";
-import getGuests from "@/firebase/firestore/getGuests";
+import getData from "@/firebase/firestore/getData";
 import { ExpectedResponses, GuestData, MinimalGuestData } from "@/types";
 import { useEffect, useMemo, useState } from "react";
+import Button from "../Button";
+import addData from "@/firebase/firestore/addData";
+import classNames from "classnames";
 
 export type Stats = {
   awaiting: number;
@@ -13,7 +16,7 @@ export type Stats = {
 };
 
 export const isGuestType = (keyInput: object ): keyInput is GuestData => {
-  return keyInput.hasOwnProperty('dietary')
+  return keyInput.hasOwnProperty('replied')
   // return ['dietary', 'opt', 'date', 'paid'].includes(keyInput);
 }
 
@@ -43,7 +46,7 @@ export default function Admin() {
   );
 
   const getGuestsData = async () => {
-    const { result, error } = await getGuests();
+    const { result, error } = await getData();
 
     if (error) {
       console.log(error);
@@ -51,13 +54,16 @@ export default function Admin() {
       return; 
     }
 
+    console.log(result)
     result && Array.isArray(result) && setGuests(result);
   };
 
-  const rowColors = (r: ExpectedResponses | undefined) => {
+  const rowColors = (r: ExpectedResponses | "") => {
     switch (r) {
+      case "no":
       case "not":
         return 'bg-red-50';
+      case 'yes':
       case "day":
       case "weekend":
         return 'bg-green-50';
@@ -72,14 +78,31 @@ export default function Admin() {
   }, []);
   
   const rowColor = 'border border-gray-700 md:border-none block md:table-row';
+  const cellStyles = 'p-2 md:border md:border-gray-200 block md:table-cell';
+
+  // const updateData = async () => {
+  //   for(const guest in guests) {
+  //     try {
+  //       const { error, result } = await addData(guests[guest].code, guests[guest]);
+  //       if (error) {
+  //         console.log(error);
+  //         return;
+  //       }
+  //       console.log('result', result);
+  //     } catch (e) {
+  //       console.log(e);
+  //       return;
+  //     }
+  //   }
+  // }
 
   const statsPoints = [
     { name: 'Awaiting a response from', value: `${((stats.awaiting / guests.length) * 100).toFixed(1)}%` },
     { name: 'Are not attending ):', value: stats.not },
     { name: 'Guests are coming', value: stats.day + stats.weekend },
-    // { name: 'More information', value: 'Data' },
-  ]
-  
+    // { name: 'More information', value: <Button onClick={updateData}>update</Button> },
+  ];
+
   return (
     <div className="grid bg-white px-8 py-24">
       <div className="max-w-xl">
@@ -102,25 +125,21 @@ export default function Admin() {
       <table className="min-w-full border-collapse block md:table mt-8">
         <thead className="block md:table-header-group">
           <tr className="border border-gray-200 md:border-none block md:table-row">
-            <th className="p-2 text-left font-medium md:border md:border-gray-200 block md:table-cell">Code</th>
-            <th className="p-2 text-left font-medium md:border md:border-gray-200 block md:table-cell">Name</th>
-            <th className="p-2 text-left font-medium md:border md:border-gray-200 block md:table-cell">Attending</th>
-            <th className="p-2 text-left font-medium md:border md:border-gray-200 block md:table-cell">Dietry</th>
-            <th className="p-2 text-left font-medium md:border md:border-gray-200 block md:table-cell">Opt-in</th>
-            <th className="p-2 text-left font-medium md:border md:border-gray-200 block md:table-cell">Date</th>
-            <th className="p-2 text-left font-medium md:border md:border-gray-200 block md:table-cell">Paid</th>
+            {['Code', 'Name', 'Attending', 'Dietary', 'Opt-in', 'Date', 'Paid'].map(tableTitle => 
+              <th className="p-2 text-left font-medium md:border md:border-gray-200 block md:table-cell">{tableTitle}</th>
+            )}
           </tr>
         </thead>
         <tbody className="block md:table-row-group">
           {guests && guests.map((guest: MinimalGuestData | GuestData) => (
             <tr key={guest.code} className={`${rowColor} ${rowColors(guest.replied)}`}>
-              <td className="p-2 md:border md:border-gray-200 block md:table-cell">{guest.code}</td>
-              <td className="p-2 md:border md:border-gray-200 block md:table-cell">{`${guest.first} ${guest.surname}`}</td>
-              <td className="p-2 md:border md:border-gray-200 block md:table-cell">{guest.replied}</td>
-              <td className="p-2 md:border md:border-gray-200 block md:table-cell">{isGuestType(guest) && guest.dietary || '-'}</td>
-              <td className="p-2 md:border md:border-gray-200 block md:table-cell">{isGuestType(guest) && guest.opt ? 'Yes' : '-'}</td>
-              <td className="p-2 md:border md:border-gray-200 block md:table-cell">{isGuestType(guest) && guest.date}</td>
-              <td className="p-2 md:border md:border-gray-200 block md:table-cell">{isGuestType(guest) && guest.paid ? 'Yes' : 'No' }</td>
+              <td className={cellStyles}>{guest.code}</td>
+              <td className={cellStyles}>{`${guest.first} ${guest.surname}`}</td>
+              <td className={cellStyles}>{guest.replied}</td>
+              <td className={cellStyles}>{isGuestType(guest) && guest.dietary || '-'}</td>
+              <td className={cellStyles}>{isGuestType(guest) && guest.opt ? 'Yes' : '-'}</td>
+              <td className={cellStyles}>{isGuestType(guest) && guest.date !== '' ? new Date(guest.date).toUTCString() : '-'}</td>
+              <td className={cellStyles}>{isGuestType(guest) && guest.paid ? 'Yes' : 'No' }</td>
             </tr>
           ))}
         </tbody>

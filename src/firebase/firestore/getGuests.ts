@@ -12,15 +12,18 @@ const db = getFirestore(firebase_app);
 const path = process.env.FIREBASE_GUEST_COLLECTION;
 
 // only need to supply this guests user and any with ==
-const obscurity = (data: GuestData[], auth: boolean) =>
-  data && auth ? data : data.map((guest) => {
-    const { date, user, opt, paid, dietary, ...rest } = guest;
-    return { ...rest, user: '' } as MinimalGuestData;
+const obscurity = (data: GuestData[], auth: boolean, uid?: string) =>
+  data && data.map((guest) => {
+    const { user, opt, paid, dietary, ...rest } = guest;
+    return { 
+      ...rest,
+      user: auth && uid ? uid == user ? user : user?.includes('==') ? user : '' : '',
+    };
   },
 ) as GuestDataVariable;
 
 // Function to retrieve a all guest data from a Firestore collection
-export default async function getGuests() {
+export default async function getGuests(uid?: string) {
   let result = null;
   let error = null;
 
@@ -35,7 +38,7 @@ export default async function getGuests() {
 
     if (response && response.docs) {
       const data = response?.docs.map((doc) => doc.data() as GuestData);
-      result = obscurity(data, !!auth)
+      result = obscurity(data, !!auth, uid)
     } else {
       result = response;
     }
@@ -45,7 +48,7 @@ export default async function getGuests() {
   }
 
   // const c = output as GuestData[];
-  // result = obscurity(c, !!auth);
+  // result = obscurity(c, !!auth, uid);
   
   return { result, error };
 }
