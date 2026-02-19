@@ -2,7 +2,7 @@ import firebase_app from "../config";
 import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore";
 
 const db = getFirestore(firebase_app);
-const collection = process.env.FIREBASE_GUEST_COLLECTION;
+const collection = process.env.NEXT_PUBLIC_FIREBASE_GUEST_COLLECTION;
 
 // Function to add data to a Firestore collection
 export default async function updateGuest(
@@ -13,7 +13,7 @@ export default async function updateGuest(
   let error = null;
 
   if (!collection) {
-    return { result, error: 'No FIREBASE_GUEST_COLLECTION setup' };
+    return { result, error: 'No NEXT_PUBLIC_FIREBASE_GUEST_COLLECTION setup' };
   }
 
   const docRef = doc(db, collection, id);
