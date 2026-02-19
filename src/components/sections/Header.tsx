@@ -49,14 +49,14 @@ export default function Header() {
         <div className="text-center">
           <h1
             className={classNames(
-              "text-6xl font-semibold tracking-tight text-balance text-gray-900 sm:text-7xl"
+              "text-6xl font-semibold tracking-tight text-balance text-gray-900 sm:text-7xl",
+              'dancing',
             )}
           >
             {t('header.title')}
           </h1>
           <p
             className={classNames(
-              'dancing',
               "mt-8 px-3 text-lg font-medium text-pretty sm:text-xl/8",
               "text-black sm:text-gray-900"
             )}

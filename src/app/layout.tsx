@@ -1,5 +1,5 @@
 import { AuthContextProvider } from '@/context/AuthContext';
-import { Open_Sans, Dancing_Script } from 'next/font/google';
+import { Abril_Fatface, Open_Sans } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
 import { SearchContextProvider } from '@/context/SearchContext';
 
@@ -10,9 +10,10 @@ import classNames from 'classnames';
 
 export const inter = Open_Sans({ subsets: ['latin']});
 
-export const titleFont = Dancing_Script({
+export const titleFont = Abril_Fatface({
   // weight: ["500", "600", "700"],
   subsets: ["latin"],
+  weight: '400',
   variable:"--font-dancing"
 });
 

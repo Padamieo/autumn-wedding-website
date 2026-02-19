@@ -14,7 +14,8 @@ export default function FAQ() {
     'food',
     'drink',
     'gift',
-    'accomidation'
+    'accomidation',
+    'environment'
   ].map(entry => {
     return {
       question: t(`faq.${entry}.question`),

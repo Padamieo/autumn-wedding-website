@@ -3,7 +3,7 @@ import { getFirestore, doc, setDoc } from "firebase/firestore";
 
 // Get the Firestore instance
 const db = getFirestore(firebase_app);
-const collection = process.env.NEXT_PUBLIC_FIREBASE_GUEST_COLLECTION;
+const collection = process.env.FIREBASE_GUEST_COLLECTION;
 
 // Function to add data to a Firestore collection
 export default async function addData(
@@ -16,7 +16,7 @@ export default async function addData(
   let error = null;
 
   if (!collection) {
-    return { result, error: 'No NEXT_PUBLIC_FIREBASE_GUEST_COLLECTION setup' };
+    return { result, error: 'No FIREBASE_GUEST_COLLECTION setup' };
   }
 
   try {
