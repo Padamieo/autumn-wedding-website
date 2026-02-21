@@ -16,7 +16,7 @@
   "header": {
     "top": "<mobile>Heather & Adam are very HAPPY</mobile> to announce",
     "title": "WE ARE GETTING MARRIED, FOR REAL",
-    "description": "Surprising I know! In this day and age, crazy, who does that? either way if you're here we probably want you to attend.",
+    "description": "Surprising I know! In this day and age, crazy, who does that? Either way if you're here we want you to attend.",
     "button": {
       "rsvp": "RSVP (Répondez s'il vous plaît)",
       "details": "Give me the deets"
@@ -85,6 +85,22 @@
       "what": "<strong>What's</strong> the dress code? Although this is a Halloween wedding, this is not a costume party. Please dress (UK) formally. The bridal party will be dressed in <strong>autumnal colours</strong>, but feel free to dress  in any colours you like (except white). Weather permitting we hope to hold the ceremony outdoors and on grass so sensible shoes would be advised."
     }
   },
+  "food_drink": {
+    "title": " Food and drink",
+    "content": "Here you can find answers to any questions you may have about food and drink. Our caterers will work hard to ensure all dietary requirements are correctly handled, so please keep us informed.",
+    "ftitle": "Friday",
+    "fcontent": "If you are arriving on the friday we are currently coordinating evening food, We will update this space when we know final numbers.",
+    "fdrink": "We won't be providing alcholic beverages, please bring your own.",
+    "btitle": "Everything else",
+    "bcontent": "For those staying on site, a continental breakfast will be supplied by Bore Place, including vegan and gluten free options.",
+    "extra": "If there is something specific you need or want, your welcome to bring it with you.",
+    "bdrink": "Tea and coffee will be available in kitchens anytime.",
+    "dtitle": "Reception",
+    "dcontent": "The wedding breakfast, canapés and dancing food will be supplied by our amazing caterer Home Gurr'own.",
+    "ddcontent": "If you really want to see the full menu let us know.",
+    "dchildren": "During canapés, packed lunches will be provided for children.",
+    "ddrink": "We will provide you with bubbles, beer, wine and non-alcoholic options. However if there is a specific drink, you'd like to consume, you're welcome to bring it with you."
+  },
   "music": {
     "out": {
       "subtitle": "'Follow me, to where the party people are' - That Bulgarian Guy",
@@ -122,7 +138,7 @@
     },
     "deadline" :{
       "question": "When is the RSVP deadline?",
-      "answer": "tbd we need to give a date"
+      "answer": "2nd of August 2026. To help us coordinate everything, it would be appreciated if we can get responses early. Or we will be chasing you!"
     },
     "plan" :{
       "question": "What is the plan?",
@@ -145,12 +161,8 @@
       "answer": "we have limited space so can only really accomidate named invitees at current"
     },
     "food": {
-      "question": "What is a the food situation?",
-      "answer": "Breakfast will be supplied saturday and sunday, friday evening will be tbd for when you arrive. Ceremony day itself will be catored by homegurrown, who will provide canapes, wedding breakfast and evening food."
-    },
-    "drink": {
-      "question": "What is a the drink situation?",
-      "answer": "We will supply wine / bubbles / beer / and non-alcholic varieits on the ceremony day, however if the is a specific drink you'd like to consume your welcome to bring it."
+      "question": "Do I need to bring food or drink?",
+      "answer": "We've got most of it covered. Read more here."
     },
     "gift": {
       "question": "Is there a gift registery?",

@@ -12,7 +12,7 @@ export default function FAQ() {
     'weather',
     'plusOne',
     'food',
-    'drink',
+    // 'drink',
     'gift',
     'accomidation',
     'environment'

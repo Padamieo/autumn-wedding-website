@@ -7,7 +7,8 @@ import {
   Contact,
   Wip,
   About,
-  Music
+  Music,
+  FoodAndDrink
 } from "../components/";
 
 export default async function Home({
@@ -27,6 +28,7 @@ const filters = (await searchParams);
         <Rsvp />
         <About />
         <FAQ />
+        <FoodAndDrink />
         <Music />
         <Contact />
       </main>
