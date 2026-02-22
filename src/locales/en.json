@@ -34,30 +34,30 @@
     },
     "process": {
       "title": "Hello {name}, before we get started.",
-      "body": "We will need you to login into this site, it only requires an email address. We will not keep any details we collect from you beyond",
+      "body": "We will need you to login into this site, it only requires an email address. We will not keep any details we collect from you beyond the event.",
       "button": "Log in / Register here"
     },
     "form": {
       "title": "RSVP",
       "unknown": "no form",
-      "intro": "To help us plan our day, we would like to get a little bit of information from you, this will help us plan food, accomidation and costs.",
+      "intro": "Everyone is invited to the ceremony and reception, we would like to get a little bit of information from you, this will help us plan food, accomidation and costs.",
       "submit": "Send RSVP",
       "cancel": "Cancel",
       "input": {
         "dietary":{
           "label": "Dietary requirements.",
-          "info": "Please let us know of any dietry concerns we need to pass onto our caterors."
+          "info": "Please let us know of any dietary concerns we need to pass onto our caterers."
         },
         "attendance":{
           "label": "Attendance decision for {name}",
-          "info": "Lets us know if we can expect you.",
+          "info": "Let us know if we can expect you.",
           "yes": "Will be accompanying parents",
           "no": "Will not be attending",
           "weekend": "I would like to attend, the weekend",
-          "weekend-info": "Arrive Friday (30th Oct), leaveing on Sunday (1st Nov, before 11am)",
-          "day": "I would like to attend, the ceremony day",
-          "day-info": "Arrive on the day, (before 11:30 please) for ceremony, wedding breakfast and party.",
-          "not": "I am NOT attending.",
+          "weekend-info": "Arrive Friday (30th after 3pm), leaving on Sunday (1st Nov, before 11am).",
+          "day": "I would like to attend, the day",
+          "day-info": "Arrive on Saturday (31st before 11:30am), leaving before midnight.",
+          "not": "I am NOT attending",
           "not-info": "You will be missed"
         },
         "optional":{
@@ -80,24 +80,23 @@
     "intro": "Yes it's finally happening, Heather and Adam are getting married, 16 years in the making.",
     "content": "We are planning a weekend away event in Kent (England), and look forward to be joined by friends and family (including kids) to help us celebrate, We will accomidate who we can onsite.",
     "bullet": {
-      "when": "<strong>When? 31st October 2026</strong> The ceremony will start at midday so if you're arriving on the day please arrive by 11:30 so you have time to get seated and comfortable",
+      "when": "<strong>When? 31st October 2026</strong> The ceremony will start at midday so if you're arriving on the day please arrive by 11:30am so you have time to get seated and comfortable",
       "where":"<strong>Where?</strong> Bore Place, Bore Place Road, Chiddingstone, Edenbridge, Kent, <strong>TN8 7AR</strong> you can find <a>detailed directions here</a> and <a>google maps</a>",
-      "what": "<strong>What's</strong> the dress code? Although this is a Halloween wedding, this is not a costume party. Please dress (UK) formally. The bridal party will be dressed in <strong>autumnal colours</strong>, but feel free to dress  in any colours you like (except white). Weather permitting we hope to hold the ceremony outdoors and on grass so sensible shoes would be advised."
+      "what": "<strong>What's</strong> the dress code? Although this is on Halloween, this is not a costume party. Please dress formally. The bridal party will be dressed in <strong>autumnal colours</strong>, but feel free to dress in any colours you like (except white). Weather permitting we hope to hold the ceremony outdoors and on grass, so sensible shoes are advisable."
     }
   },
   "food_drink": {
-    "title": " Food and drink",
-    "content": "Here you can find answers to any questions you may have about food and drink. Our caterers will work hard to ensure all dietary requirements are correctly handled, so please keep us informed.",
+    "title": "Food and drink",
+    "content": "Here you can find all the information we have about food and drink. Our caterers will work hard to ensure all dietary requirements are correctly handled, so please keep us informed.",
     "ftitle": "Friday",
-    "fcontent": "If you are arriving on the friday we are currently coordinating evening food, We will update this space when we know final numbers.",
-    "fdrink": "We won't be providing alcholic beverages, please bring your own.",
+    "fcontent": "If you are arriving on the Friday we are currently coordinating evening food, We will update this space when we know final numbers.",
+    "fdrink": "We won't be providing alcoholic beverages, so please bring your own.",
     "btitle": "Everything else",
     "bcontent": "For those staying on site, a continental breakfast will be supplied by Bore Place, including vegan and gluten free options.",
-    "extra": "If there is something specific you need or want, your welcome to bring it with you.",
-    "bdrink": "Tea and coffee will be available in kitchens anytime.",
+    "extra": "If there is something specific you need or want, you're welcome to bring it with you.",
+    "bdrink": "Tea and coffee will be available in kitchens at anytime.",
     "dtitle": "Reception",
     "dcontent": "The wedding breakfast, canapés and dancing food will be supplied by our amazing caterer Home Gurr'own.",
-    "ddcontent": "If you really want to see the full menu let us know.",
     "dchildren": "During canapés, packed lunches will be provided for children.",
     "ddrink": "We will provide you with bubbles, beer, wine and non-alcoholic options. However if there is a specific drink, you'd like to consume, you're welcome to bring it with you."
   },
@@ -117,7 +116,7 @@
   },
   "contact": {
     "title": "Contact Information",
-    "body": "If you are unsure about anything, or need to contact us about a wedding related thing and strangly dont have out details",
+    "body": "If you are unsure about anything, or need to contact us about a wedding related thing and strangely don't have our details;",
     "bride": {
       "role":"Bride",
       "name": "Heather Alison Comer",
@@ -140,41 +139,41 @@
       "question": "When is the RSVP deadline?",
       "answer": "2nd of August 2026. To help us coordinate everything, it would be appreciated if we can get responses early. Or we will be chasing you!"
     },
-    "plan" :{
+    "plan": {
       "question": "What is the plan?",
-      "answer": "We have hired a venue from friday night to sunday morning, we hope to accomidate as many as possible. The ceremony will be held on the saturday at the \"hide\", with wedding breakfast and reception in the \"large barn\". All within the venue grounds"
+      "answer": "We have hired a venue from Friday night to Sunday morning, we hope to accomodate as many as possible. The ceremony will be held on the Saturday at the Hide (outside) with wedding breakfast and reception in the Large Barn. Everything is on-site and within walking distance."
     },
     "location": {
       "question": "How do I get to the venue?",
-      "answer": "The should be plenty of parking if you want to drive. For those comming abroad Gatwick is the closest airport."
+      "answer": "Detailed directions can be found here. There is plenty of parking available for those who drive. For those coming from abroad, Gatwick is the closest airport."
     },
     "dress": {
       "question": "What is the dress code?",
-      "answer": "Although its a halloween wedding, its not a costume party, its a formal event, to be in theme we are thinking autumunal colors, but at the end of the day we trust you. Weather permitting we hope to hold the ceremony outdoors and on grass so sensible shoes would be advised."
+      "answer": "It is a formal dress event, if you need inspiration we are suggesting autumnal colours as it's our theme. Weather permitting we hope to hold the ceremony outdoors and on grass so sensible shoes and something warm is advised."
     },
     "weather": {
-      "question": "What is the weather like?",
-      "answer": "We are hoping for an outdoor ceremony, weather permitting, other parts will be held indoors. Autumn in the UK can be cold and rainy so sensible shoes would be advised. We will fall back to a indoor location if we have to, umbrellas will be suppied but we are a hardy outdoor bunch so make sure you have something to keep warm if necessery."
+      "question": "What about the weather?",
+      "answer": "Autumn in the UK can be cold and rainy. So keep everything crossed for good weather. We will fall back to an indoor location if we have to, but we are a hardy outdoors bunch and will supply umbrellas."
     },
     "plusOne": {
-      "question": "Can I bring plus one",
-      "answer": "we have limited space so can only really accomidate named invitees at current"
+      "question": "Can I bring plus one?",
+      "answer": "We have limited space so can only really accomodate named guests, unless we let you know otherwise."
     },
     "food": {
       "question": "Do I need to bring food or drink?",
       "answer": "We've got most of it covered. Read more here."
     },
     "gift": {
-      "question": "Is there a gift registery?",
-      "answer": "No! and please dont bring gifts or money to the venue. We have been together for 16 years we have everything we need, including multiple bottle openers. Your presence is the gift we're after!"
+      "question": "Is there a gift registry?",
+      "answer": "No! and please don't bring gifts or money to the venue. We have been together for 16 years we have everything we need, including multiple bottle openers. Your presence is the only gift we're after! But if you insist, bank details can be found here."
     },
     "accomidation": {
-      "question": "What is the cost accomidation?",
-      "answer": "Although we would love to pay for everyone, it would be appriciate if guests help us cover a little of the cost"
+      "question": "What is the cost of accomodation?",
+      "answer": "Although we would love to pay for everyone, it would be appreciated if guests help us cover a little of the cost. More information here."
     },
     "environment": {
-      "question": "This is a eco wedding?",
-      "answer": "As the venue is a working farm, Please note that paper confetti is not allowed, and no open candles / flames"
+      "question": "What do I need to be aware of?",
+      "answer": "As the venue is also a working farm, some areas are out of bounds. Please note that paper confetti is not allowed and no open candles / flames."
     }
   },
   "auth":{
