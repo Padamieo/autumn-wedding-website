@@ -3,9 +3,8 @@
 import Image from 'next/image'
 import classNames from "classnames";
 import { useTranslations } from "next-intl";
-import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal } from "react";
+import { contentLink, Chunks } from '../contentLink';
 
-type Chunks = string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined;
 
 export default function Directions() {
   const t = useTranslations('directions');
@@ -15,15 +14,6 @@ export default function Directions() {
     i: ( chunks: Chunks ) => <i>{chunks}</i>,
   };
 
-  const ahref = (chunks: Chunks, e: string) => (
-    <a
-      href={e}
-      target="_blank"
-      className="underline text-gray-900 hover:text-blue-800 visited:text-gray-900">
-      {chunks}
-    </a>
-  );
-
   const methods = [
     {
       id: 'driving',
@@ -31,13 +21,14 @@ export default function Directions() {
       title: t(`driving.title`),
       paragraphs: [
         t('driving.body0'),
-        t('driving.body1'),
-        t('driving.body2'),
-        t('driving.body3'),
         t.rich(
-          'driving.body4',
+          'driving.body1',
           { ...common,
-            a: (chunk) => ahref(
+            a1: (chunk) => contentLink(
+              chunk,
+              'https://www.boreplace.org/visit/visitor-information/parking-car-charging-and-directions'
+            ),
+            a2: (chunk) => contentLink(
               chunk,
               'https://www.google.com/maps/place/Bore+Place/@51.3278655,-0.0914674,11z/data=!4m6!3m5!1s0x47df5044ac227787:0xa2f20928cb1ca0a0!8m2!3d51.2202648!4d0.154682!16s%2Fg%2F12xqrml_x?entry=ttu&g_ep=EgoyMDI2MDIxOC4wIKXMDSoASAFQAw%3D%3D'
             )
@@ -55,7 +46,7 @@ export default function Directions() {
           common
         ),
         t.rich('flying.body1', {
-           a: (chunk) => ahref(
+           a: (chunk) => contentLink(
             chunk,
             'https://www.nationalrail.co.uk'
           )
@@ -70,6 +61,7 @@ export default function Directions() {
       paragraphs: [
         t('public.body0'),
         t('public.body1'),
+        t('public.body2'),
       ],
       image: false,
     },
@@ -81,7 +73,7 @@ export default function Directions() {
         t.rich(
           'adventurous.body0',
           { ...common,
-            a: (chunk) => ahref(
+            a: (chunk) => contentLink(
               chunk,
               'http://google.com/maps/place/Penshurst/@51.1943846,0.1624516,15z/data=!4m10!1m2!2m1!1s+Penshurst+trainstation!3m6!1s0x47df501777eb7323:0xa35de7a5b3636584!8m2!3d51.1971725!4d0.1732935!15sChZQZW5zaHVyc3QgdHJhaW5zdGF0aW9uWhgiFnBlbnNodXJzdCB0cmFpbnN0YXRpb26SAQ90cmFuc2l0X3N0YXRpb26aASNDaFpEU1VoTk1HOW5TMFZKUTBGblNVTmlNemN6TW1GUkVBReABAPoBBQiFAhBI!16zL20vMDV0bHBk?entry=ttu&g_ep=EgoyMDI2MDIxOC4wIKXMDSoASAFQAw%3D%3D'
             ),
@@ -94,11 +86,11 @@ export default function Directions() {
         t.rich(
           'adventurous.body2',
           { ...common,
-            a1: (chunk) => ahref(
+            a1: (chunk) => contentLink(
               chunk,
               'https://www.gov.uk/government/publications/the-countryside-code'
             ),
-            a2: (chunk) => ahref(
+            a2: (chunk) => contentLink(
               chunk,
               'https://www.komoot.com/plan/tour/d01Aw01JwACpVk=FwgABNt2LWoA/@51.2081586,0.1720536,13.651z'
             )
@@ -117,6 +109,9 @@ export default function Directions() {
         <h2 className="text-center text-base/7 font-semibold text-indigo-600">{t(`preTitle`)}</h2>
         <p className="mx-auto mt-2 max-w-lg text-center text-4xl font-semibold tracking-tight text-balance text-gray-950 sm:text-5xl">
           {t('title')}
+        </p>
+        <p className="mx-auto mt-6 max-w-2xl text-center text-base/7 font-medium text-pretty text-gray-600">
+          {t('subTitle')}
         </p>
 
         <div className="mt-10 grid gap-4 sm:mt-16 lg:grid-cols-3 lg:grid-rows-2">

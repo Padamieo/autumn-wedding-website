@@ -81,7 +81,7 @@
     "content": "We are planning a weekend away event in Kent (England), and look forward to be joined by friends and family (including kids) to help us celebrate, We will accommodate who we can onsite.",
     "bullet": {
       "when": "<strong>When? 31st October 2026</strong> The ceremony will start at midday so if you're arriving on the day please arrive by 11:30am so you have time to get seated and comfortable",
-      "where":"<strong>Where?</strong> Bore Place, Bore Place Road, Chiddingstone, Edenbridge, Kent, <strong>TN8 7AR</strong> you can find <a>detailed directions here</a> and <a>google maps</a>",
+      "where":"<strong>Where?</strong> Bore Place, Bore Place Road, Chiddingstone, Edenbridge, Kent, <strong>TN8 7AR</strong> you can find <a1>detailed directions here</a1>",
       "what": "<strong>What's</strong> the dress code? Although this is on Halloween, this is not a costume party. Please dress formally. The bridal party will be dressed in <strong>autumnal colours</strong>, but feel free to dress in any colours you like (except white). Weather permitting we hope to hold the ceremony outdoors and on grass, so sensible shoes are advisable."
     }
   },
@@ -237,29 +237,28 @@
   "directions": {
     "preTitle": "How to get to Bore Place",
     "title": "Directions",
+    "subTitle": "Please be aware phone signal can be poor around Chiddingstone. Download maps in advance and ensure you have cash for a taxi.",
     "driving": {
       "title": "Driving",
-      "body0": "Bore place is in Kent, just south-west of Sevenoaks. For those unfamiliar with the UK its south of London.",
-      "body1": "Coming off the M25 (London ring road) onto the A21 head towards Sevenoaks/Hastings.",
-      "body2": "Then take A225/B245 exit and head along Morleys Road, from here you will need to navigate several small country lanes.",
-      "body3": "As its hard to follow a series of left, 3rd left and a right instructions at this point in a written form.",
-      "body4": "We would suggest you reference <a>Google maps</a> or use a GPS."
+      "body0": "Bore Place is in Kent, just south of Sevenoaks. For those unfamiliar with the UK it's south of London.",
+      "body1": "Directions are covered well on their <a1>website</a1>, we would suggest checking <a2>Google maps</a2> or use a good GPS."
     },
     "flying": {
       "title": "Flying In",
-      "body0": "<b>Gatwick</b> is the closest airport. 23km (14.9 miles) as the crow flys. But any London airport works.",
-      "body1": "Getting from the airport to the venue, the easiest route is via <a>train</a>, Gatwick > London Bridge > Sevenoaks, with the last leg being via taxi."
+      "body0": "London <b>Gatwick</b> is the closest airport, 23km (14.9 miles) as the crow flys.",
+      "body1": "Getting from the airport to the venue, the easiest route is via <a>train</a>, Gatwick > London Bridge > Sevenoaks, then grab a taxi."
     },
     "adventurous": {
       "title": "Adventurous People",
-      "body0": "The is a trainstation in <a>Penshurst</a>, about 2.6 miles (4.2km) from the venue, you can walk across the lovely British countryside.",
-      "body1": "We did this, It was fun but we did get a little lost. <i>As a side note the pub <b>The Little Brown Jug</b> is lovely!</i>.",
-      "body2": "Please follow the <a1>countryside code</a1>, be prepared and safe. <a2>Here is a route</a2> we attempted, we hold no responsibiity / liability for suggesting this."
+      "body0": "There is a train station in <a>Penshurst</a>, about 4.2km (2.6 miles) from the venue, you can walk across the lovely British countryside.",
+      "body1": "We did this, it was fun but we did get a little lost. <i>As a side note the pub <b>The Little Brown Jug</b> is lovely!</i>",
+      "body2": "Please follow the <a1>countryside code</a1>, be prepared and safe. <a2>Here is a route</a2> we attempted, we hold no responsibiity for suggesting this."
     },
     "public": {
       "title": "Public Transport",
-      "body0": "Sevenoaks train station is the more convenient well connected station.",
-      "body1": "It has a taxi rank outside, which you will need to get the 6 miles (9.7km) to the venue. It should take around 19 minutes, it costs a little over 20 pounds."
+      "body0": "Sevenoaks train station is the more convenient, well connected station.",
+      "body1": "It has a taxi rank outside, which you will need to get the 9.7km (6 miles) to the venue. It should take around 19 minutes, it costs a little over 20 pounds.",
+      "body2": "If you have trouble or wish to pre-book, Beeline is a recommended / local company."
     }
   },
   "gift": {

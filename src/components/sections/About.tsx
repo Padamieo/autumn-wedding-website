@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import { useTranslations } from "next-intl";
 import classNames from 'classnames';
+import contentLink, { Chunks } from '../contentLink';
 
 const Location = ({ className }: { className: string }) => (
   <svg className={className} xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f">
@@ -13,15 +14,29 @@ const Location = ({ className }: { className: string }) => (
 export default function About() {
   const t = useTranslations();
 
+  const common = {
+    strong: (chunks: Chunks) => <strong className="font-semibold text-gray-900">{chunks}</strong>,
+  };
+
   const points = [{
     id: 'when',
     icon: <Location className="mt-1 size-5 flex-none text-indigo-600" />,
+    extra: common,
   }, {
     id: 'where',
     icon: <Location className="mt-1 size-5 flex-none text-indigo-600" />,
+    extra: {
+      ...common,
+      a1: (chunk: Chunks) => contentLink(
+        chunk,
+        '#directions',
+        '_self'
+      ),
+    }
   }, {
     id: 'what',
     icon: <Location className="mt-1 size-5 flex-none text-indigo-600" />,
+    extra: common,
   }];
 
   return (
@@ -83,10 +98,7 @@ export default function About() {
                   <li key={point.id} className="flex gap-x-3">
                     {point.icon}
                     <span>
-                      {t.rich(`about.bullet.${point.id}`, {
-                        strong: (chunks) => <strong className="font-semibold text-gray-900">{chunks}</strong>,
-                        a: (chunks) => <a href="#aaa" className="underline text-blue-600 hover:text-blue-800 visited:text-gray-900">{chunks}</a>
-                      })}
+                      {t.rich(`about.bullet.${point.id}`, point.extra)}
                     </span>
                   </li>
                 ))}
