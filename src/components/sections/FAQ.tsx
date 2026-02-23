@@ -4,6 +4,13 @@ import { useTranslations } from "next-intl";
 
 export default function FAQ() {
   const t = useTranslations();
+  const linkKeys = {
+    'location': '#directions',
+    'food': '#food',
+    'gift': '#gift',
+    'accomodation': '#gift',
+  } as { [key: string]: string };
+
   const faqs = [
     'deadline',
     'plan',
@@ -14,12 +21,14 @@ export default function FAQ() {
     'food',
     // 'drink',
     'gift',
-    'accomidation',
+    'accomodation',
     'environment'
   ].map(entry => {
     return {
       question: t(`faq.${entry}.question`),
-      answer: t(`faq.${entry}.answer`)
+      answer: t.rich(`faq.${entry}.answer`, {
+        a: (chunks) => <a href={linkKeys[entry] || ''} className="underline text-blue-600 hover:text-blue-800 visited:text-gray-900">{chunks}</a>
+      })
     }
   });
 

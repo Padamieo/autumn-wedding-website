@@ -8,7 +8,9 @@ import {
   Wip,
   About,
   Music,
-  FoodAndDrink
+  FoodAndDrink,
+  Directions,
+  Gift
 } from "../components/";
 
 export default async function Home({
@@ -30,6 +32,8 @@ const filters = (await searchParams);
         <FAQ />
         <FoodAndDrink />
         <Music />
+        <Directions />
+        <Gift />
         <Contact />
       </main>
     )

@@ -18,7 +18,7 @@ export default function Player() {
 
   const a = user.email + 'Name';
 
-  const b = [
+  const common = [
     "block w-full rounded-md  py-2 px-3 text-base bg-white text-gray-800",
     "outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400",
     "focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6 w-full"
@@ -70,13 +70,20 @@ export default function Player() {
 
   return (
     <div >
+      <h1 className={classNames(
+        "text-4xl font-semibold tracking-tight text-balance text-white sm:text-6xl",
+        "grid justify-content align-items"
+      )}
+      >
+        {t('title')}
+      </h1>
       <form className="grid w-full max-w-3xl grid-cols-3 gap-4" onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder={t("artist-placeholder")}
           name="artist"
           className={classNames(
-            b
+            common
           )}
           onChange={handleSearch}
           translate="no"
@@ -84,16 +91,16 @@ export default function Player() {
         />
         <input
           type="text"
-          placeholder={t("title-placeholder")}
+          placeholder={t("songTitle-placeholder")}
           name="song"
           className={classNames(
-            b
+            common
           )}
           onChange={handleSearch}
           translate="no"
           required
         />
-        <Button className="text-winter-green bg-white" type="submit" disabled={loading}>
+        <Button className="bg-white" type="submit" disabled={loading}>
           {loading ? 'loading': t('submit')}
         </Button>
       </form>

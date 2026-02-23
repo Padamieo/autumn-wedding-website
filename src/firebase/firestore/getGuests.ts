@@ -5,7 +5,7 @@ import firebase_app from "../config";
 import { getFirestore, collection, getDocs } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import { GuestDataVariable } from "@/context/SearchContext";
-import output from '../../../scripts/output.json';
+// import output from '../../../scripts/output.json';
 
 const auth = getAuth(firebase_app);
 const db = getFirestore(firebase_app);
@@ -33,22 +33,22 @@ export default async function getGuests(uid?: string) {
 
   const guestsCollectionRef = collection(db, path);
 
-  // try {
-  //   const response = await getDocs(guestsCollectionRef);
+  try {
+    const response = await getDocs(guestsCollectionRef);
 
-  //   if (response && response.docs) {
-  //     const data = response?.docs.map((doc) => doc.data() as GuestData);
-  //     result = obscurity(data, !!auth, uid)
-  //   } else {
-  //     result = response;
-  //   }
-  // } catch (e) {
-  //   // Catch and store any error that occurs during the operation
-  //   error = e;
-  // }
+    if (response && response.docs) {
+      const data = response?.docs.map((doc) => doc.data() as GuestData);
+      result = obscurity(data, !!auth, uid)
+    } else {
+      result = response;
+    }
+  } catch (e) {
+    // Catch and store any error that occurs during the operation
+    error = e;
+  }
 
-  const c = output as GuestData[];
-  result = obscurity(c, !!auth, uid);
+  // const c = output as GuestData[];
+  // result = obscurity(c, !!auth, uid);
   
   return { result, error };
 }

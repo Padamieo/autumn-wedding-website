@@ -78,7 +78,7 @@
     "little": "About - Details - Important stuff",
     "title": "What's happening?",
     "intro": "Yes it's finally happening, Heather and Adam are getting married, 16 years in the making.",
-    "content": "We are planning a weekend away event in Kent (England), and look forward to be joined by friends and family (including kids) to help us celebrate, We will accomidate who we can onsite.",
+    "content": "We are planning a weekend away event in Kent (England), and look forward to be joined by friends and family (including kids) to help us celebrate, We will accommodate who we can onsite.",
     "bullet": {
       "when": "<strong>When? 31st October 2026</strong> The ceremony will start at midday so if you're arriving on the day please arrive by 11:30am so you have time to get seated and comfortable",
       "where":"<strong>Where?</strong> Bore Place, Bore Place Road, Chiddingstone, Edenbridge, Kent, <strong>TN8 7AR</strong> you can find <a>detailed directions here</a> and <a>google maps</a>",
@@ -88,17 +88,24 @@
   "food_drink": {
     "title": "Food and drink",
     "content": "Here you can find all the information we have about food and drink. Our caterers will work hard to ensure all dietary requirements are correctly handled, so please keep us informed.",
-    "ftitle": "Friday",
-    "fcontent": "If you are arriving on the Friday we are currently coordinating evening food, We will update this space when we know final numbers.",
-    "fdrink": "We won't be providing alcoholic beverages, so please bring your own.",
-    "btitle": "Everything else",
-    "bcontent": "For those staying on site, a continental breakfast will be supplied by Bore Place, including vegan and gluten free options.",
-    "extra": "If there is something specific you need or want, you're welcome to bring it with you.",
-    "bdrink": "Tea and coffee will be available in kitchens at anytime.",
-    "dtitle": "Reception",
-    "dcontent": "The wedding breakfast, canapés and dancing food will be supplied by our amazing caterer Home Gurr'own.",
-    "dchildren": "During canapés, packed lunches will be provided for children.",
-    "ddrink": "We will provide you with bubbles, beer, wine and non-alcoholic options. However if there is a specific drink, you'd like to consume, you're welcome to bring it with you."
+    "friday": {
+      "title": "Friday",
+      "body0": "If you are arriving on the Friday we are currently coordinating evening food, We will update this space when we know final numbers.",
+      "body1": "We won't be providing alcoholic beverages, so please bring your own.",
+      "body2": "<h>What about pizza?</h>"
+    },
+    "other": {
+      "title": "Everything else",
+      "body0": "For those staying on site, a continental breakfast will be supplied by Bore Place, including vegan and gluten free options.",
+      "body1": "If there is something specific you need or want, you're welcome to bring it with you.",
+      "body2": "Tea and coffee will be available in kitchens at anytime."
+    },
+    "day": {
+      "title": "Reception",
+      "body0": "The wedding breakfast, canapés and dancing food will be supplied by our amazing caterer Home Gurr'own.",
+      "body1": "During canapés, packed lunches will be provided for children.",
+      "body2": "We will provide you with bubbles, beer, wine and non-alcoholic options. However if there is a specific drink, you'd like to consume, you're welcome to bring it with you."
+    }
   },
   "music": {
     "out": {
@@ -107,10 +114,11 @@
       "description": "Sorry, You will need to log in to suggest songs."
     },
     "in": {
+      "title": "Suggest a song",
       "artist": "Artist",
       "artist-placeholder": "Artist",
-      "title": "Song Title",
-      "title-placeholder": "Song Title",
+      "songTitle": "Song Title",
+      "songTitle-placeholder": "Song Title",
       "submit": "Send"
     }
   },
@@ -145,7 +153,7 @@
     },
     "location": {
       "question": "How do I get to the venue?",
-      "answer": "Detailed directions can be found here. There is plenty of parking available for those who drive. For those coming from abroad, Gatwick is the closest airport."
+      "answer": "Detailed directions can be <a>found here</a>. There is plenty of parking available for those who drive. For those coming from abroad, Gatwick is the closest airport."
     },
     "dress": {
       "question": "What is the dress code?",
@@ -161,15 +169,15 @@
     },
     "food": {
       "question": "Do I need to bring food or drink?",
-      "answer": "We've got most of it covered. Read more here."
+      "answer": "We've got most of it covered. Read <a>more here</a>."
     },
     "gift": {
       "question": "Is there a gift registry?",
-      "answer": "No! and please don't bring gifts or money to the venue. We have been together for 16 years we have everything we need, including multiple bottle openers. Your presence is the only gift we're after! But if you insist, bank details can be found here."
+      "answer": "No! and please don't bring gifts or money to the venue. We have been together for 16 years we have everything we need, including multiple bottle openers. Your presence is the only gift we're after! But if you insist, bank details can be <a>found here</a>."
     },
-    "accomidation": {
+    "accomodation": {
       "question": "What is the cost of accomodation?",
-      "answer": "Although we would love to pay for everyone, it would be appreciated if guests help us cover a little of the cost. More information here."
+      "answer": "Although we would love to pay for everyone, it would be appreciated if guests help us cover a little of the cost. More <a>information here</a>."
     },
     "environment": {
       "question": "What do I need to be aware of?",
@@ -225,5 +233,46 @@
       "submitted": "We already have a response for this guest!"
     },
     "close": "Close"
+  },
+  "directions": {
+    "preTitle": "How to get to Bore Place",
+    "title": "Directions",
+    "driving": {
+      "title": "Driving",
+      "body0": "Bore place is in Kent, just south-west of Sevenoaks. For those unfamiliar with the UK its south of London.",
+      "body1": "Coming off the M25 (London ring road) onto the A21 head towards Sevenoaks/Hastings.",
+      "body2": "Then take A225/B245 exit and head along Morleys Road, from here you will need to navigate several small country lanes.",
+      "body3": "As its hard to follow a series of left, 3rd left and a right instructions at this point in a written form.",
+      "body4": "We would suggest you reference <a>Google maps</a> or use a GPS."
+    },
+    "flying": {
+      "title": "Flying In",
+      "body0": "<b>Gatwick</b> is the closest airport. 23km (14.9 miles) as the crow flys. But any London airport works.",
+      "body1": "Getting from the airport to the venue, the easiest route is via <a>train</a>, Gatwick > London Bridge > Sevenoaks, with the last leg being via taxi."
+    },
+    "adventurous": {
+      "title": "Adventurous People",
+      "body0": "The is a trainstation in <a>Penshurst</a>, about 2.6 miles (4.2km) from the venue, you can walk across the lovely British countryside.",
+      "body1": "We did this, It was fun but we did get a little lost. <i>As a side note the pub <b>The Little Brown Jug</b> is lovely!</i>.",
+      "body2": "Please follow the <a1>countryside code</a1>, be prepared and safe. <a2>Here is a route</a2> we attempted, we hold no responsibiity / liability for suggesting this."
+    },
+    "public": {
+      "title": "Public Transport",
+      "body0": "Sevenoaks train station is the more convenient well connected station.",
+      "body1": "It has a taxi rank outside, which you will need to get the 6 miles (9.7km) to the venue. It should take around 19 minutes, it costs a little over 20 pounds."
+    }
+  },
+  "gift": {
+    "preTitle": "Gift Payments",
+    "in": {
+      "title": "You will need the invite password.",
+      "placeholder": "you should see a password on the invite, bottom right.",
+      "button": "SHOW ME",
+      "sub": "We dont expect anything, this is more to cover accomodation."
+    },
+    "out": {
+      "title": "This is hidden until you login.",
+      "sub": "For security reasons, we hope you understand."
+    }
   }
 }
