@@ -61,7 +61,12 @@ export default function Directions() {
       paragraphs: [
         t('public.body0'),
         t('public.body1'),
-        t('public.body2'),
+        t.rich('public.body2', {
+           a: (chunk) => contentLink(
+            chunk,
+            'http://www.sevenoakstaxis.com/'
+          )
+        })
       ],
       image: false,
     },

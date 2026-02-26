@@ -78,7 +78,7 @@
     "little": "About - Details - Important stuff",
     "title": "What's happening?",
     "intro": "Yes it's finally happening, Heather and Adam are getting married, 16 years in the making.",
-    "content": "We are planning a weekend away event in Kent (England), and look forward to be joined by friends and family (including kids) to help us celebrate, We will accommodate who we can onsite.",
+    "content": "We are planning a weekend away event in Kent (England), and look forward to be joined by friends and family (including kids) to help us celebrate, we will accommodate who we can onsite.",
     "bullet": {
       "when": "<strong>When? 31st October 2026</strong> The ceremony will start at midday so if you're arriving on the day please arrive by 11:30am so you have time to get seated and comfortable",
       "where":"<strong>Where?</strong> Bore Place, Bore Place Road, Chiddingstone, Edenbridge, Kent, <strong>TN8 7AR</strong> you can find <a1>detailed directions here</a1>",
@@ -237,7 +237,7 @@
   "directions": {
     "preTitle": "How to get to Bore Place",
     "title": "Directions",
-    "subTitle": "Please be aware phone signal can be poor around Chiddingstone. Download maps in advance and ensure you have cash for a taxi.",
+    "subTitle": "Please be aware phone signal can be poor around Chiddingstone. We advise downloading maps in advance and ensure you have cash if taking a taxi.",
     "driving": {
       "title": "Driving",
       "body0": "Bore Place is in Kent, just south of Sevenoaks. For those unfamiliar with the UK it's south of London.",
@@ -245,7 +245,7 @@
     },
     "flying": {
       "title": "Flying In",
-      "body0": "London <b>Gatwick</b> is the closest airport, 23km (14.9 miles) as the crow flys.",
+      "body0": "London <b>Gatwick</b> is the closest airport, City is a good alternative, both are an hours travel away.",
       "body1": "Getting from the airport to the venue, the easiest route is via <a>train</a>, Gatwick > London Bridge > Sevenoaks, then grab a taxi."
     },
     "adventurous": {
@@ -258,7 +258,7 @@
       "title": "Public Transport",
       "body0": "Sevenoaks train station is the more convenient, well connected station.",
       "body1": "It has a taxi rank outside, which you will need to get the 9.7km (6 miles) to the venue. It should take around 19 minutes, it costs a little over 20 pounds.",
-      "body2": "If you have trouble or wish to pre-book, Beeline is a recommended / local company."
+      "body2": "If you have trouble or wish to pre-book, <a>Beeline</a> is a recommended / local company."
     }
   },
   "gift": {
