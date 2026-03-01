@@ -1,4 +1,10 @@
 {
+  "404": {
+    "number": "404",
+    "title": "Page not found",
+    "description": "Sorry, we couldn’t find the page you’re looking for.",
+    "back": "Go back home"
+  },
   "wip": {
     "top": "Oh No, Spagetti-Ohs!",
     "title": "Work In Progress",
@@ -9,7 +15,10 @@
     "faq": "FAQ",
     "details": "Details",
     "contact": "Contact",
+    "directions": "Directions",
     "music": "Music",
+    "food": "Food & Drink",
+    "gift": "Gift",
     "closeMenu": "Close menu",
     "openMenu": "Open menu"
   },
@@ -34,7 +43,7 @@
     },
     "process": {
       "title": "Hello {name}, before we get started.",
-      "body": "We will need you to login into this site, it only requires an email address. We will not keep any details we collect from you beyond the event.",
+      "body": "You'll need to login, it only requires an email address. Any details we collect will not be kept beyond the event.",
       "button": "Log in / Register here"
     },
     "form": {
@@ -75,12 +84,12 @@
     }
   },
   "about": {
-    "little": "About - Details - Important stuff",
+    "little": "Details the Important stuff",
     "title": "What's happening?",
     "intro": "Yes it's finally happening, Heather and Adam are getting married, 16 years in the making.",
     "content": "We are planning a weekend away event in Kent (England), and look forward to be joined by friends and family (including kids) to help us celebrate, we will accommodate who we can onsite.",
     "bullet": {
-      "when": "<strong>When? 31st October 2026</strong> The ceremony will start at midday so if you're arriving on the day please arrive by 11:30am so you have time to get seated and comfortable",
+      "when": "<strong>When? 31st October 2026</strong> The ceremony will start at midday. If you're coming on the day please arrive by 11:30am, so you have time to get seated and comfortable.",
       "where":"<strong>Where?</strong> Bore Place, Bore Place Road, Chiddingstone, Edenbridge, Kent, <strong>TN8 7AR</strong> you can find <a1>detailed directions here</a1>",
       "what": "<strong>What's</strong> the dress code? Although this is on Halloween, this is not a costume party. Please dress formally. The bridal party will be dressed in <strong>autumnal colours</strong>, but feel free to dress in any colours you like (except white). Weather permitting we hope to hold the ceremony outdoors and on grass, so sensible shoes are advisable."
     }
@@ -102,7 +111,7 @@
     },
     "day": {
       "title": "Reception",
-      "body0": "The wedding breakfast, canapés and dancing food will be supplied by our amazing caterer Home Gurr'own.",
+      "body0": "The wedding breakfast, canapés and dancing food will be supplied by our amazing caterer <a>Home Gurr'own.</a>",
       "body1": "During canapés, packed lunches will be provided for children.",
       "body2": "We will provide you with bubbles, beer, wine and non-alcoholic options. However if there is a specific drink, you'd like to consume, you're welcome to bring it with you."
     }
@@ -110,7 +119,7 @@
   "music": {
     "out": {
       "subtitle": "'Follow me, to where the party people are' - That Bulgarian Guy",
-      "title": "MUSIC",
+      "title": "Music",
       "description": "Sorry, You will need to log in to suggest songs."
     },
     "in": {
@@ -272,6 +281,18 @@
     "out": {
       "title": "This is hidden until you login.",
       "sub": "For security reasons, we hope you understand."
+    },
+    "popup": {
+      "title": "Bank Details",
+      "euroIntro": "For paying in Euros (EUR)",
+      "poundIntro": "For paying in Pound Sterling (GBP)",
+      "accountName": "Account Name",
+      "iban": "IBAN",
+      "sortCode": "Sort Code",
+      "accountNumber": "Account Number",
+      "copy": "Copy",
+      "copied": "Copied",
+      "close": "Close"
     }
   }
 }

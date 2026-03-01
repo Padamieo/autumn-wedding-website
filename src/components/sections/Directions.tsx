@@ -108,7 +108,7 @@ export default function Directions() {
   ];
 
   return (
-    <div id="directions" className="py-16 sm:py-24">
+    <div id="directions" className="py-16 sm:py-16">
       <div className="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
 
         <h2 className="text-center text-base/7 font-semibold text-indigo-600">{t(`preTitle`)}</h2>

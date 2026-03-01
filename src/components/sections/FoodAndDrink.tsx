@@ -2,6 +2,7 @@
 
 import classNames from "classnames";
 import { useTranslations } from "next-intl";
+import contentLink from "../contentLink";
 
 export default function FoodAndDrink() {
   const t = useTranslations('food_drink');
@@ -25,7 +26,13 @@ export default function FoodAndDrink() {
       id: 'saturday',
       title: t('day.title'),
       paragraphs: [
-        t('day.body0'),
+        t.rich('day.body0', {
+          ...common,
+          a: (chunk) => contentLink(
+            chunk,
+            'https://homegurrown.co.uk/'
+          )}
+        ),
         t('day.body1'),
         t('day.body2')
       ],
@@ -44,10 +51,21 @@ export default function FoodAndDrink() {
   ]
 
   return (   
-    <div id="food" className="relative isolate bg-white px-6 py-16 sm:py-24 lg:px-8">
-
+    <div
+      id="food"
+      className={classNames(
+        "relative isolate bg-white px-6",
+        "py-12 sm:py-16 lg:py-24 lg:px-8"
+      )}
+    >
       <div className="mx-auto max-w-4xl text-center">
-        <p className="mt-2 text-3xl font-semibold tracking-tight text-balance text-gray-900 sm:text-5xl">
+        <p
+          className={classNames(
+            "mt-2 text-3xl text-balance text-gray-900 sm:text-5xl",
+            "font-semibold tracking-tight",
+            // "dancing text-5xl sm:text-6xl"
+          )}
+        >
           {t('title')}
         </p>
       </div>
@@ -60,20 +78,22 @@ export default function FoodAndDrink() {
           <div
             key={section.id}
             className={classNames(
-              section.color ? 'relative bg-winter-green shadow-2xl' : 'bg-white/60 sm:mx-8 lg:mx-0',
+              section.color ? 'relative bg-winter-green shadow-xl' : 'bg-white/60 sm:mx-8 lg:mx-0',
               section.color
                 ? ''
                 : index === 0
-                  ? 'rounded-t-3xl sm:rounded-b-none lg:rounded-tr-none lg:rounded-bl-3xl'
-                  : 'sm:rounded-t-none lg:rounded-tr-3xl lg:rounded-bl-none',
-              'rounded-3xl p-8 ring-1 ring-gray-900/10 sm:p-10',
+                  ? 'rounded-t-xl sm:rounded-b-none lg:rounded-tr-none lg:rounded-bl-xl'
+                  : 'sm:rounded-t-none lg:rounded-tr-xl lg:rounded-bl-none',
+              'rounded-xl p-8 ring-1 ring-gray-900/10 sm:p-10',
             )}
           >
             <p className="flex items-baseline gap-x-2">
               <span
                 className={classNames(
+                  // "allison",
                   section.color ? 'text-white' : 'text-gray-900',
-                  'text-4xl font-semibold',
+                  'text-4xl',
+                  'font-semibold'
                 )}
               >
                 {section.title}
@@ -87,7 +107,10 @@ export default function FoodAndDrink() {
               )}
             >
               {section.paragraphs.map((entry, paragraphIndex) => (
-                <li key={`paragraph-${paragraphIndex}`} className="flex gap-x-3">
+                <li
+                  key={`paragraph-${paragraphIndex}`}
+                  className="gap-x-3" // day.body0'
+                >
                   {entry}
                 </li>
               ))}

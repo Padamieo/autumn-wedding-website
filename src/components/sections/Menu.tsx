@@ -25,10 +25,13 @@ export default function Menu() {
   
   const navigation = [
     { name: t('menu.details'), href: '#details' },
+     { name: t('menu.rsvp'), href: '#guestList', checked: submittedCode },
     { name: t('menu.faq'), href: '#faq', mobile: true },
-    { name: t('menu.rsvp'), href: '#guestList', checked: submittedCode },
+    { name: t('menu.directions'), href: '#directions' },
+    { name: t('menu.food'), href: '#food', mobile: true },
+    { name: t('menu.gift'), href: '#gift', mobile: true },
     { name: t('menu.music'), href: '#music' },
-    { name: t('menu.contact'), href: '#contact' },
+    { name: t('menu.contact'), href: '#contact', mobile: true },
   ]
 
   const handleSignOut = async (event: { preventDefault: () => void }) => {

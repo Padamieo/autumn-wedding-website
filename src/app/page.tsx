@@ -31,9 +31,9 @@ const filters = (await searchParams);
         <About />
         <FAQ />
         <FoodAndDrink />
-        <Music />
-        <Directions />
         <Gift />
+        <Directions />
+        <Music />
         <Contact />
       </main>
     )

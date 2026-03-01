@@ -1,5 +1,6 @@
 'use client'
 
+import classNames from "classnames";
 import { useTranslations } from "next-intl";
 // import { useRouter } from 'next/navigation';
 
@@ -24,7 +25,11 @@ export default function Wip() {
         <body class="h-full">
         ```
       */}
-      <main className="grid min-h-full h-screen place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8">
+      <main
+        className={classNames(
+          "grid min-h-full h-screen place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8"
+        )}
+      >
         <div className="text-center">
           <p className="text-base font-semibold text-indigo-600">{t('wip.top')}</p>
           <h1 className="mt-4 text-5xl font-semibold tracking-tight text-balance text-gray-900 sm:text-7xl">

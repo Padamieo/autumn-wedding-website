@@ -33,7 +33,8 @@ export default function Header() {
       </div>
       <div className={classNames(
         "mx-auto max-w-2xl py-8 sm:py-48 lg:py-56",
-        "bg-white/75 sm:bg-transparent"
+        "bg-white/75 sm:bg-transparent",
+        "rounded-xs"
       )}>
         <div className="mb-2 sm:mb-8 flex justify-center">
           <div className={classNames(

@@ -35,6 +35,10 @@ html {
   .dancing {
     font-family: var(--font-dancing);
   }
+
+  .allison {
+    font-family: var(--font-allison);
+  }
 }
 
 

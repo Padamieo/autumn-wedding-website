@@ -24,15 +24,14 @@ const Encourage: FC<Props> = ({ firstName }) => {
       <div
         className={classNames(
           "relative isolate overflow-hidden bg-white px-6 py-16",
-          "shadow-2xl sm:rounded-3xl sm:px-16 md:py-8 lg:flex lg:gap-x-20 lg:px-24"
+          "shadow-md sm:rounded-xl sm:px-16 md:py-8 lg:flex lg:gap-x-20 lg:px-24"
         )}
       >
-
         <div className="mx-auto max-w-md text-center lg:mx-0 lg:flex-auto lg:py-3 lg:text-left">
-          <h2 className="text-3xl font-semibold tracking-tight text-balance text-black sm:text-4xl">
+          <h2 className="text-2xl font-semibold tracking-tight text-balance text-black sm:text-2xl">
            {t("guest.process.title", { name: firstName || '' })}
           </h2>
-          <p className="mt-6 text-lg/8 text-pretty text-gray-700">
+          <p className="mt-6 text-base/7 text-pretty text-gray-700">
             {t("guest.process.body")}
           </p>
           <div className="flex items-center justify-center gap-x-6 lg:justify-start py-5">

@@ -11,14 +11,15 @@ export default function Music() {
   const { user } = useAuthContext() as { user: any };
 
   return (
-    <div id="music" className="grid place-items-center bg-winter-green px-6 py-24 sm:py-24 lg:px-8">
+    <div id="music" className="grid place-items-center bg-winter-green px-6 py-24 sm:py-16 lg:px-8">
       {user ? <Player /> :
         <div className="text-center">
           <p className=" text-lg font-medium text-pretty text-white sm:text-xl/8">
             {t('music.out.description')}
           </p>
           <h1 className={classNames(
-            "mt-4 text-5xl font-semibold tracking-tight text-balance text-gray-900 sm:text-7xl",
+            "allison text-gray-900 text-white",
+            "mt-4 text-6xl font-semibold text-balance sm:text-7xl",
             "grid justify-content align-items"
           )}
           >

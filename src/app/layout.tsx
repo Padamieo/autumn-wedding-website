@@ -2,11 +2,13 @@ import { AuthContextProvider } from '@/context/AuthContext';
 import { Abril_Fatface, Open_Sans } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
 import { SearchContextProvider } from '@/context/SearchContext';
-
-import './globals.css';
+import localFont from 'next/font/local'
 import { ConfettiContextProvider } from '@/context/ConfettiContext';
 import { NotificationContextProvider } from '@/context/NotificationContext';
 import classNames from 'classnames';
+
+import './globals.css';
+import { GiftContextProvider } from '@/context/GiftContext';
 
 export const inter = Open_Sans({ subsets: ['latin']});
 
@@ -16,6 +18,11 @@ export const titleFont = Abril_Fatface({
   weight: '400',
   variable:"--font-dancing"
 });
+
+const allison = localFont({
+  src: './public/allison-script.regular.woff2',
+  variable:"--font-allison"
+})
 
 // Metadata for the application
 export const metadata = {
@@ -32,7 +39,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       lang="en"
       className={classNames(
         inter.className,
-        titleFont.variable        
+        titleFont.variable,
+        allison.variable
       )}
     >
       {/*
@@ -48,7 +56,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <NotificationContextProvider>
               <SearchContextProvider>
                 <ConfettiContextProvider>
-                  {children}
+                  <GiftContextProvider>
+                    {children}
+                  </GiftContextProvider>
                 </ConfettiContextProvider>
               </SearchContextProvider>
             </NotificationContextProvider>

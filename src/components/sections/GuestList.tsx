@@ -56,7 +56,8 @@ export const GuestList: FC<Props> = ({ filterGuests }) => {
          
         <div
           className={classNames(
-            "w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-winter-green text-sm/6 outline-1 -outline-offset-1 outline-white/10"
+            "w-screen max-w-md flex-auto overflow-hidden rounded-2xl bg-winter-green",
+            "text-sm/6 outline-1 -outline-offset-1 outline-white/10"
           )}
         >
           <div className="p-4">

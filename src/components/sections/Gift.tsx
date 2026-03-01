@@ -4,14 +4,16 @@ import { useAuthContext } from "@/context/AuthContext";
 import { useTranslations } from "next-intl";
 import classNames from "classnames";
 import Button from "../Button";
+import { useGiftContext } from "@/context/GiftContext";
 
 export default function Gift() {
   const t = useTranslations();
   const { user } = useAuthContext() as { user: any };
+  const { openModal } = useGiftContext();
 
   return (
     <div id="gift" className="grid place-items-center bg-winter-green px-6 py-16 sm:py-16 lg:px-8">
-      {user ? 
+      {!user ? 
         <div className="text-center">
           <p className=" text-lg font-medium text-pretty text-white sm:text-xl/8">
             {t("gift.preTitle")}
@@ -37,7 +39,7 @@ export default function Gift() {
               translate="no"
               required
             />
-            <Button className="mt-2">{t("gift.in.button")}</Button>
+            <Button className="mt-2" onClick={openModal}>{t("gift.in.button")}</Button>
           </div>
           <p className="mt-4 text-base font-semibold text-gray-900">{t("gift.in.sub")}</p>
         </div>

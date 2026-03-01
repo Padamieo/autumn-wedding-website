@@ -39,8 +39,10 @@ export const GuestSearch: FC = () => {
         htmlFor="guestList"
         
         className={classNames(
-          'dancing',
-          "mt-4 text-5xl font-semibold tracking-tight text-balance text-winter-green sm:text-7xl grid justify-content align-items"
+          'allison',
+          "mt-4 text-5xl font-semibold text-balance",
+          // "text-winter-green",
+          "sm:text-8xl grid justify-content align-items"
         )}
       >
         {t('search.label')}
