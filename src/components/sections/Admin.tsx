@@ -81,9 +81,10 @@ export default function Admin() {
   const cellStyles = 'p-2 md:border md:border-gray-200 block md:table-cell';
 
   // const updateData = async () => {
+  //  const token = await user.getIdToken();
   //   for(const guest in guests) {
   //     try {
-  //       const { error, result } = await addData(guests[guest].code, guests[guest]);
+  //       const { error, result } = await addData(token, guests[guest].code, guests[guest]);
   //       if (error) {
   //         console.log(error);
   //         return;

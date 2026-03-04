@@ -5,6 +5,7 @@ import { GuestData, GuestUpdatePayload, MinimalGuestData } from '@/types';
 import { createContext, useContext, useEffect, useState, ReactNode, Dispatch, SetStateAction, useMemo } from 'react';
 import { useAuthContext } from './AuthContext';
 import { useNotificationContext } from './NotificationContext';
+import { useTranslations } from 'next-intl';
 
 export type GuestDataVariable = MinimalGuestData[] & GuestData[];
 
@@ -50,6 +51,7 @@ export function SearchContextProvider({ children }: SearchContextProviderProps) 
   const [submittedCode, setSubmittedCode] = useState<string | undefined>(undefined);
   const [guests, setGuests] = useState<GuestDataVariable>([]);
   const [guestConstruct, setGuestConstruct] = useState<GuestConstruct | undefined>(undefined);
+  const t = useTranslations('notifications.error');
 
   const filterGuest = useMemo<MinimalGuestData | GuestData | undefined>(
     () => (guests && guests.filter((person) => {
@@ -80,6 +82,14 @@ export function SearchContextProvider({ children }: SearchContextProviderProps) 
   };
 
   const updateGuestsStore = ( guestsUpdateData: GuestUpdatePayload ) => {
+    if (!guestConstruct) {
+      // NOTE: In theory should not occur, refresh and call db should resolve
+      createError(
+        { id: 'guestConstruct-missing', type: 'error', message: t('refresh') }
+      );
+      return;
+    }
+
     const ids = Object.keys(guestsUpdateData).map((key) => key);
 
     const updated = guests.map(guest => {
@@ -89,6 +99,18 @@ export function SearchContextProvider({ children }: SearchContextProviderProps) 
       } : guest;
     }) as GuestDataVariable;
     setGuests(updated);
+    
+    const updatedGuestGroup = ids.map((id) => {
+      const guestGroupData = guestConstruct.guests.find(
+        (guest) => guest.code === id,
+      );
+      return { ...guestGroupData, ...guestsUpdateData[id] }
+    });
+
+    setGuestConstruct({
+      code: guestConstruct.code,
+      guests: updatedGuestGroup as GuestDataVariable,
+    });
   }
 
   const clearUser = () => {

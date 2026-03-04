@@ -71,11 +71,11 @@ export default function About() {
     icon: <Location className="mt-1 size-5 flex-none text-indigo-600" />,
     extra: {
       ...common,
-      a1: (chunk: Chunks) => contentLink(
+      a1: (chunk: Chunks) => contentLink({
         chunk,
-        '#directions',
-        '_self'
-      ),
+        href: '#directions',
+        target: '_self'
+      }),
     }
   }, {
     id: 'what',

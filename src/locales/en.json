@@ -80,7 +80,9 @@
       "title": "Submitted by {name}, on {date}",
       "not": "{name} has indicated they are not coming",
       "day": "{name} is coming on the day",
-      "weekend": "{name} is coming for the weekend"
+      "weekend": "{name} is coming for the weekend",
+      "yes": "{name} is coming",
+      "no": "{name} is not coming"
     }
   },
   "about": {
@@ -236,8 +238,12 @@
     "link": "Sign in to finallygettingmarried.nl",
     "signoff": "If you have any issues please feel free to contact us, Love Heather & Adam"
   },
-  "notifications" :{
-    "defaultError": "Something went wrong, If its blocking you please contact Adam.",
+  "notifications": {
+    "error": {
+      "default": "Something went wrong, If its blocking you please contact Adam.",
+      "refresh": "Error, please try refreshing to resolve, If still broken contact Adam.",
+      "password": "That password is wrong!"
+    },
     "user": {
       "submitted": "We already have a response for this guest!"
     },
@@ -284,12 +290,17 @@
     },
     "popup": {
       "title": "Bank Details",
-      "euroIntro": "For paying in Euros (EUR)",
-      "poundIntro": "For paying in Pound Sterling (GBP)",
-      "accountName": "Account Name",
-      "iban": "IBAN",
-      "sortCode": "Sort Code",
-      "accountNumber": "Account Number",
+      "euros": {
+        "intro": "For paying in Euros (EUR)",
+        "accountName": "Account Name",
+        "iban": "IBAN"
+      },
+      "pounds": {
+        "intro": "For paying in Pound Sterling (GBP)",
+        "accountName": "Account Name",
+        "sortCode": "Sort Code",
+        "accountNumber": "Account Number"
+      },
       "copy": "Copy",
       "copied": "Copied",
       "close": "Close"

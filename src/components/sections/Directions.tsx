@@ -24,14 +24,14 @@ export default function Directions() {
         t.rich(
           'driving.body1',
           { ...common,
-            a1: (chunk) => contentLink(
+            a1: (chunk) => contentLink({
               chunk,
-              'https://www.boreplace.org/visit/visitor-information/parking-car-charging-and-directions'
-            ),
-            a2: (chunk) => contentLink(
+              href: 'https://www.boreplace.org/visit/visitor-information/parking-car-charging-and-directions'
+            }),
+            a2: (chunk) => contentLink({
               chunk,
-              'https://www.google.com/maps/place/Bore+Place/@51.3278655,-0.0914674,11z/data=!4m6!3m5!1s0x47df5044ac227787:0xa2f20928cb1ca0a0!8m2!3d51.2202648!4d0.154682!16s%2Fg%2F12xqrml_x?entry=ttu&g_ep=EgoyMDI2MDIxOC4wIKXMDSoASAFQAw%3D%3D'
-            )
+              href:'https://www.google.com/maps/place/Bore+Place/@51.3278655,-0.0914674,11z/data=!4m6!3m5!1s0x47df5044ac227787:0xa2f20928cb1ca0a0!8m2!3d51.2202648!4d0.154682!16s%2Fg%2F12xqrml_x?entry=ttu&g_ep=EgoyMDI2MDIxOC4wIKXMDSoASAFQAw%3D%3D'
+            })
           }
         )
       ],
@@ -46,10 +46,10 @@ export default function Directions() {
           common
         ),
         t.rich('flying.body1', {
-           a: (chunk) => contentLink(
+           a: (chunk) => contentLink({
             chunk,
-            'https://www.nationalrail.co.uk'
-          )
+            href: 'https://www.nationalrail.co.uk'
+          })
         })
       ],
       image: false,
@@ -62,10 +62,10 @@ export default function Directions() {
         t('public.body0'),
         t('public.body1'),
         t.rich('public.body2', {
-           a: (chunk) => contentLink(
+           a: (chunk) => contentLink({
             chunk,
-            'http://www.sevenoakstaxis.com/'
-          )
+            href: 'http://www.sevenoakstaxis.com/'
+          })
         })
       ],
       image: false,
@@ -78,10 +78,10 @@ export default function Directions() {
         t.rich(
           'adventurous.body0',
           { ...common,
-            a: (chunk) => contentLink(
+            a: (chunk) => contentLink({
               chunk,
-              'http://google.com/maps/place/Penshurst/@51.1943846,0.1624516,15z/data=!4m10!1m2!2m1!1s+Penshurst+trainstation!3m6!1s0x47df501777eb7323:0xa35de7a5b3636584!8m2!3d51.1971725!4d0.1732935!15sChZQZW5zaHVyc3QgdHJhaW5zdGF0aW9uWhgiFnBlbnNodXJzdCB0cmFpbnN0YXRpb26SAQ90cmFuc2l0X3N0YXRpb26aASNDaFpEU1VoTk1HOW5TMFZKUTBGblNVTmlNemN6TW1GUkVBReABAPoBBQiFAhBI!16zL20vMDV0bHBk?entry=ttu&g_ep=EgoyMDI2MDIxOC4wIKXMDSoASAFQAw%3D%3D'
-            ),
+              href: 'http://google.com/maps/place/Penshurst/@51.1943846,0.1624516,15z/data=!4m10!1m2!2m1!1s+Penshurst+trainstation!3m6!1s0x47df501777eb7323:0xa35de7a5b3636584!8m2!3d51.1971725!4d0.1732935!15sChZQZW5zaHVyc3QgdHJhaW5zdGF0aW9uWhgiFnBlbnNodXJzdCB0cmFpbnN0YXRpb26SAQ90cmFuc2l0X3N0YXRpb26aASNDaFpEU1VoTk1HOW5TMFZKUTBGblNVTmlNemN6TW1GUkVBReABAPoBBQiFAhBI!16zL20vMDV0bHBk?entry=ttu&g_ep=EgoyMDI2MDIxOC4wIKXMDSoASAFQAw%3D%3D'
+            }),
           }
         ),
         t.rich(
@@ -91,14 +91,14 @@ export default function Directions() {
         t.rich(
           'adventurous.body2',
           { ...common,
-            a1: (chunk) => contentLink(
+            a1: (chunk) => contentLink({
               chunk,
-              'https://www.gov.uk/government/publications/the-countryside-code'
-            ),
-            a2: (chunk) => contentLink(
+              href: 'https://www.gov.uk/government/publications/the-countryside-code'
+            }),
+            a2: (chunk) => contentLink({
               chunk,
-              'https://www.komoot.com/plan/tour/d01Aw01JwACpVk=FwgABNt2LWoA/@51.2081586,0.1720536,13.651z'
-            )
+              href:'https://www.komoot.com/plan/tour/d01Aw01JwACpVk=FwgABNt2LWoA/@51.2081586,0.1720536,13.651z'
+            })
           }
         ),
       ],
@@ -144,11 +144,6 @@ export default function Directions() {
                       width={200}
                       height={200}
                     />
-                    {/* <img
-                      alt=""
-                      src="https://tailwindcss.com/plus-assets/img/component-images/bento-03-performance.png"
-                      className="w-full max-lg:max-w-xs"
-                    /> */}
                   </div>
                 )}
               </div>

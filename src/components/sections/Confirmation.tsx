@@ -28,7 +28,8 @@ export const Confirmation: FC<Props> = ({ firstName, construct }) => {
     <div
       id="test123"
       className={classNames(
-        "relative bg-white w-full mx-auto max-w-3xl my-6 mx-6 px-4 py-6 sm:px-6 lg:px-8"
+        "relative bg-white w-full mx-auto max-w-3xl my-6 mx-6 px-4 py-6",
+        "sm:px-6 lg:px-8"
       )}
     >
       {construct.guests.map((guest, i) => {

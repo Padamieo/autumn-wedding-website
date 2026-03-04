@@ -43,10 +43,12 @@ const Response: FC<Props> = ({ construct }) => {
   };
 
   const sendResponse = async (updateData: GuestUpdatePayload | undefined) => {
+    const token = await user.getIdToken();
+
     if (updateData) {
       try {
         for (const code in updateData) {
-          const { error } = await updateGuest(code, updateData[code]);
+          const { error } = await updateGuest(token, code, updateData[code]);
 
           if (error) {
             console.log(error);
@@ -62,6 +64,7 @@ const Response: FC<Props> = ({ construct }) => {
         return;
       }
 
+      // NOTE: update local store rather than call database again
       updateGuestsStore(updateData);
       if (construct?.code && updateData[construct.code].replied !== 'not') {
         setConfetti(true)
@@ -220,7 +223,7 @@ const Response: FC<Props> = ({ construct }) => {
 export default Response;
 
 
-const CheckBox =() => (
+const CheckBox = () => (
   <svg
     fill="none"
     viewBox="0 0 14 14"
@@ -244,7 +247,7 @@ const CheckBox =() => (
       className="opacity-0 group-has-indeterminate:opacity-100"
     />
   </svg>
-)
+);
 
 export interface Props1 {
   name: string,

@@ -5,6 +5,7 @@
 
 @theme {
   --color-winter-green: oklch(0.439 0.0392 204.73);
+  --color-winter-light: #49756f;
   --color-ivory: #F5EEE3;
 }
 

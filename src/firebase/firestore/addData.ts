@@ -1,12 +1,13 @@
 import firebase_app from "../config";
 import { getFirestore, doc, setDoc } from "firebase/firestore";
+import getGuestPath from "./getGuestPath";
 
 // Get the Firestore instance
 const db = getFirestore(firebase_app);
-const collection = process.env.NEXT_PUBLIC_FIREBASE_GUEST_COLLECTION;
 
 // Function to add data to a Firestore collection
 export default async function addData(
+  token: string,
   id: string,
   data: any
 ) {
@@ -15,13 +16,15 @@ export default async function addData(
   // Variable to store any error that occurs during the operation
   let error = null;
 
-  if (!collection) {
-    return { result, error: 'No NEXT_PUBLIC_FIREBASE_GUEST_COLLECTION setup' };
+  const collection = await getGuestPath(token);
+
+  if (collection.error || !collection.result){
+    return { ...collection };
   }
 
   try {
     // Set the document with the provided data in the specified collection and ID
-    result = await setDoc(doc(db, collection, id), data, {
+    result = await setDoc(doc(db, collection.result, id), data, {
       merge: true, // Merge the new data with existing document data
     });
   } catch (e) {

@@ -1,6 +1,7 @@
 'use client'
 
 import { useTranslations } from "next-intl";
+import contentLink from "../contentLink";
 
 export default function FAQ() {
   const t = useTranslations();
@@ -19,7 +20,6 @@ export default function FAQ() {
     'weather',
     'plusOne',
     'food',
-    // 'drink',
     'gift',
     'accomodation',
     'environment'
@@ -27,8 +27,11 @@ export default function FAQ() {
     return {
       question: t(`faq.${entry}.question`),
       answer: t.rich(`faq.${entry}.answer`, {
-        a: (chunks) => <a href={linkKeys[entry] || ''} className="underline text-blue-600 hover:text-blue-800 visited:text-gray-900">{chunks}</a>
-      })
+        a: (chunk) => contentLink({
+          chunk,
+          href: linkKeys[entry] || ''
+        })}
+      )
     }
   });
 

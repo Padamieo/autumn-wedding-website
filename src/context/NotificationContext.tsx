@@ -39,8 +39,8 @@ type Create = {
 export function NotificationContextProvider({ children }: NotificationContextProviderProps) {
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const [count, setCount] = useState<number>(0);
-  const t = useTranslations('notifications');
-  const defaultMessage = t('defaultError');
+  const t = useTranslations('notifications.error');
+  const defaultMessage = t('default');
 
   const closeNotification = (id: string) => {
     const update = notifications.reduce(
@@ -56,13 +56,13 @@ export function NotificationContextProvider({ children }: NotificationContextPro
     let note = notifications;
     note.push({ id, type, message: message || defaultMessage });
     setNotifications(note);
-    // Does not update correctly unless also
+    // NOTE: Does not update correctly unless also
     setCount(count + 1);
   };
 
   const createError = ( pass?: Create | string ) => {
     const isString = typeof pass === 'string';
-    const id =  isString ? `error-${pass}-${count}` : `error-${count}`;
+    const id = isString ? `error-${pass}-${count}` : `error-${count}`;
     createNotification( !isString && pass || { id } );
   };
 

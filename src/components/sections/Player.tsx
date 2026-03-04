@@ -52,8 +52,8 @@ export default function Player() {
         method: "POST",
         body: JSON.stringify({ name: a, ...form }),
       });
-
       const result = await res.json();
+
       if (result.status === "success") {
         setForm(baseState);
       } else {
