@@ -4,12 +4,13 @@ import { useSearchParams } from 'next/navigation'
 import { completeSignIn } from "@/firebase/auth/link";
 import { signIn } from "@/firebase/auth/linkCustom";
 import { useRouter } from 'next/navigation';
-import { FC, useEffect, useRef, useState } from "react";
+import { FC, useEffect, useMemo, useRef, useState } from "react";
 import { useAuthContext } from '@/context/AuthContext';
 import { Button } from '@/components';
 import { useNow, useTranslations } from 'next-intl';
 import { authEmailArray } from '@/components/emails/auth';
 import { useNotificationContext } from '@/context/NotificationContext';
+import { useSearchContext } from '@/context/SearchContext';
 
 const storedAuthEmail = 'authEmail'
 
@@ -22,6 +23,7 @@ function Page() {
   const t = useTranslations();
   const { createError } = useNotificationContext();
   const { user } = useAuthContext() as { user: any };
+  const { firstName } = useSearchContext();
   const router = useRouter();
   const searchParams = useSearchParams();
   const [email, setEmail] = useState('');
@@ -50,21 +52,21 @@ function Page() {
     // clear email stored
     localStorage.removeItem(storedAuthEmail);
     router.push("/");
-  }
+  };
 
   const back = () => {
     router.push("/");
-  }
+  };
 
   const reAuth = () => {
     router.push("/auth");
-  }
+  };
 
   const clear = () => {
     localStorage.removeItem(storedAuthEmail);
     setStoredEmail(undefined);
     reAuth();
-  }
+  };
 
   useEffect(() => {
     const localStorageEmail = localStorage.getItem(storedAuthEmail);
@@ -75,7 +77,7 @@ function Page() {
       setStoredEmail(JSON.parse(localStorageEmail));
       // apiKey && completeProcess(localStorageEmail);
     }
-  }, [apiKey])
+  }, [apiKey]);
 
   const buildEmailContent = (name?: string | undefined) => {
     return authEmailArray.reduce(
@@ -83,14 +85,14 @@ function Page() {
         ...acc,
         [e]: e === 'dear' ? name ? t(`email.${e}`, { name }) : t('email.hello') : t(`email.${e}`)
       },
-    { title: '', dear: '', please: '', link: '', signoff: '' });
+    { subject: '', title: '', dear: '', please: '', link: '', signoff: '' });
   };
 
   // Handle form submission
   const handleForm = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
     setLoading(true);
-    const emailContent = buildEmailContent(undefined);
+    const emailContent = buildEmailContent(firstName || undefined);
 
     const { result, error } = await signIn(email, emailContent);
 
@@ -100,14 +102,14 @@ function Page() {
       createError();
       setLoading(false);
       return;
-    }
+    };
 
     // Sign-in successfully started
     const store = {email, date: new Date().valueOf()};
     localStorage.setItem(storedAuthEmail, JSON.stringify(store));
     setStoredEmail(store);
     console.log(result);
-  }
+  };
 
   if (user) {
     return (
@@ -125,7 +127,7 @@ function Page() {
         </div>
       </div>
     );
-  }
+  };
 
   const form = () => (
     <form onSubmit={handleForm} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
@@ -171,12 +173,12 @@ function Page() {
       </div>
     </div>
   );
-}
+};
 
 export interface Props {
   stored: StoredEmail;
   clear: () => void;
-}
+};
 
 const timeOut = 60000 * 1;
 const seconds = 1000;
@@ -189,7 +191,7 @@ const SentEmail: FC<Props> = ({ stored, clear }) => {
     return Number(
       (((time + timeOut) - timeNow)  / seconds
     ).toFixed(0))
-  }
+  };
   const sec = useRef<number>(secondsRemaining(stored.date, new Date().valueOf()));
   const checkInterval = useRef<number>(seconds * 1);
 
@@ -207,7 +209,7 @@ const SentEmail: FC<Props> = ({ stored, clear }) => {
       sec.current = secondsRemaining(stored.date, now.valueOf());
     }
     return;
-  }, [now])
+  }, [now]);
   
   return (
     <Wrapper>
@@ -227,13 +229,13 @@ const SentEmail: FC<Props> = ({ stored, clear }) => {
         {t('auth.sent.wait', { time : sec.current})}
       </p>}
     </Wrapper>
-  )
+  );
 };
 
 export interface Props2 {
   email: string;
   complete: ( email:string ) => void;
-}
+};
 
 const CompleteEmail: FC<Props2> = ({ email, complete }) => {
   const t = useTranslations();
@@ -262,7 +264,7 @@ const CompleteEmail: FC<Props2> = ({ email, complete }) => {
 
 export interface Props3 {
   reAuth: () => void;
-}
+};
 
 const NotRecognized: FC<Props3> = ({ reAuth }) => {
   const t = useTranslations();
@@ -275,12 +277,12 @@ const NotRecognized: FC<Props3> = ({ reAuth }) => {
       </div>
       <Button className="w-full" onClick={reAuth}>{t('auth.notRecognized.button')}</Button>
     </Wrapper>
-  )
+  );
 };
 
 export interface Props4 {
   children: React.ReactNode;
-}
+};
 
 const Wrapper: FC<Props4> = ({ children }) => (
   // border border-gray-300

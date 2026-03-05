@@ -23,6 +23,7 @@ export interface SearchThing {
   submittedCode: string | undefined;
   updateGuestsStore: ( guestsData: GuestUpdatePayload ) => void;
   userCode: string | undefined;
+  firstName: string | undefined;
 };
 
 export const initialState: SearchThing = {
@@ -34,6 +35,7 @@ export const initialState: SearchThing = {
   submittedCode: undefined,
   updateGuestsStore: () => {},
   userCode: undefined,
+  firstName: undefined,
 };
 
 export const SearchContext = createContext<SearchThing>(initialState);
@@ -60,6 +62,13 @@ export function SearchContextProvider({ children }: SearchContextProviderProps) 
       )
     }).shift()),
     [userCode],
+  );
+
+  const firstName = useMemo(
+    () => (guestConstruct && (guestConstruct?.guests.filter((guest) => {
+      return guest.code === guestConstruct.code;
+    }).shift())?.first),
+    [guestConstruct],
   );
 
   const returningUser = useMemo(
@@ -166,7 +175,8 @@ export function SearchContextProvider({ children }: SearchContextProviderProps) 
       setUserCode,
       submittedCode,
       updateGuestsStore,
-      userCode
+      userCode,
+      firstName
     }}>
       {children}
     </SearchContext.Provider>

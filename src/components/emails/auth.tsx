@@ -4,6 +4,7 @@ interface EmailTemplateProps {
 }
 
 export const authEmailArray = [
+  'subject',
   'title',
   'dear',
   'please',
@@ -12,6 +13,7 @@ export const authEmailArray = [
 ];
 
 export type EmailContent = {
+  subject: string;
   title: string;
   dear: string;
   please: string;
@@ -20,7 +22,6 @@ export type EmailContent = {
 }
 
 export function AuthEmailTemplate({ privateLink, emailContent }: EmailTemplateProps) {
-  
   return (
     <div>
       <h1>{emailContent.title}</h1>

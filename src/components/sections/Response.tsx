@@ -192,7 +192,7 @@ const Response: FC<Props> = ({ construct }) => {
 
           <div className="mb-6 space-y-10">
             <p className="text-sm/6 text-gray-600">
-              Any information we have already or you provide us will only be stored until the event, after which it will deleted.
+              {t("guest.form.disclamer")}
             </p>
           </div>
           

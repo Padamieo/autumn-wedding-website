@@ -10,14 +10,7 @@ import classNames from "classnames";
 
 export default function Rsvp() {
   const { user } = useAuthContext() as { user: any };
-  const { guestConstruct, userCode, submittedCode } = useSearchContext();
-
-  const firstName = useMemo(
-    () => (guestConstruct && (guestConstruct?.guests.filter((guest) => {
-      return guest.code === guestConstruct.code;
-    }).shift())?.first),
-    [guestConstruct],
-  );
+  const { guestConstruct, userCode, submittedCode, firstName } = useSearchContext();
 
   if (submittedCode) {
     return (<Confirmation firstName={firstName} construct={guestConstruct} />)

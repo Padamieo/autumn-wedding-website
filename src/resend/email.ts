@@ -18,7 +18,7 @@ export default async ({ email, privateLink, emailContent }: AuthEmail ) => {
     const { data, error } = await resend.emails.send({
         from: 'Adam <noreply@email.finallygettingmarried.nl>',
         to: [email],
-        subject: `Log in request on ${date}`,
+        subject: `${emailContent.subject} ${date}`,
         react: AuthEmailTemplate({ privateLink, emailContent }),
     });
 
