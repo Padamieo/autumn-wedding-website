@@ -78,7 +78,9 @@
       }
     },
     "confirmation": {
-      "title": "Submitted by {name}, on {date}",
+      "main": "Your Response",
+      "main2": "Wedding Ticket",
+      "title": "Submitted on {date}",
       "not": "{name} has indicated they are not coming",
       "day": "{name} is coming on the day",
       "weekend": "{name} is coming for the weekend",
@@ -131,6 +133,7 @@
       "artist-placeholder": "Artist",
       "songTitle": "Song Title",
       "songTitle-placeholder": "Song Title",
+      "listing": "{song} by {artist}",
       "submit": "Send"
     }
   },

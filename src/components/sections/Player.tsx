@@ -2,21 +2,46 @@
 
 import { useAuthContext } from "@/context/AuthContext";
 import { useTranslations } from "next-intl";
-import { ChangeEvent, useRef, useState } from "react";
-
+import { ChangeEvent, useEffect, useState } from "react";
 import Button from "../Button";
 import { useNotificationContext } from "@/context/NotificationContext";
 import classNames from "classnames";
+import { useSearchContext } from "@/context/SearchContext";
+
+type Submission = {
+  artist: string;
+  song: string;
+};
+
+type Stored = {
+  a: string;
+  s: string;
+};
 
 export default function Player() {
-  const baseState = { artist: "", song: "" }
+  const baseState = { artist: "", song: "" };
   const t = useTranslations('music.in');
   const { user } = useAuthContext() as { user: any };
+  const { firstName } = useSearchContext();
   const { createError } = useNotificationContext();
   const [form, setForm] = useState(baseState);
   const [loading, setLoading] = useState(false);
+  const [suggestions, setSuggestion] = useState<Stored[]>([]);
 
-  const a = user.email + 'Name';
+  useEffect(() => {
+    const storedSuggestions = localStorage.getItem(user.uid);
+    try {
+      const stored = storedSuggestions && JSON.parse(storedSuggestions);
+      const checked = stored.filter(
+        (potential: Stored) => (potential.a && potential.s) && { a: potential.a, s: potential.s },
+      ) as Stored[];
+      checked && setSuggestion(checked);
+    } catch (error) {
+      console.log(error);
+    }
+  }, [user.uid]);
+
+  const submitter = `${firstName || 'unknown'} / ${user.email}`;
 
   const common = [
     "block w-full rounded-md  py-2 px-3 text-base bg-white text-gray-800",
@@ -24,9 +49,15 @@ export default function Player() {
     "focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6 w-full"
   ];
 
-  const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
-    const x = { ...form, [event.target.name]: event.target.value }
-    setForm(x)
+  const storeSuggestion = (form: Submission) => {
+    const update = [...suggestions, {a: form.artist, s: form.song}];
+    setSuggestion(update);
+    localStorage.setItem(user.uid, JSON.stringify(update));
+  }
+
+  const handleInput = (event: ChangeEvent<HTMLInputElement>) => {
+    const formData = { ...form, [event.target.name]: event.target.value }
+    setForm(formData);
   };
 
   const script = process.env.NEXT_PUBLIC_GOOGLE_MUSIC_SHEET;
@@ -36,8 +67,8 @@ export default function Player() {
     setLoading(true);
     
     if (event.target instanceof HTMLFormElement) {
-      const formData = new FormData(event.target);
-      console.log(formData);
+      // const formData = new FormData(event.target);
+      // console.log(formData);
       await sendSuggestion();
     }
   };
@@ -50,11 +81,12 @@ export default function Player() {
     try {
       const res = await fetch(script, {
         method: "POST",
-        body: JSON.stringify({ name: a, ...form }),
+        body: JSON.stringify({ name: submitter, ...form }),
       });
       const result = await res.json();
 
       if (result.status === "success") {
+        storeSuggestion(form);
         setForm(baseState);
       } else {
         // error
@@ -71,7 +103,7 @@ export default function Player() {
   return (
     <div >
       <h1 className={classNames(
-        "text-4xl font-semibold tracking-tight text-balance text-white sm:text-6xl",
+        "allison text-4xl font-semibold text-balance text-white sm:text-6xl",
         "grid justify-content align-items"
       )}
       >
@@ -85,7 +117,7 @@ export default function Player() {
           className={classNames(
             common
           )}
-          onChange={handleSearch}
+          onChange={handleInput}
           translate="no"
           required
         />
@@ -96,7 +128,7 @@ export default function Player() {
           className={classNames(
             common
           )}
-          onChange={handleSearch}
+          onChange={handleInput}
           translate="no"
           required
         />
@@ -104,6 +136,19 @@ export default function Player() {
           {loading ? 'loading': t('submit')}
         </Button>
       </form>
+      <section className={classNames(
+        "text-white mt-4",
+      )}>
+        <ul className="list-inside">
+          {suggestions.map((suggestion, i) => <li className="list-decimal">
+            {t.rich('listing', {
+              // i: i+1,
+              song: suggestion.s,
+              artist: suggestion.a
+            })}
+          </li>)}
+        </ul>
+      </section>
     </div>
   )
 }

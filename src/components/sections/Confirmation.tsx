@@ -7,15 +7,15 @@ import { isGuestType } from './Admin';
 import classNames from 'classnames';
 
 export interface Props {
-  firstName?: string;
   construct?: GuestConstruct;
 }
 
-export const Confirmation: FC<Props> = ({ firstName, construct }) => {
-  const t = useTranslations();
+export const Confirmation: FC<Props> = ({ construct }) => {
+  const t = useTranslations("guest.confirmation");
 
   useEffect(() => {
-    const element = document.getElementById("test123");
+    // NOTE: probably need to only do this once
+    const element = document.getElementById("rsvp");
     // console.log(element);
     element?.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
   }, []);
@@ -26,12 +26,18 @@ export const Confirmation: FC<Props> = ({ firstName, construct }) => {
 
   return (
     <div
-      id="test123"
+      id="rsvp"
       className={classNames(
         "relative bg-white w-full mx-auto max-w-3xl my-6 mx-6 px-4 py-6",
         "sm:px-6 lg:px-8"
       )}
     >
+      <h2 className={classNames(
+        "allison text-5xl",
+        "mb-5"
+      )}>
+        {t("main")}
+      </h2>
       {construct.guests.map((guest, i) => {
         if (isGuestType(guest)) {
           const time = guest.date ? new Date(guest.date) : undefined;
@@ -39,11 +45,11 @@ export const Confirmation: FC<Props> = ({ firstName, construct }) => {
             <Fragment key={i}>
               {!i && 
                 <p key={`by-${guest.id}`}>
-                  {t("guest.confirmation.title", { name: firstName || '', date: time?.toUTCString() || '?' })}
+                  {t("title", { date: time?.toUTCString() || '?' })}
                 </p>
               }
               <p key={guest.id}>
-                {t(`guest.confirmation.${guest.replied}`, { name: guest.first || '' })}
+                {guest.replied && t(`${guest.replied}`, { name: guest.first || '' })}
               </p>
             </ Fragment>
           )

@@ -1,6 +1,5 @@
 'use client'
 
-import { useMemo } from "react";
 import { GuestSearch, Response } from "..";
 import { useSearchContext } from "@/context/SearchContext";
 import { useAuthContext } from "@/context/AuthContext";
@@ -13,7 +12,7 @@ export default function Rsvp() {
   const { guestConstruct, userCode, submittedCode, firstName } = useSearchContext();
 
   if (submittedCode) {
-    return (<Confirmation firstName={firstName} construct={guestConstruct} />)
+    return (<Confirmation construct={guestConstruct} />)
   }
 
   return (
