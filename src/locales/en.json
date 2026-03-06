@@ -281,7 +281,7 @@
     "in": {
       "title": "You will need the invite password.",
       "placeholder": "you should see a password on the invite, bottom right.",
-      "button": "SHOW ME",
+      "button": "Show Details",
       "sub": "We dont expect anything, this is more to cover accomodation."
     },
     "out": {
