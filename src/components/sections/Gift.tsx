@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import classNames from "classnames";
 import Button from "../Button";
 import { useGiftContext } from "@/context/GiftContext";
-import { SetStateAction, useState } from "react";
+import { useState } from "react";
 
 export default function Gift() {
   const t = useTranslations();
@@ -46,7 +46,7 @@ export default function Gift() {
           </h1>
           <div className={classNames(
             "mt-2",
-            "grid grid-cols-2 gap-x-2 w-full"
+            "grid grid-flow-row grid-cols-3 gap-x-2 w-full"
             )}
           >
             <input
@@ -54,9 +54,9 @@ export default function Gift() {
               placeholder={t("gift.in.placeholder")}
               name="password"
               className={classNames(
-                "block w-full rounded-md py-2 px-3 text-base bg-white text-gray-800",
+                "block col-span-2 w-full rounded-md py-2 px-3 text-base bg-white text-gray-800",
                 "outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400",
-                "focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6 w-full",
+                "focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6 w-full h-auto",
                 // "invalid:border-pink-500 invalid:text-pink-600"
               )}
               onChange={inputCheck}

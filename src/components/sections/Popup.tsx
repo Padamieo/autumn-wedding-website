@@ -3,10 +3,15 @@ import { Dialog, Transition } from '@headlessui/react'
 import classNames from 'classnames';
 import { useTranslations } from 'next-intl';
 import { Fragment, useEffect, useState } from 'react'
+import Button from '../Button';
 
 export default function MyModal() {
   const t = useTranslations('gift.popup');
   const { showModal, closeModal, data } = useGiftContext();
+
+  const copyToClipboard = (copy: string) => {
+    navigator.clipboard.writeText(copy);
+  };
 
   const sections = [
     {
@@ -67,12 +72,16 @@ export default function MyModal() {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+              <Dialog.Panel className={classNames(
+                  "w-full max-w-md transform overflow-hidden rounded-2xl bg-white",
+                  "p-6 text-left align-middle shadow-xl transition-all"
+                )}
+              >
                 <Dialog.Title
                   as="h3"
                   className="text-lg font-medium leading-6 text-gray-900"
                 >
-                    {t("title")}
+                  {t("title")}
                 </Dialog.Title>
                   {sections.map((section, i) => (
                     <div key={`account-currency-${i}`} className="mt-4">
@@ -81,18 +90,17 @@ export default function MyModal() {
                       </p>
                       {section.copy.map((copy, index) => (
                         <div key={`account-detail-${index}`} className={classNames(
-                            "grid grid-cols-8 grid-flow-row gap-x-2 w-full mt-2",
-                            // "max-w-[23rem]"
+                            "grid grid-cols-8 grid-flow-row gap-x-2 w-full mt-2"
                           )}
                         >
                           <label
-                          htmlFor="npm-install"
-                          className="block text-gray-700 text-sm font-bold col-span-6 mb-1"
-                          >{copy.label}</label>
+                            htmlFor="npm-install"
+                            className="block text-gray-700 text-sm font-bold col-span-6 mb-1"
+                          >
+                            {copy.label}
+                          </label>
                           <input
-                            id="npm-install"
                             type="text"
-                            // className="col-span-6 bg-neutral-secondary-medium border border-default-medium text-body text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"
                             className={classNames(
                               "col-span-6 shadow appearance-none border rounded w-full py-2 px-3",
                               "text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -102,34 +110,35 @@ export default function MyModal() {
                           />
                           <button
                             data-copy-to-clipboard-target="npm-install" 
-                            // className="col-span-2 col-span-2 text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm py-2.5 focus:outline-none sm:w-auto"
                             className={classNames(
                               "inline-flex justify-center rounded-md border border-transparent col-span-2",
-                              "bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                              "bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900",
+                              "hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                             )}
+                            onClick={() => copyToClipboard(copy.value)}
                           >
-                              <span id="default-message">{t("copy")}</span>
-                              <span id="success-message" className="hidden">
-                                  <div className="inline-flex items-center">
-                                      <svg
-                                        className="w-3 h-3 me-1"
-                                        aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="24" height="24"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                      >
-                                        <path
-                                          stroke="currentColor"
-                                          strokeLinecap="round"
-                                          strokeLinejoin="round"
-                                          strokeWidth="2"
-                                          d="M5 11.917 9.724 16.5 19 7.5"
-                                        />
-                                      </svg>
-                                      {t("copied")}
-                                  </div>
-                              </span>
+                            <span id="default-message">{t("copy")}</span>
+                            <span id="success-message" className="hidden">
+                              <div className="inline-flex items-center">
+                                <svg
+                                  className="w-3 h-3 me-1"
+                                  aria-hidden="true"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="24" height="24"
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <path
+                                    stroke="currentColor"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth="2"
+                                    d="M5 11.917 9.724 16.5 19 7.5"
+                                  />
+                                </svg>
+                                {t("copied")}
+                              </div>
+                            </span>
                           </button>
                         </div>
                       ))}
@@ -137,13 +146,15 @@ export default function MyModal() {
                   ))}
 
                 <div className="mt-4">
-                  <button
+                  <Button
                     type="button"
-                    className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                    className={classNames(
+                      ""
+                    )}
                     onClick={closeModal}
                   >
                     {t("close")}
-                  </button>
+                  </Button>
                 </div>
               </Dialog.Panel>
             </Transition.Child>

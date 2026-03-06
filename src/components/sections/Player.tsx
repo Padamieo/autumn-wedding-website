@@ -32,7 +32,7 @@ export default function Player() {
     const storedSuggestions = localStorage.getItem(user.uid);
     try {
       const stored = storedSuggestions && JSON.parse(storedSuggestions);
-      const checked = stored.filter(
+      const checked = stored && stored.filter(
         (potential: Stored) => (potential.a && potential.s) && { a: potential.a, s: potential.s },
       ) as Stored[];
       checked && setSuggestion(checked);
@@ -119,6 +119,7 @@ export default function Player() {
           )}
           onChange={handleInput}
           translate="no"
+          autoComplete="off"
           required
         />
         <input
@@ -130,6 +131,7 @@ export default function Player() {
           )}
           onChange={handleInput}
           translate="no"
+          autoComplete="off"
           required
         />
         <Button className="bg-white" type="submit" disabled={loading}>
@@ -140,9 +142,8 @@ export default function Player() {
         "text-white mt-4",
       )}>
         <ul className="list-inside">
-          {suggestions.map((suggestion, i) => <li className="list-decimal">
+          {suggestions.map((suggestion) => <li className="list-decimal">
             {t.rich('listing', {
-              // i: i+1,
               song: suggestion.s,
               artist: suggestion.a
             })}
