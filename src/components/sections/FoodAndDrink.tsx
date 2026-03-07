@@ -31,6 +31,7 @@ export default function FoodAndDrink() {
           a: (chunk) => contentLink({
             chunk,
             href: 'https://homegurrown.co.uk/',
+            target: '_blank',
             dark: true,
           })}
         ),

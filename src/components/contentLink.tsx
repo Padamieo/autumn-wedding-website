@@ -10,7 +10,7 @@ type Props = { chunk: Chunks, href: string, target?: HTMLAttributeAnchorTarget, 
 export const contentLink = ({chunk, href, target, dark }: Props ) => (
   <a
     href={href}
-    target={target || "_blank"}
+    target={target || "_self"}
     className={classNames(
       "underline",
       dark ? "text-white hover:text-sky-400 visited:text-white"

@@ -26,11 +26,13 @@ export default function Directions() {
           { ...common,
             a1: (chunk) => contentLink({
               chunk,
-              href: 'https://www.boreplace.org/visit/visitor-information/parking-car-charging-and-directions'
+              href: 'https://www.boreplace.org/visit/visitor-information/parking-car-charging-and-directions',
+              target: '_blank',
             }),
             a2: (chunk) => contentLink({
               chunk,
-              href:'https://www.google.com/maps/place/Bore+Place/@51.3278655,-0.0914674,11z/data=!4m6!3m5!1s0x47df5044ac227787:0xa2f20928cb1ca0a0!8m2!3d51.2202648!4d0.154682!16s%2Fg%2F12xqrml_x?entry=ttu&g_ep=EgoyMDI2MDIxOC4wIKXMDSoASAFQAw%3D%3D'
+              href:'https://www.google.com/maps/place/Bore+Place/@51.3278655,-0.0914674,11z/data=!4m6!3m5!1s0x47df5044ac227787:0xa2f20928cb1ca0a0!8m2!3d51.2202648!4d0.154682!16s%2Fg%2F12xqrml_x?entry=ttu&g_ep=EgoyMDI2MDIxOC4wIKXMDSoASAFQAw%3D%3D',
+              target: '_blank',
             })
           }
         )
@@ -48,7 +50,8 @@ export default function Directions() {
         t.rich('flying.body1', {
            a: (chunk) => contentLink({
             chunk,
-            href: 'https://www.nationalrail.co.uk'
+            href: 'https://www.nationalrail.co.uk',
+            target: '_blank',
           })
         })
       ],
@@ -64,7 +67,8 @@ export default function Directions() {
         t.rich('public.body2', {
            a: (chunk) => contentLink({
             chunk,
-            href: 'http://www.sevenoakstaxis.com/'
+            href: 'http://www.sevenoakstaxis.com/',
+            target: '_blank',
           })
         })
       ],
@@ -80,7 +84,8 @@ export default function Directions() {
           { ...common,
             a: (chunk) => contentLink({
               chunk,
-              href: 'http://google.com/maps/place/Penshurst/@51.1943846,0.1624516,15z/data=!4m10!1m2!2m1!1s+Penshurst+trainstation!3m6!1s0x47df501777eb7323:0xa35de7a5b3636584!8m2!3d51.1971725!4d0.1732935!15sChZQZW5zaHVyc3QgdHJhaW5zdGF0aW9uWhgiFnBlbnNodXJzdCB0cmFpbnN0YXRpb26SAQ90cmFuc2l0X3N0YXRpb26aASNDaFpEU1VoTk1HOW5TMFZKUTBGblNVTmlNemN6TW1GUkVBReABAPoBBQiFAhBI!16zL20vMDV0bHBk?entry=ttu&g_ep=EgoyMDI2MDIxOC4wIKXMDSoASAFQAw%3D%3D'
+              href: 'http://google.com/maps/place/Penshurst/@51.1943846,0.1624516,15z/data=!4m10!1m2!2m1!1s+Penshurst+trainstation!3m6!1s0x47df501777eb7323:0xa35de7a5b3636584!8m2!3d51.1971725!4d0.1732935!15sChZQZW5zaHVyc3QgdHJhaW5zdGF0aW9uWhgiFnBlbnNodXJzdCB0cmFpbnN0YXRpb26SAQ90cmFuc2l0X3N0YXRpb26aASNDaFpEU1VoTk1HOW5TMFZKUTBGblNVTmlNemN6TW1GUkVBReABAPoBBQiFAhBI!16zL20vMDV0bHBk?entry=ttu&g_ep=EgoyMDI2MDIxOC4wIKXMDSoASAFQAw%3D%3D',
+              target: '_blank',
             }),
           }
         ),
@@ -93,11 +98,13 @@ export default function Directions() {
           { ...common,
             a1: (chunk) => contentLink({
               chunk,
-              href: 'https://www.gov.uk/government/publications/the-countryside-code'
+              href: 'https://www.gov.uk/government/publications/the-countryside-code',
+              target: '_blank',
             }),
             a2: (chunk) => contentLink({
               chunk,
-              href:'https://www.komoot.com/plan/tour/d01Aw01JwACpVk=FwgABNt2LWoA/@51.2081586,0.1720536,13.651z'
+              href:'https://www.komoot.com/plan/tour/d01Aw01JwACpVk=FwgABNt2LWoA/@51.2081586,0.1720536,13.651z',
+              target: '_blank',
             })
           }
         ),
