@@ -6,6 +6,7 @@ import classNames from "classnames";
 import Button from "../Button";
 import { useGiftContext } from "@/context/GiftContext";
 import { useState } from "react";
+import Input from "../Input";
 
 export default function Gift() {
   const t = useTranslations();
@@ -49,15 +50,12 @@ export default function Gift() {
             "grid grid-flow-row grid-cols-3 gap-x-2 w-full"
             )}
           >
-            <input
-              type="text"
+            <Input
+             type="text"
               placeholder={t("gift.in.placeholder")}
               name="password"
               className={classNames(
-                "block col-span-2 w-full rounded-md py-2 px-3 text-base bg-white text-gray-800",
-                "outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400",
-                "focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6 w-full h-auto",
-                // "invalid:border-pink-500 invalid:text-pink-600"
+                "col-span-2",
               )}
               onChange={inputCheck}
               translate="no"
@@ -65,7 +63,7 @@ export default function Gift() {
               onKeyDown={handleKeyDown}
               required
             />
-            <Button className="mt-2" 
+            <Button
               disabled={disabled}
               onClick={openModal}
             >

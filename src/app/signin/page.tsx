@@ -1,6 +1,7 @@
 'use client'
 
 import { Button } from "@/components";
+import Input from "@/components/Input";
 import { useNotificationContext } from "@/context/NotificationContext";
 import { signIn } from "@/firebase/auth/signin";
 import { useRouter } from 'next/navigation';
@@ -41,28 +42,28 @@ function Page() {
             <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2">
               Email
             </label>
-            <input
+            <Input
               onChange={(e) => setEmail(e.target.value)}
               required
               type="email"
               name="email"
               id="email"
               placeholder="example@mail.com"
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="outline-1 -outline-offset-1 outline-gray-500"
             />
           </div>
           <div className="mb-6">
             <label htmlFor="password" className="block text-gray-700 text-sm font-bold mb-2">
               Password
             </label>
-            <input
+            <Input
               onChange={(e) => setPassword(e.target.value)}
               required
               type="password"
               name="password"
               id="password"
               placeholder="password"
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="outline-1 -outline-offset-1 outline-gray-500"
             />
           </div>
           <div className="flex items-center justify-between">

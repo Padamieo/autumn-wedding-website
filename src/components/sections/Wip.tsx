@@ -31,7 +31,7 @@ export default function Wip() {
         )}
       >
         <div className="text-center">
-          <p className="text-base font-semibold text-indigo-600">{t('wip.top')}</p>
+          <p className="text-base font-semibold text-winter-green">{t('wip.top')}</p>
           <h1 className="mt-4 text-5xl font-semibold tracking-tight text-balance text-gray-900 sm:text-7xl">
             {t('wip.title')}
           </h1>

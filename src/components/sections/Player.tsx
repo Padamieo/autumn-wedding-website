@@ -7,6 +7,7 @@ import Button from "../Button";
 import { useNotificationContext } from "@/context/NotificationContext";
 import classNames from "classnames";
 import { useSearchContext } from "@/context/SearchContext";
+import Input from "../Input";
 
 type Submission = {
   artist: string;
@@ -42,12 +43,6 @@ export default function Player() {
   }, [user.uid]);
 
   const submitter = `${firstName || 'unknown'} / ${user.email}`;
-
-  const common = [
-    "block w-full rounded-md  py-2 px-3 text-base bg-white text-gray-800",
-    "outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400",
-    "focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6 w-full"
-  ];
 
   const storeSuggestion = (form: Submission) => {
     const update = [...suggestions, {a: form.artist, s: form.song}];
@@ -110,25 +105,19 @@ export default function Player() {
         {t('title')}
       </h1>
       <form className="grid w-full max-w-3xl grid-cols-3 gap-4" onSubmit={handleSubmit}>
-        <input
+        <Input
           type="text"
           placeholder={t("artist-placeholder")}
           name="artist"
-          className={classNames(
-            common
-          )}
           onChange={handleInput}
           translate="no"
           autoComplete="off"
           required
         />
-        <input
+        <Input
           type="text"
           placeholder={t("songTitle-placeholder")}
           name="song"
-          className={classNames(
-            common
-          )}
           onChange={handleInput}
           translate="no"
           autoComplete="off"

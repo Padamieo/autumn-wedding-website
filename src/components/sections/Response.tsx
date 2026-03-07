@@ -10,6 +10,8 @@ import Button from "../Button";
 import { useConfettiContext } from "@/context/ConfettiContext";
 import classNames from "classnames";
 import { useNotificationContext } from "@/context/NotificationContext";
+import { commonFocus, commonOutline, defaultInputText } from "../Input";
+import { RadioOption } from "../RadioOption";
 
 export interface Props {
   construct?: GuestConstruct;
@@ -136,9 +138,10 @@ const Response: FC<Props> = ({ construct }) => {
                     name={`dietary-${i}`}
                     rows={2}
                     className={classNames(
-                      "block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900",
-                      "outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400",
-                      "focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600",
+                      "px-3 py-1.5",
+                      defaultInputText,
+                      commonOutline,
+                      commonFocus,
                       "sm:text-sm/6"
                     )}
                     defaultValue={''}
@@ -163,9 +166,9 @@ const Response: FC<Props> = ({ construct }) => {
                             aria-describedby="comments-description"
                             className={classNames(
                               "col-start-1 row-start-1 appearance-none rounded-sm border border-gray-300",
-                              "bg-white checked:border-indigo-600 checked:bg-indigo-600 indeterminate:border-indigo-600",
-                              "indeterminate:bg-indigo-600 focus-visible:outline-2",
-                              "focus-visible:outline-offset-2 focus-visible:outline-indigo-600 hover:bg-winter-green",
+                              "bg-white checked:border-winter-green checked:bg-winter-green indeterminate:border-winter-lighter",
+                              "indeterminate:bg-winter-lighter focus-visible:outline-2",
+                              "focus-visible:outline-offset-2 focus-visible:outline-winter-lighter hover:bg-winter-lighter",
                               "disabled:border-gray-300 disabled:bg-gray-100 disabled:checked:bg-gray-100",
                               "forced-colors:appearance-auto",
                             )}
@@ -211,7 +214,6 @@ const Response: FC<Props> = ({ construct }) => {
         <Button
           type="submit"
           disabled={loading}
-          className="shadow-xs"
         >
           {t("guest.form.submit")}
         </Button>
@@ -221,7 +223,6 @@ const Response: FC<Props> = ({ construct }) => {
 }
 
 export default Response;
-
 
 const CheckBox = () => (
   <svg
@@ -248,47 +249,3 @@ const CheckBox = () => (
     />
   </svg>
 );
-
-export interface Props1 {
-  name: string,
-  id: string,
-  label: string,
-  description?: string,
-  checked?: boolean,
-}
-
-const RadioOption: FC<Props1> = ({
-    name, id, label, description
-}) => {
-  return (
-    <label className="flex items-center gap-x-3  pl-1 sm:pl-3" htmlFor={`${name}-${id}`} >
-      <input
-        required
-        // defaultChecked={checked}
-        id={`${name}-${id}`}
-        name={name}
-        type="radio"
-        value={id}
-        className={classNames(
-          "relative size-6 shrink-0 appearance-none",
-          "rounded-full border border-gray-300 hover:bg-winter-green",
-          "bg-white before:absolute before:inset-1 before:rounded-full",
-          "before:bg-white not-checked:before:hidden checked:border-indigo-600",
-          "checked:bg-indigo-600",
-          "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600",
-          "disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden"
-        )}
-      />
-      <div className="text-sm/6" >
-        <p className="font-medium text-gray-900">
-          {label}
-        </p>
-        {description && (
-          <p id={`${id}-attending-description`} className="text-gray-500">
-            {description}
-          </p>
-        )}
-      </div>
-    </label>
-  );
-};

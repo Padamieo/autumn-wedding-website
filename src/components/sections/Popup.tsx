@@ -4,10 +4,12 @@ import classNames from 'classnames';
 import { useTranslations } from 'next-intl';
 import { Fragment, useEffect, useState } from 'react'
 import Button from '../Button';
+import Input from '../Input';
 
 export default function MyModal() {
   const t = useTranslations('gift.popup');
   const { showModal, closeModal, data } = useGiftContext();
+  const [loading, setLoading] = useState(false);
 
   const copyToClipboard = (copy: string) => {
     navigator.clipboard.writeText(copy);
@@ -99,21 +101,21 @@ export default function MyModal() {
                           >
                             {copy.label}
                           </label>
-                          <input
+                          <Input
                             type="text"
                             className={classNames(
-                              "col-span-6 shadow appearance-none border rounded w-full py-2 px-3",
-                              "text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                              "col-span-6 appearance-none",
+                              "sm:text-sm/6",
+                              "leading-tight"
                             )}
                             value={copy.value}
-                            disabled readOnly
+                            disabled
+                            readOnly
                           />
-                          <button
+                          <Button
                             data-copy-to-clipboard-target="npm-install" 
                             className={classNames(
-                              "inline-flex justify-center rounded-md border border-transparent col-span-2",
-                              "bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900",
-                              "hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                              "inline-flex justify-center border border-transparent col-span-2",
                             )}
                             onClick={() => copyToClipboard(copy.value)}
                           >
@@ -139,7 +141,7 @@ export default function MyModal() {
                                 {t("copied")}
                               </div>
                             </span>
-                          </button>
+                          </Button>
                         </div>
                       ))}
                     </div>

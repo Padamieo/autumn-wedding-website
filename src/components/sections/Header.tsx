@@ -75,8 +75,8 @@ export default function Header() {
               className={classNames(
                 "rounded-md bg-winter-green px-3.5 py-2.5",
                 "text-sm font-semibold text-white shadow-xs",
-                "hover:bg-indigo-500",
-                "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600",
+                "hover:bg-winter-lighter",
+                "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-winter-lighter",
               )}
             >
               {t('header.button.rsvp')}

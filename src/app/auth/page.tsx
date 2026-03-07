@@ -11,6 +11,7 @@ import { useNow, useTranslations } from 'next-intl';
 import { authEmailArray } from '@/components/emails/auth';
 import { useNotificationContext } from '@/context/NotificationContext';
 import { useSearchContext } from '@/context/SearchContext';
+import Input from '@/components/Input';
 
 const storedAuthEmail = 'authEmail'
 
@@ -139,14 +140,14 @@ function Page() {
         <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2">
           {t('auth.start.input.label')}
         </label>
-        <input
+        <Input
           onChange={(e) => setEmail(e.target.value)}
           required
           type="email"
           name="email"
           id="email"
           placeholder={t('auth.start.input.placeholder')}
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          className="outline-1 -outline-offset-1 outline-gray-500"
         />
       </div>
 

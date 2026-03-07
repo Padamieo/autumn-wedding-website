@@ -13,8 +13,8 @@ export const contentLink = ({chunk, href, target, dark }: Props ) => (
     target={target || "_self"}
     className={classNames(
       "underline",
-      dark ? "text-white hover:text-sky-400 visited:text-white"
-      : "text-gray-900 hover:text-sky-600 visited:text-gray-900"
+      dark ? "text-white hover:text-winter-lighter visited:text-white"
+      : "text-gray-900 hover:text-winter-lighter visited:text-gray-900"
     )}
   >
     {chunk}

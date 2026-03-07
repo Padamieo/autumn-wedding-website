@@ -64,11 +64,11 @@ export default function About() {
 
   const points = [{
     id: 'when',
-    icon: <Time className="mt-1 size-5 flex-none text-indigo-600" />,
+    icon: <Time className="mt-1 size-5 flex-none text-winter-lighter" />,
     extra: common,
   }, {
     id: 'where',
-    icon: <Location className="mt-1 size-5 flex-none text-indigo-600" />,
+    icon: <Location className="mt-1 size-5 flex-none text-winter-lighter" />,
     extra: {
       ...common,
       a1: (chunk: Chunks) => contentLink({
@@ -79,7 +79,7 @@ export default function About() {
     }
   }, {
     id: 'what',
-    icon: <Shirt className="mt-1 size-5 flex-none text-indigo-600" />,
+    icon: <Shirt className="mt-1 size-5 flex-none text-winter-lighter" />,
     extra: common,
   }];
 
@@ -108,7 +108,6 @@ export default function About() {
                   // "text-base/7 font-semibold",
                   "text-3xl",
                   "text-winter-green",
-                  // "text-indigo-600"
                 )}
               >
               {t('about.little')}

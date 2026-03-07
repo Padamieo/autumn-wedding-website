@@ -5,6 +5,7 @@ import { GuestList } from './GuestList';
 import { useTranslations } from 'next-intl';
 import { GuestDataVariable, useSearchContext } from '@/context/SearchContext';
 import classNames from 'classnames';
+import Input from '../Input';
 
 export const GuestSearch: FC = () => {
   const t = useTranslations('guest');
@@ -47,16 +48,14 @@ export const GuestSearch: FC = () => {
       >
         {t('search.label')}
       </label>
-      <input
+      <Input
         type="text"
         placeholder={t("search.placeholder")}
         // disabled={loading}
         className={classNames(
-          "block w-full rounded-md bg-white py-2 px-3 text-base text-gray-800",
-          "outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400",
-          "focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6 w-full mb-2"
+          "mb-2"
+          // "sm:text-sm/6 mb-2"
         )}
-          // value={searchTerm}
         onChange={handleSearch}
         autoComplete="on"
         translate="no"
