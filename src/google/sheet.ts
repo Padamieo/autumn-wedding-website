@@ -13,7 +13,7 @@ export default async (submission: Submission ) => {
     let error = null;
 
     if (!sheet) {
-        return { result, error: 'No NEXT_PUBLIC_GOOGLE_MUSIC_SHEET setup' };
+        return { result, error: 'No GOOGLE_MUSIC_SHEET setup' };
     }
 
     try {

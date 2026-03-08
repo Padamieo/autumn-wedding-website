@@ -14,7 +14,11 @@ export default function Example() {
         <body class="h-full">
         ```
       */}
-      <main className="grid min-h-full place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8">
+      <main 
+        className={classNames(
+          "grid min-h-full h-screen place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8"
+        )}
+      >
         <div className="text-center">
           <p className="text-base font-semibold text-winter-green">{t("number")}</p>
           <h1 className="mt-4 text-5xl font-semibold tracking-tight text-balance text-gray-900 sm:text-7xl">
@@ -27,7 +31,10 @@ export default function Example() {
             <a
               href="./"
               className={classNames(
-                "rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                "rounded-md bg-winter-green px-3.5 py-2.5",
+                "text-sm font-semibold text-white shadow-xs",
+                "hover:bg-winter-lighter",
+                "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-winter-lighter",
               )}
             >
               {t("back")}
