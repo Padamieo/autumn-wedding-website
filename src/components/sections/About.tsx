@@ -84,7 +84,7 @@ export default function About() {
   }];
 
   return (
-    <div id="details" className="relative isolate overflow-hidden bg-white px-6 py-24 sm:py-32 lg:overflow-visible lg:px-0">
+    <div id="details" className="relative isolate overflow-hidden bg-white px-6 py-16 sm:py-20 lg:py-24 lg:overflow-visible lg:px-0">
       <div className="absolute inset-0 -z-10 overflow-hidden">
         {/* <First /> */}
                 {/* <Image
@@ -104,10 +104,11 @@ export default function About() {
           <div className="lg:pr-4">
             <div className="lg:max-w-lg">
               <p className={classNames(
-                  "allison",
+                  // "allison",
+                  "text-base/7 font-semibold text-winter-lighter"
                   // "text-base/7 font-semibold",
-                  "text-3xl",
-                  "text-winter-green",
+                  // "text-3xl",
+                  // "text-winter-green",
                 )}
               >
               {t('about.little')}

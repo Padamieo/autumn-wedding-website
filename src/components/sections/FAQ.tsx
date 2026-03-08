@@ -36,10 +36,10 @@ export default function FAQ() {
   });
 
   return (
-    <div id="faq" className="px-8 py-24 max-w-7xl mx-auto">
+    <div id="faq" className="px-8 py-12 sm:py-16 lg:py-24 max-w-7xl mx-auto">
       <div className="px-4 sm:px-0">
         <h2 className="text-base/7 font-semibold text-gray-900">{t('faq.intro.title')}</h2>
-        <p className="mt-1 max-w-2xl text-sm/6 text-gray-500">{t('faq.intro.subtext')}</p>
+        <p className="mt-1 max-w-2xl text-sm/6 text-gray-600">{t('faq.intro.subtext')}</p>
       </div>
       <div className="mt-6 border-t border-gray-300">
         <dl className="divide-y divide-gray-300">

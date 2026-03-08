@@ -38,7 +38,7 @@ export const RadioOption: FC<Props> = ({
           {label}
         </p>
         {description && (
-          <p id={`${id}-attending-description`} className="text-gray-500">
+          <p id={`${id}-attending-description`} className="text-gray-600">
             {description}
           </p>
         )}

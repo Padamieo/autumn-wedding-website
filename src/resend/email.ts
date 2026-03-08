@@ -22,5 +22,5 @@ export default async ({ email, privateLink, emailContent }: AuthEmail ) => {
         react: AuthEmailTemplate({ privateLink, emailContent }),
     });
 
-    return { result: data, error }
+    return { result: data, error };
 };

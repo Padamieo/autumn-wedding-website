@@ -66,6 +66,9 @@ export default function Gift() {
             <Button
               disabled={disabled}
               onClick={openModal}
+              className={classNames(
+                "bg-winter-lighter hover:bg-winter-lighter/75"
+              )}
             >
               {t("gift.in.button")}
             </Button>

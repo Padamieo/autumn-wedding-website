@@ -2,16 +2,24 @@ import { useGiftContext } from '@/context/GiftContext';
 import { Dialog, Transition } from '@headlessui/react'
 import classNames from 'classnames';
 import { useTranslations } from 'next-intl';
-import { Fragment, useEffect, useState } from 'react'
+import { Fragment, useState } from 'react'
 import Button from '../Button';
 import Input from '../Input';
+
+type CopiedState = { [id:string]: boolean };
 
 export default function MyModal() {
   const t = useTranslations('gift.popup');
   const { showModal, closeModal, data } = useGiftContext();
-  const [loading, setLoading] = useState(false);
-
-  const copyToClipboard = (copy: string) => {
+  // TODO: might be nice to not repeate below
+  const base = ["euros.accountName", "euros.iban", "pounds.accountName", "pounds.sortCode", "pounds.accountNumber"];
+  const update = base.reduce(
+    (acc, n) => n ? {...acc, n: false} : acc, {} as CopiedState
+  );
+  const [copied, setCopied] = useState(update);
+  const copyToClipboard = (copy: string, key: string) => {
+    // TODO: could add a timeout reset
+    setCopied({...update, [key]: true});
     navigator.clipboard.writeText(copy);
   };
 
@@ -20,10 +28,12 @@ export default function MyModal() {
       intro: t('euros.intro'),
       copy: [
         {
+          key: "euros.accountName",
           label: t("euros.accountName"),
           value: data.euros.accountName,
         },
         {
+          key: "euros.iban",
           label: t("euros.iban"),
           value:  data.euros.iban,
         }
@@ -33,14 +43,17 @@ export default function MyModal() {
       intro: t('pounds.intro'),
       copy: [
         {
+          key: "pounds.accountName",
           label: t("pounds.accountName"),
           value:  data.pounds.accountName,
         },
         {
+          key: "pounds.sortCode",
           label: t("pounds.sortCode"),
           value: data.pounds.sortCode,
         },
         {
+          key: "pounds.accountNumber",
           label: t("pounds.accountNumber"),
           value: data.pounds.accountNumber,
         }
@@ -87,11 +100,11 @@ export default function MyModal() {
                 </Dialog.Title>
                   {sections.map((section, i) => (
                     <div key={`account-currency-${i}`} className="mt-4">
-                      <p className="text-sm text-gray-500">
+                      <p className="text-sm text-gray-600">
                         {section.intro}
                       </p>
-                      {section.copy.map((copy, index) => (
-                        <div key={`account-detail-${index}`} className={classNames(
+                      {section.copy.map((copy) => (
+                        <div key={`account-detail-${copy.key}`} className={classNames(
                             "grid grid-cols-8 grid-flow-row gap-x-2 w-full mt-2"
                           )}
                         >
@@ -117,10 +130,20 @@ export default function MyModal() {
                             className={classNames(
                               "inline-flex justify-center border border-transparent col-span-2",
                             )}
-                            onClick={() => copyToClipboard(copy.value)}
+                            onClick={() => copyToClipboard(copy.value, copy.key)}
                           >
-                            <span id="default-message">{t("copy")}</span>
-                            <span id="success-message" className="hidden">
+                            <span
+                              id="default-message"
+                              className={classNames(
+                                copied[copy.key] && "hidden",
+                              )}
+                            >{t("copy")}</span>
+                            <span
+                              id="success-message"
+                              className={classNames(
+                                !copied[copy.key] && "hidden",
+                              )}
+                            >
                               <div className="inline-flex items-center">
                                 <svg
                                   className="w-3 h-3 me-1"
@@ -151,7 +174,7 @@ export default function MyModal() {
                   <Button
                     type="button"
                     className={classNames(
-                      ""
+                      "bg-autumn-pink hover:bg-autumn-pink/75"
                     )}
                     onClick={closeModal}
                   >

@@ -97,9 +97,10 @@ export default function FoodAndDrink() {
             <p className="flex items-baseline gap-x-2">
               <span
                 className={classNames(
-                  // "allison",
-                  section.color ? 'text-white' : 'text-gray-900',
+                  "allison",
                   'text-4xl',
+                  section.color ? 'text-white' : 'text-gray-900',
+                  // section.color ? 'text-4xl sm:text-5xl' : '',
                   'font-semibold'
                 )}
               >

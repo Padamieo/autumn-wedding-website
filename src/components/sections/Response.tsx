@@ -181,7 +181,7 @@ const Response: FC<Props> = ({ construct }) => {
                           <p className="font-medium text-gray-900">
                             {t("guest.form.input.optional.label")}
                           </p>
-                          <p className="text-gray-500">
+                          <p className="text-gray-600">
                             {t("guest.form.input.optional.info")} 
                           </p>
                         </label>

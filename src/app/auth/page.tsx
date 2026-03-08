@@ -226,7 +226,7 @@ const SentEmail: FC<Props> = ({ stored, clear }) => {
       <Button className="w-full" disabled={disabled} onClick={() => clear()}>
         {t('auth.sent.button')}
       </Button>
-      {disabled && <p className="text-sm mt-4 text-gray-500" >
+      {disabled && <p className="text-sm mt-4 text-gray-600" >
         {t('auth.sent.wait', { time : sec.current})}
       </p>}
     </Wrapper>
