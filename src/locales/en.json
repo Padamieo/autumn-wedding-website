@@ -128,7 +128,7 @@
       "description": "Sorry, You will need to log in to suggest songs."
     },
     "in": {
-      "subtitle": "music",
+      "subtitle": "View Spotify Playlist",
       "title": "Suggest a song",
       "artist": "Artist",
       "artist-placeholder": "Artist",
@@ -297,6 +297,7 @@
     },
     "popup": {
       "title": "Bank Details",
+      "reason": "to cover cost of accomidation 60 something something content here please",
       "euros": {
         "intro": "For paying in Euros (EUR)",
         "accountName": "Account Name",

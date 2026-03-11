@@ -85,7 +85,7 @@ export default function Player() {
   return (
     <div>
       <p className="text-center text-base/7 font-semibold text-winter-lighter">
-        {t('subtitle')}
+        <a href="https://open.spotify.com/playlist/7eGn7rOQOXVbIwIELkjYnj?si=f8137f118e4b4eef" target="_blank">{t('subtitle')}</a>
       </p>
       <h1 className={classNames(
         "allison text-4xl font-semibold text-balance text-white sm:text-6xl",

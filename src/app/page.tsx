@@ -10,8 +10,11 @@ import {
   Music,
   FoodAndDrink,
   Directions,
-  Gift
+  Gift,
+  // Countdown
 } from "../components/";
+
+const wip = process.env.NEXT_PUBLIC_WORK_IN_PROGRESS;
 
 export default async function Home({
   searchParams,
@@ -20,7 +23,7 @@ export default async function Home({
 }) {
 const filters = (await searchParams);
 
-  if(filters.dev !== '1'){
+  if(wip && filters.dev !== '1'){
     return (<Wip />);
   } else {
     return (
@@ -29,6 +32,7 @@ const filters = (await searchParams);
         <Header />
         <Rsvp />
         <About />
+        {/* <Countdown /> */}
         <FAQ />
         <FoodAndDrink />
         <Gift />

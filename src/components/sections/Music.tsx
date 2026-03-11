@@ -35,7 +35,7 @@ export default function Music() {
       }
     </div>
   )
-}
+};
 
 // type Props = {
 //   className?: string

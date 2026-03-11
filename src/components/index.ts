@@ -14,8 +14,8 @@ export { default as Admin } from "./sections/Admin";
 export { default as FoodAndDrink } from "./sections/FoodAndDrink";
 export { default as Directions } from "./sections/Directions";
 export { default as Gift } from "./sections/Gift";
+export { default as Countdown} from './sections/Countdown';
 
 // smaller components
 export { default as Translation } from "./Translation";
 export { default as Button } from "./Button";
-

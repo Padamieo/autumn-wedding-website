@@ -98,6 +98,10 @@ export default function MyModal() {
                 >
                   {t("title")}
                 </Dialog.Title>
+                <p className="text-sm text-gray-600 mt-4">
+                  {t("reason")}
+                </p>
+
                   {sections.map((section, i) => (
                     <div key={`account-currency-${i}`} className="mt-4">
                       <p className="text-sm text-gray-600">
