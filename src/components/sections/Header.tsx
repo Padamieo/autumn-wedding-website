@@ -3,17 +3,17 @@
 import Image from 'next/image';
 import { useTranslations } from "next-intl";
 import classNames from 'classnames';
-import { FC } from 'react';
+import { Chevron } from '../icons';
 
 export default function Header() {
   const t = useTranslations();
-
 
   return (
     <div className="relative grid min-h-screen items-center justify-content px-6 ">
       <div
         aria-hidden="true"
         className={classNames(
+          // "test",
           "absolute inset-x-0 -z-10 transform-gpu",
           'overflow-hidden'
           // "-top-10 sm:-top-10"
@@ -94,12 +94,3 @@ export default function Header() {
   )
 }
 
-type Props = {
-  className?: string
-};
-
-const Chevron: FC<Props> = ({ className }) => (
-  <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-    <path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/>
-  </svg>
-);

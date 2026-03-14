@@ -38,11 +38,10 @@ export const GuestSearch: FC = () => {
       </label> */}
       <label
         htmlFor="guestList"
-        
         className={classNames(
           'allison',
-          "mt-4 text-5xl font-semibold text-balance",
-          // "text-winter-green",
+          "mt-4 text-6xl font-semibold text-balance",
+          "text-winter-green",
           "sm:text-8xl grid justify-content align-items"
         )}
       >
@@ -50,10 +49,11 @@ export const GuestSearch: FC = () => {
       </label>
       <Input
         type="text"
+        name="name"
         placeholder={t("search.placeholder")}
         // disabled={loading}
         className={classNames(
-          "mb-2"
+          "relative mb-2 bg-white/75 outline-winter-green"
           // "sm:text-sm/6 mb-2"
         )}
         onChange={handleSearch}

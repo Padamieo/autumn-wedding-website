@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image';
 import { useSearchParams } from 'next/navigation'
 import { completeSignIn } from "@/firebase/auth/link";
 import { signIn } from "@/firebase/auth/linkCustom";
@@ -12,6 +13,7 @@ import { authEmailArray } from '@/components/emails/auth';
 import { useNotificationContext } from '@/context/NotificationContext';
 import { useSearchContext } from '@/context/SearchContext';
 import Input from '@/components/Input';
+import classNames from 'classnames';
 
 const storedAuthEmail = 'authEmail'
 
@@ -115,6 +117,26 @@ function Page() {
   if (user) {
     return (
       <div className="flex flex-col items-center justify-center h-screen">
+              <div
+                aria-hidden="true"
+                className={classNames(
+                  "absolute inset-x-0 -z-10 transform-gpu",
+                  // 'overflow-hidden'
+                  // "-top-10 sm:-top-10"
+                )}
+              >
+                <Image
+                  className={classNames(
+                    "relative left-[calc(50%-20rem)] aspect-1415/2974 w-100 min-w-7xl -translate-x-1/2 rotate-0",
+                    "sm:left-[calc(50%-0rem)]",
+                  )}
+                  src="/120_Ivory_Element.png"
+                  alt="pretty watercolor wreath of flowers"
+                  width={1415}
+                  height={2974}
+                  priority
+                />
+              </div>
         <div className="w-full max-w-xs">
 
           <Wrapper>

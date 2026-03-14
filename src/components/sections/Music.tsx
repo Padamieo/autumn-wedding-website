@@ -3,7 +3,6 @@
 import { useAuthContext } from "@/context/AuthContext";
 import { useTranslations } from "next-intl";
 import Player from "./Player";
-// import { FC } from "react";
 import classNames from "classnames";
 
 export default function Music() {
@@ -36,13 +35,3 @@ export default function Music() {
     </div>
   )
 };
-
-// type Props = {
-//   className?: string
-// }
-
-// const NoSound: FC<Props> = ({ className }) => (
-//   <svg className={className} xmlns="http://www.w3.org/2000/svg"  viewBox="0 -960 960 960" fill="currentColor" >
-//     <path d="m616-320-56-56 104-104-104-104 56-56 104 104 104-104 56 56-104 104 104 104-56 56-104-104-104 104Zm-496-40v-240h160l200-200v640L280-360H120Zm280-246-86 86H200v80h114l86 86v-252ZM300-480Z"/>
-//   </svg>
-// )

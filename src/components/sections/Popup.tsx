@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl';
 import { Fragment, useState } from 'react'
 import Button from '../Button';
 import Input from '../Input';
+import { Tick } from '../icons';
 
 type CopiedState = { [id:string]: boolean };
 
@@ -149,22 +150,7 @@ export default function MyModal() {
                               )}
                             >
                               <div className="inline-flex items-center">
-                                <svg
-                                  className="w-3 h-3 me-1"
-                                  aria-hidden="true"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  width="24" height="24"
-                                  fill="none"
-                                  viewBox="0 0 24 24"
-                                >
-                                  <path
-                                    stroke="currentColor"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="2"
-                                    d="M5 11.917 9.724 16.5 19 7.5"
-                                  />
-                                </svg>
+                                <Tick className="w-3 h-3 me-1 size-8"/>
                                 {t("copied")}
                               </div>
                             </span>

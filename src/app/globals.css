@@ -9,6 +9,7 @@
   --color-winter-lighter: #56AFBD;
   --color-autumn-pink: #CF6463;
   --color-ivory: #F5EEE3;
+  --color-winter-pink: #E0B4AC;
 }
 
 :root {
@@ -43,5 +44,56 @@ html {
     font-family: var(--font-allison);
   }
 }
+
+main {
+  scroll-timeline: --main-timeline;
+
+  animation-timeline: scroll(nearest inline);
+}
+
+.idk {
+  /* backdrop-filter: blur(3px); */
+  background: #ffffff85;
+}
+
+.test {
+
+  animation: background-animation linear;
+  animation-timeline: view(y);
+
+/* animation: background-animation 5s infinite; */
+}
+
+@layer animations {
+  @keyframes background-animation {
+    0% {
+      /* background: red; */
+      filter: hue-rotate(0deg);
+      /* filter: opacity(1); */
+
+    }
+    50% {
+      /* filter: opacity(0.5); */
+    }
+    100% {
+      /* background: magenta; */
+      filter: hue-rotate(720deg);
+      /* filter: opacity(0.4); */
+    }
+  }
+}
+
+
+@layer no-support {
+  @supports not (scroll-timeline: --main-timeline) {
+    body::before {
+      content: "Your browser doesn't support scroll-driven animations.";
+      background-color: wheat;
+      display: block;
+      text-align: center;
+    }
+  }
+}
+
 
 

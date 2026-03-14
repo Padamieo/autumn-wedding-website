@@ -1,6 +1,6 @@
 'use client'
 
-import { FC, Fragment, useEffect } from 'react';
+import { FC, Fragment, useEffect, useMemo } from 'react';
 import { GuestConstruct } from '@/context/SearchContext';
 import { useTranslations } from 'next-intl';
 import { isGuestType } from './Admin';
@@ -12,6 +12,8 @@ export interface Props {
 
 export const Confirmation: FC<Props> = ({ construct }) => {
   const t = useTranslations("guest.confirmation");
+
+  const stayingWeekend = useMemo(() => construct && construct.guests.map((g) => g.replied === 'weekend'), [construct?.guests]);
 
   useEffect(() => {
     // NOTE: probably need to only do this once
@@ -55,6 +57,7 @@ export const Confirmation: FC<Props> = ({ construct }) => {
           )
         }
       })}
+      {stayingWeekend && stayingWeekend.includes(true) && <p> {t("payment", { money: `()` })}</p>}
     </div>
   )
 }

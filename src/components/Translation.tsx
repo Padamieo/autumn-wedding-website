@@ -2,8 +2,8 @@
 
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import classNames from 'classnames';
-import { FC } from 'react';
 import Button from './Button';
+import { ChevronDown } from './icons';
 
 const languages = [
   { lang: 'en', label: 'English'},
@@ -55,14 +55,3 @@ export default function Translation() {
     </Menu>
   )
 };
-
-type Props = {
-  className?: string
-};
-
-const ChevronDown: FC<Props> = ({ className }) => (
-  <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-    <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/>
-  </svg>
-);
-

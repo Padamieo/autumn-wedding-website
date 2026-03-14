@@ -37,7 +37,17 @@ export default function Directions() {
           }
         )
       ],
-      image: true,
+      image: (
+        <Image
+          className={classNames(
+            "w-full max-lg:max-w-xs aspect-534/752"
+          )}
+          src="/example_google_car_map.webp"
+          alt="mini map visual google bore place location"
+          width={534}
+          height={752}
+        />
+      ),
     },
     {
       id: 'flying',
@@ -55,7 +65,7 @@ export default function Directions() {
           })
         })
       ],
-      image: false,
+      image: undefined,
     },
     {
       id: 'public',
@@ -72,7 +82,7 @@ export default function Directions() {
           })
         })
       ],
-      image: false,
+      image: undefined,
     },
     {
       id: 'adventurous',
@@ -109,7 +119,17 @@ export default function Directions() {
           }
         ),
       ],
-      image: true,
+      image: (
+        <Image
+          className={classNames(
+            "w-full max-lg:max-w-xs aspect-488/527"
+          )}
+          src="/walk_map.webp"
+          alt="mini map visual walk penshurst to bore place"
+          width={488}
+          height={527}
+        />
+      ),
     },
 
   ];
@@ -141,21 +161,11 @@ export default function Directions() {
                     ))}
                 </div>
                 {method.image && (
-                  <div className="flex flex-1 items-center justify-center px-8 max-lg:pt-10 max-lg:pb-12 sm:px-10 lg:pb-2">
-                    <Image
-                      className={classNames(
-                        "w-full max-lg:max-w-xs"
-                      )}
-                      src="/map.webp"
-                      alt="a map"
-                      width={200}
-                      height={200}
-                    />
+                  <div className="flex flex-1 items-center justify-center px-8 max-lg:pt-4 max-lg:pb-12 lg:pb-8">
+                    {method.image}
                   </div>
                 )}
               </div>
-              {/* <div className="pointer-events-none absolute inset-px rounded-lg shadow-sm outline outline-black/5 max-lg:rounded-t-4xl" /> */}
-
             </div>
           ))}
         </div>

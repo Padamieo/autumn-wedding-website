@@ -4,6 +4,7 @@ import { useNotificationContext } from "@/context/NotificationContext";
 import classNames from "classnames";
 import { useTranslations } from "next-intl";
 import { FC } from "react";
+import { Close, Frown } from "./icons";
 
 const NotificationOverlay: FC = () => {
   const { notifications, closeNotification } = useNotificationContext();
@@ -31,7 +32,7 @@ const NotificationOverlay: FC = () => {
         >
           {notification.type === 'error' &&
             <div className="inline-flex items-center justify-center shrink-0 w-7 h-7 rounded">
-              <Fown className="size-8" />
+              <Frown className="size-8" />
             </div>
           }
 
@@ -57,25 +58,5 @@ const NotificationOverlay: FC = () => {
     </div>
   )
 };
-
-type Props = {
-  className?: string
-}
-
-const Close: FC<Props> = ({ className }) => (
-  <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M18 6 6 18"/>
-    <path d="m6 6 12 12"/>
-  </svg>
-);
-
-const Fown: FC<Props> = ({ className }) => (
-  <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-    <circle cx="12" cy="12" r="10"/>
-    <path d="M16 16s-1.5-2-4-2-4 2-4 2"/>
-    <line x1="9" x2="9.01" y1="9" y2="9"/>
-    <line x1="15" x2="15.01" y1="9" y2="9"/>
-  </svg>
-);
 
 export default NotificationOverlay;

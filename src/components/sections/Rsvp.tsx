@@ -18,10 +18,23 @@ export default function Rsvp() {
   return (
     <div 
       className={classNames(
-        "relative w-full mx-auto max-w-5xl px-4 py-6 sm:px-6 lg:px-8"
+        
+        // "relative w-full mx-auto max-w-5xl px-4 py-6 sm:px-6 lg:px-8"
+        "relative w-full mx-auto px-6 pb-2 max-w-5xl",
+        // "bg-winter-pink/50"
       )}
     >
+      <div
+      className={classNames(
+        // "idk",
+        // "backdrop-blur-xs",
+        "bg-white/75 mb-2",
+        "relative w-full mx-auto max-w-5xl px-4 py-6 sm:px-6 lg:px-8",
+        // "bg-winter-pink/50"
+      )}
+      >
       <GuestSearch />
+      </div>
       {userCode && !user ? <Encourage firstName={firstName} /> : <Response construct={guestConstruct} />}
     </div>
   )

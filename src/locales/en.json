@@ -8,7 +8,7 @@
   "wip": {
     "top": "Oh No, Spagetti-Ohs!",
     "title": "Work In Progress",
-    "description": " Sorry, I'm working on it."
+    "description": " I'm working on it. Will release Sunday 15th May"
   },
   "menu": {
     "rsvp": "RSVP",
@@ -34,7 +34,7 @@
   "guest": {
     "search": {
       "label": "Find yourself",
-      "placeholder": "Search for your name, or the code included in your invite",
+      "placeholder": "Search for your name, surname to get started",
       "tooltip": "we need at least three character to get started"
     },
     "results": {
@@ -85,7 +85,8 @@
       "day": "{name} is coming on the day",
       "weekend": "{name} is coming for the weekend",
       "yes": "{name} is coming",
-      "no": "{name} is not coming"
+      "no": "{name} is not coming",
+      "payment": "As you are staying with us for the weekend, a contribution of {money} would be appreciated."
     }
   },
   "about": {
@@ -289,7 +290,7 @@
       "title": "You will need the invite password.",
       "placeholder": "Password on the invite.",
       "button": "Show Details",
-      "sub": "We dont expect anything, this is more to cover accomodation."
+      "sub": "We don't expect any gifts, this is more to cover accomodation."
     },
     "out": {
       "title": "This is hidden until you login.",
@@ -297,7 +298,7 @@
     },
     "popup": {
       "title": "Bank Details",
-      "reason": "to cover cost of accomidation 60 something something content here please",
+      "reason": "The cost of accomodation is roughly (#65 / $77) per adult, we dont expect you to cover this but any contribution would be appreciated.",
       "euros": {
         "intro": "For paying in Euros (EUR)",
         "accountName": "Account Name",
