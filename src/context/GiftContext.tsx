@@ -43,6 +43,7 @@ export interface Gift {
   openModal: () => void;
   setPassword: Dispatch<SetStateAction<string>>;
   showModal: boolean;
+  loading: boolean;
 };
 
 export const initialState: Gift = {
@@ -51,6 +52,7 @@ export const initialState: Gift = {
   openModal: () => {},
   setPassword: () => {},
   showModal: false,
+  loading: false,
 };
 
 export const GiftContext = createContext<Gift>(initialState);
@@ -65,16 +67,18 @@ export function GiftContextProvider({ children }: GiftContextProviderProps) {
   const { createError } = useNotificationContext();
   const [showModal, setModal] = useState(false);
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
   const [data, setData] = useState(defaultData);
   const { user } = useAuthContext() as { user: any };
   const t = useTranslations('notifications.error');
   
   const closeModal = () => {
+    setLoading(false);
     setModal(false);
   }
 
   const openModal = async () => {
-
+    setLoading(true);
     const token = await user.getIdToken();
     const { result, error } = await getAccount(token, password);    
 
@@ -88,11 +92,11 @@ export function GiftContextProvider({ children }: GiftContextProviderProps) {
       } else {
         createError();
       }
+      setLoading(false);
       return;
     }
 
     result && setData(result as AccoundFormats);
-    
     setModal(true);
   }
 
@@ -103,6 +107,7 @@ export function GiftContextProvider({ children }: GiftContextProviderProps) {
       openModal,
       setPassword,
       showModal,
+      loading,
     }}>
       <Popup />
       {children}

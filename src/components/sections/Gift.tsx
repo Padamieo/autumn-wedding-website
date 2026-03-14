@@ -11,8 +11,12 @@ import Input from "../Input";
 export default function Gift() {
   const t = useTranslations();
   const { user } = useAuthContext() as { user: any };
-  const { openModal, setPassword } = useGiftContext();
+  const { openModal, setPassword, loading } = useGiftContext();
   const [disabled, setDisabled] = useState(true);
+
+  const open = () => {
+    openModal();
+  };
 
   const submit = (value: string) => {
     setPassword(value);
@@ -27,7 +31,7 @@ export default function Gift() {
     if (e.key === 'Enter') {
       const value = (e.target as HTMLInputElement).value;
       value && submit(value);
-      openModal();
+      open();
     }
   };
 
@@ -64,8 +68,8 @@ export default function Gift() {
               required
             />
             <Button
-              disabled={disabled}
-              onClick={openModal}
+              disabled={disabled || loading}
+              onClick={open}
               className={classNames(
                 "bg-winter-lighter hover:bg-winter-lighter/75"
               )}

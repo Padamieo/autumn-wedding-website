@@ -6,6 +6,7 @@ import { Fragment, useState } from 'react'
 import Button from '../Button';
 import Input from '../Input';
 import { Tick } from '../icons';
+import { costs } from './Confirmation';
 
 type CopiedState = { [id:string]: boolean };
 
@@ -100,7 +101,10 @@ export default function MyModal() {
                   {t("title")}
                 </Dialog.Title>
                 <p className="text-sm text-gray-600 mt-4">
-                  {t("reason")}
+                  {t("reason", {
+                    euros: `${costs.euros}`,
+                    pounds: `${costs.pounds}`,
+                  })}
                 </p>
 
                   {sections.map((section, i) => (
@@ -163,8 +167,9 @@ export default function MyModal() {
                 <div className="mt-4">
                   <Button
                     type="button"
+                    noColour
                     className={classNames(
-                      "bg-autumn-pink hover:bg-autumn-pink/75"
+                      "bg-autumn-pink hover:bg-autumn-pink/75 text-white"
                     )}
                     onClick={closeModal}
                   >

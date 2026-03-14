@@ -33,16 +33,14 @@ export const GuestSearch: FC = () => {
 
   return (
     <div id="guestList" className="block">
-      {/* <label htmlFor="guestList" className="block text-sm/6 font-medium text-gray-900">
-        {t("search.label")}
-      </label> */}
       <label
         htmlFor="guestList"
         className={classNames(
           'allison',
-          "mt-4 text-6xl font-semibold text-balance",
+          "text-6xl font-semibold text-balance",
           "text-winter-green",
-          "sm:text-8xl grid justify-content align-items"
+          "sm:text-8xl grid",
+          // "justify-content align-items"
         )}
       >
         {t('search.label')}
@@ -51,10 +49,8 @@ export const GuestSearch: FC = () => {
         type="text"
         name="name"
         placeholder={t("search.placeholder")}
-        // disabled={loading}
         className={classNames(
           "relative mb-2 bg-white/75 outline-winter-green"
-          // "sm:text-sm/6 mb-2"
         )}
         onChange={handleSearch}
         autoComplete="on"

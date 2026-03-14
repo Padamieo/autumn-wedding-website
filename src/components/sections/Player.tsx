@@ -3,7 +3,7 @@
 import { useAuthContext } from "@/context/AuthContext";
 import { useTranslations } from "next-intl";
 import { ChangeEvent, useEffect, useState } from "react";
-import Button from "../Button";
+import Button, { ButtonFocus } from "../Button";
 import { useNotificationContext } from "@/context/NotificationContext";
 import classNames from "classnames";
 import { useSearchContext } from "@/context/SearchContext";
@@ -84,18 +84,27 @@ export default function Player() {
 
   return (
     <div>
-      <p className="text-center text-base/7 font-semibold text-winter-lighter">
-        <a href="https://open.spotify.com/playlist/7eGn7rOQOXVbIwIELkjYnj?si=f8137f118e4b4eef" target="_blank">{t('subtitle')}</a>
+      <p className="text-center text-base/7 font-semibold text-winter-lighter pb-4">
+        <a
+          className={classNames(
+            'px-3 py-2 rounded text-sm font-semibold',
+            "border-2 border-solid",
+            ButtonFocus,
+          )}
+          href="https://open.spotify.com/playlist/7eGn7rOQOXVbIwIELkjYnj?si=f8137f118e4b4eef"
+          target="_blank"
+        >
+        {t('subtitle')}</a>
       </p>
       <h1 className={classNames(
-        "allison text-4xl font-semibold text-balance text-white sm:text-6xl",
+        "allison text-5xl font-semibold text-balance text-white sm:text-6xl",
         "grid justify-content align-items"
       )}
       >
         {t('title')}
       </h1>
       <form
-        className="grid w-full max-w-3xl grid-cols-3 gap-4"
+        className="grid w-full max-w-3xl grid-cols-1 sm:grid-cols-3 gap-4"
         onSubmit={handleSubmit}
       >
         <Input

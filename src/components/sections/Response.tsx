@@ -97,7 +97,9 @@ const Response: FC<Props> = ({ construct }) => {
   ));
 
   if (!construct) {
-    return <div className="py-8">{t("guest.form.unknown")}</div>
+    return <div className="py-8">
+      {/* {t("guest.form.unknown")} */}
+    </div>
   }
 
   return (

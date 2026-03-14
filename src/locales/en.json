@@ -79,14 +79,14 @@
     },
     "confirmation": {
       "main": "Your Response",
-      "main2": "Wedding Ticket",
       "title": "Submitted on {date}",
-      "not": "{name} has indicated they are not coming",
-      "day": "{name} is coming on the day",
-      "weekend": "{name} is coming for the weekend",
-      "yes": "{name} is coming",
-      "no": "{name} is not coming",
-      "payment": "As you are staying with us for the weekend, a contribution of {money} would be appreciated."
+      "not": "{name} has indicated they are not coming.",
+      "day": "{name} is coming on the day.",
+      "weekend": "{name} is coming for the weekend.",
+      "yes": "{name} is also coming.",
+      "no": "{name} is not coming.",
+      "payment": "As you are staying with us for the weekend, a contribution of {pounds} GBP ( {euros} EUR ) would be appreciated.",
+      "sentiment": "We look forward to seeing you."
     }
   },
   "about": {
@@ -151,7 +151,7 @@
     "groom": {
       "role": "Groom",
       "name": "Michael Adam Lockwood",
-      "email": "michaeladamlockwood@googlemail.com",
+      "email": "michaeladamlockwood@gmail.com",
       "tel": "+31611436211"
     },
     "end": "<mobile>Website made by Adam, </mobile>Lovingly edited by Jane & Heather."
@@ -298,7 +298,7 @@
     },
     "popup": {
       "title": "Bank Details",
-      "reason": "The cost of accomodation is roughly (#65 / $77) per adult, we dont expect you to cover this but any contribution would be appreciated.",
+      "reason": "The cost of accomodation is roughly {pounds} GBP ( {euros} EUR ) per adult, we dont expect you to cover this but any contribution would be appreciated.",
       "euros": {
         "intro": "For paying in Euros (EUR)",
         "accountName": "Account Name",
