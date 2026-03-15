@@ -24,7 +24,7 @@ const Encourage: FC<Props> = ({ firstName }) => {
       <div
         className={classNames(
           "relative isolate overflow-hidden bg-white px-6 py-16",
-          "shadow-md sm:rounded-xl sm:px-16 md:py-8 lg:flex lg:gap-x-20 lg:px-24"
+          "shadow-md rounded-xs sm:rounded-xl sm:px-16 md:py-8 lg:flex lg:gap-x-20 lg:px-24"
         )}
       >
         <div className="mx-auto max-w-md text-center lg:mx-0 lg:flex-auto lg:py-3 lg:text-left">
@@ -34,7 +34,7 @@ const Encourage: FC<Props> = ({ firstName }) => {
           <p className="mt-6 text-base/7 text-pretty text-gray-700">
             {t("guest.process.body")}
           </p>
-          <div className="flex items-center justify-center gap-x-6 lg:justify-start py-5">
+          <div className="flex items-center justify-center gap-x-6 lg:justify-start pt-4">
             <Button onClick={goToAuth}>
               {t("guest.process.button")}
             </Button>

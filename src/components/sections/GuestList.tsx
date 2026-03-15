@@ -4,7 +4,7 @@ import { Popover, PopoverPanel } from '@headlessui/react'
 import { FC, useEffect, useState } from 'react';
 import { GuestDataVariable, useSearchContext } from '@/context/SearchContext';
 import { useTranslations } from 'next-intl';
-import { ExpectedResponses, GuestData, MinimalGuestData } from '@/types';
+import { ExpectedResponses, responseOptions, GuestData, MinimalGuestData } from '@/types';
 import { useNotificationContext } from '@/context/NotificationContext';
 import classNames from 'classnames';
 import { Mail, Moon, Sun, Close } from '../icons';
@@ -42,11 +42,11 @@ export const GuestList: FC<Props> = ({ filterGuests }) => {
 
   const responseIcon = (response?: ExpectedResponses | "") => {
     switch (response) {
-      case "weekend":
+      case responseOptions.weekend:
         return <Moon className="size-7 flex-none text-winter-lighter" />;
-      case "day":
+      case responseOptions.day:
         return <Sun className="size-7 flex-none text-winter-lighter" />;
-      case "not":
+      case responseOptions.not:
         return <Close className="size-7 flex-none text-winter-lighter" />;
       default:
         return <Mail className="size-7 flex-none text-winter-lighter"/>;

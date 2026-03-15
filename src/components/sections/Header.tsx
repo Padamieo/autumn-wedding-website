@@ -9,7 +9,7 @@ export default function Header() {
   const t = useTranslations();
 
   return (
-    <div className="relative grid min-h-screen items-center justify-content px-6 ">
+    <div className="relative grid min-h-screen items-center justify-content px-4 sm:px-6">
       <div
         aria-hidden="true"
         className={classNames(

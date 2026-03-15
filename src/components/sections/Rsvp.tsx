@@ -20,7 +20,7 @@ export default function Rsvp() {
       className={classNames(
         
         // "relative w-full mx-auto max-w-5xl px-4 py-6 sm:px-6 lg:px-8"
-        "relative w-full mx-auto px-6 pb-2 max-w-5xl",
+        "relative w-full mx-auto px-4 sm:px-6 pb-2 max-w-5xl",
         // "bg-winter-pink/50"
       )}
     >

@@ -12,6 +12,14 @@ export type MinimalGuestData = Response & {
 
 export type ExpectedResponses = "not" | "day" | "weekend" | 'yes' | 'no';
 
+export const responseOptions = {
+  weekend: "weekend",
+  day: "day",
+  not: "not",
+  yes: "yes",
+  no: "no",
+};
+
 type Response = {
   user: string | undefined;
   replied: ExpectedResponses | "";

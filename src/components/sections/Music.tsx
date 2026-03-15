@@ -10,7 +10,7 @@ export default function Music() {
   const { user } = useAuthContext() as { user: any };
 
   return (
-    <div id="music" className="grid place-items-center bg-winter-green px-6 py-16 sm:py-16 lg:px-8">
+    <div id="music" className="grid place-items-center bg-winter-green px-4 sm:px-6 py-16 sm:py-16 lg:px-8">
       {user ? <Player /> :
         <div className="text-center">
           <p className=" text-lg font-medium text-pretty text-white sm:text-xl/8">
@@ -25,11 +25,11 @@ export default function Music() {
             {t('title')}
           </h1>
           {/* <NoSound className="size-8" /> */}
-          <p className="mt-6 text-base font-semibold text-gray-300">
+          <span className="mt-6 text-base font-semibold text-gray-300">
             {t.rich('subtitle', {
               mobile: (chunk) => <p className="sm:inline">{chunk}</p>
             })}
-          </p>
+          </span>
         </div>
       }
     </div>

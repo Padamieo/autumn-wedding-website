@@ -129,7 +129,7 @@
       "description": "Sorry, You will need to log in to suggest songs."
     },
     "in": {
-      "subtitle": "View Spotify Playlist",
+      "spotifyLink": "View Spotify Playlist",
       "title": "Suggest a song",
       "artist": "Artist",
       "artist-placeholder": "Artist",

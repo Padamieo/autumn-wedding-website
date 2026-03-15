@@ -36,7 +36,7 @@ export default function Gift() {
   };
 
   return (
-    <div id="gift" className="grid place-items-center bg-winter-green px-6 py-16 sm:py-16 lg:px-8">
+    <div id="gift" className="grid place-items-center bg-winter-green px-4 sm:px-6 py-16 sm:py-16 lg:px-8">
       {user ? 
         <div className="text-center">
           <p className=" text-lg font-medium text-pretty text-white sm:text-xl/8">
@@ -91,7 +91,7 @@ export default function Gift() {
           >
             {t("gift.out.title")}
           </h1>
-          <p className="mt-4 text-base font-semibold text-gray-900">{t("gift.out.sub")}</p>
+          <p className="mt-4 text-base font-semibold text-gray-300">{t("gift.out.sub")}</p>
         </div>
       }
     </div>

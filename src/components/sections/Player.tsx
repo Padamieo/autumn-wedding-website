@@ -83,19 +83,19 @@ export default function Player() {
   };
 
   return (
-    <div>
-      <p className="text-center text-base/7 font-semibold text-winter-lighter pb-4">
+    <div className="w-full max-w-3xl sm:mx-auto px-4 sm:px-0">
+      <div className="pb-4 text-center">
         <a
           className={classNames(
-            'px-3 py-2 rounded text-sm font-semibold',
+            'px-3 py-2 rounded text-sm text-winter-lighter font-semibold',
             "border-2 border-solid",
             ButtonFocus,
           )}
           href="https://open.spotify.com/playlist/7eGn7rOQOXVbIwIELkjYnj?si=f8137f118e4b4eef"
           target="_blank"
         >
-        {t('subtitle')}</a>
-      </p>
+        {t('spotifyLink')}</a>
+      </div>
       <h1 className={classNames(
         "allison text-5xl font-semibold text-balance text-white sm:text-6xl",
         "grid justify-content align-items"

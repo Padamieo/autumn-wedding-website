@@ -141,7 +141,7 @@ function Page() {
 
           <Wrapper>
             <h1 className="text-3xl font-bold mb-6 text-black">{t('auth.already.title')}</h1>
-            <div className="mb-6">
+            <div className="mb-6 text-gray-700">
               <p>{t('auth.already.body')}</p>
             </div>
             <Button className="w-full" onClick={() => back()}>{t('auth.already.button')}</Button>
@@ -155,7 +155,7 @@ function Page() {
   const form = () => (
     <form onSubmit={handleForm} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
       <h1 className="text-3xl font-bold mb-6 text-black">{t('auth.start.title')}</h1>
-      <div className="mb-6">
+      <div className="mb-6 text-gray-700">
         <p>{t('auth.start.body')}</p>
       </div>
       <div className="mb-4">
@@ -237,7 +237,7 @@ const SentEmail: FC<Props> = ({ stored, clear }) => {
   return (
     <Wrapper>
       <h1 className="text-3xl font-bold mb-6 text-black">{t('auth.sent.title')}</h1>
-      <div className="mb-6 wrap-break-word">
+      <div className="mb-6 wrap-break-word text-gray-700">
         <p>
           {t.rich('auth.sent.body', {
             email: stored.email, 
@@ -272,7 +272,7 @@ const CompleteEmail: FC<Props2> = ({ email, complete }) => {
   return (
     <Wrapper>
       <h1 className="text-3xl font-bold mb-6 text-black">{t('auth.complete.title')}</h1>
-      <div className="mb-6">
+      <div className="mb-6 text-gray-700">
         <p>{t.rich('auth.complete.body', {
           email, 
           b: (chunks) => <b>{chunks}</b>
@@ -295,7 +295,7 @@ const NotRecognized: FC<Props3> = ({ reAuth }) => {
   return (
     <Wrapper>
       <h1 className="text-3xl font-bold mb-6 text-black">{t('auth.notRecognized.title')}</h1>
-      <div className="mb-6">
+      <div className="mb-6 text-gray-700">
         <p>{t('auth.notRecognized.body')}</p>
       </div>
       <Button className="w-full" onClick={reAuth}>{t('auth.notRecognized.button')}</Button>

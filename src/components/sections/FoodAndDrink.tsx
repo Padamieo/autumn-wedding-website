@@ -119,7 +119,7 @@ export default function FoodAndDrink() {
                   : index === 0
                     ? ' rounded-t-xl sm:rounded-b-none lg:rounded-tr-none lg:rounded-bl-xl'
                     : 'sm:rounded-t-none lg:rounded-tr-xl lg:rounded-bl-none',
-                'rounded-xl p-8 ring-1 ring-gray-900/10 sm:p-10',
+                'rounded-xl p-6 ring-1 ring-gray-900/10 sm:p-10',
               )}
             >
               <p className="flex items-baseline gap-x-2">

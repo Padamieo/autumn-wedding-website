@@ -2,7 +2,7 @@
 
 import { useNotificationContext } from "@/context/NotificationContext";
 import getData from "@/firebase/firestore/getData";
-import { ExpectedResponses, GuestData, MinimalGuestData } from "@/types";
+import { ExpectedResponses, responseOptions, GuestData, MinimalGuestData } from "@/types";
 import { useEffect, useMemo, useState } from "react";
 import Button from "../Button";
 import addData from "@/firebase/firestore/addData";
@@ -26,11 +26,11 @@ export default function Admin() {
 
   const readResponses = (r: ExpectedResponses, acc: Stats) => {
     switch (r) {
-      case "not":
+      case responseOptions.not:
         return {...acc, not: acc.not + 1};
-      case "day":
+      case responseOptions.day:
         return {...acc, day: acc.day + 1};
-      case "weekend":
+      case responseOptions.weekend:
         return {...acc, weekend: acc.weekend + 1};
       default:
         return acc;
@@ -60,12 +60,12 @@ export default function Admin() {
 
   const rowColors = (r: ExpectedResponses | "") => {
     switch (r) {
-      case "no":
-      case "not":
+      case responseOptions.no:
+      case responseOptions.not:
         return 'bg-red-50';
-      case 'yes':
-      case "day":
-      case "weekend":
+      case responseOptions.yes:
+      case responseOptions.day:
+      case responseOptions.weekend:
         return 'bg-green-50';
       default:
         return 'bg-gray-100';

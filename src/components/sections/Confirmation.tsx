@@ -5,6 +5,7 @@ import { GuestConstruct } from '@/context/SearchContext';
 import { useTranslations } from 'next-intl';
 import { isGuestType } from './Admin';
 import classNames from 'classnames';
+import { responseOptions } from '@/types';
 
 export const costs = { pounds: 70, euros: 80 };
 
@@ -15,7 +16,7 @@ export interface Props {
 export const Confirmation: FC<Props> = ({ construct }) => {
   const t = useTranslations("guest.confirmation");
 
-  const stayingWeekend = useMemo(() => construct && construct.guests.map((g) => g.replied === 'weekend'), [construct?.guests]);
+  const stayingWeekend = useMemo(() => construct && construct.guests.map((g) => g.replied === responseOptions.weekend), [construct?.guests]);
 
   useEffect(() => {
     // NOTE: probably need to only do this once
@@ -28,12 +29,12 @@ export const Confirmation: FC<Props> = ({ construct }) => {
     return;
   }
 
-  const multiplyBy = stayingWeekend && stayingWeekend.includes(true) && stayingWeekend.reduce((acc, x) => x === true ? acc+1: acc, 0 ) || 0;
+  const multiplyBy = stayingWeekend && stayingWeekend.includes(true) && stayingWeekend.reduce((acc, weekendFlag) => weekendFlag === true ? acc+1: acc, 0 ) || 0;
 
   return (
     <div 
       className={classNames(
-        "relative w-full mx-auto px-6 pb-4",
+        "relative w-full mx-auto px-4 sm:px-6 pb-4",
       )}
     >
       <div

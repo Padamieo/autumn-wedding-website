@@ -137,7 +137,7 @@ export default function Menu() {
               <CloseMenu className='size-6'/>
             </button>
           </div>
-          <div className="mt-6 flow-root">
+          <div className="mt-10 flow-root">
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
                 {navigation.map((item) => (

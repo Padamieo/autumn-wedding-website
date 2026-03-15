@@ -3,7 +3,7 @@
 import { useAuthContext } from "@/context/AuthContext";
 import { GuestConstruct, useSearchContext } from "@/context/SearchContext";
 import updateGuest from "@/firebase/firestore/updateGuest";
-import { GuestUpdatePayload } from "@/types";
+import { GuestUpdatePayload, responseOptions } from "@/types";
 import { useTranslations } from "next-intl";
 import { FC, useState } from "react";
 import Button from "../Button";
@@ -84,9 +84,9 @@ const Response: FC<Props> = ({ construct }) => {
     />
   ));
 
-  const baseOptions = ['day', 'not'] ;
+  const baseOptions = [responseOptions.day, responseOptions.not] ;
   const adult = (i: number, stay: number) => 
-    (stay <= 0 ? ['weekend', ...baseOptions] : baseOptions).map(opt => (
+    (stay <= 0 ? [responseOptions.weekend, ...baseOptions] : baseOptions).map(opt => (
     <RadioOption
       key={opt}
       name={`attendance-${i}`}
