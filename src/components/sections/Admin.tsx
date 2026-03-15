@@ -4,9 +4,10 @@ import { useNotificationContext } from "@/context/NotificationContext";
 import getData from "@/firebase/firestore/getData";
 import { ExpectedResponses, responseOptions, GuestData, MinimalGuestData } from "@/types";
 import { useEffect, useMemo, useState } from "react";
-import Button from "../Button";
-import addData from "@/firebase/firestore/addData";
-import classNames from "classnames";
+// import Button from "../Button";
+// import addData from "@/firebase/firestore/addData";
+// import classNames from "classnames";
+// import { useAuthContext } from "@/context/AuthContext";
 
 export type Stats = {
   awaiting: number;
@@ -23,6 +24,7 @@ export const isGuestType = (keyInput: object ): keyInput is GuestData => {
 export default function Admin() {
   const { createError } = useNotificationContext();
   const [guests, setGuests] = useState<MinimalGuestData[] | GuestData[]>([]);
+  // const { user } = useAuthContext() as { user: any };
 
   const readResponses = (r: ExpectedResponses, acc: Stats) => {
     switch (r) {
@@ -54,7 +56,6 @@ export default function Admin() {
       return; 
     }
 
-    console.log(result)
     result && Array.isArray(result) && setGuests(result);
   };
 
@@ -86,7 +87,7 @@ export default function Admin() {
   //     try {
   //       const { error, result } = await addData(token, guests[guest].code, guests[guest]);
   //       if (error) {
-  //         console.log(error);
+  //         console.log('err', error);
   //         return;
   //       }
   //       console.log('result', result);

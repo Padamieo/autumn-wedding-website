@@ -34,7 +34,7 @@ const Encourage: FC<Props> = ({ firstName }) => {
           <p className="mt-6 text-base/7 text-pretty text-gray-700">
             {t("guest.process.body")}
           </p>
-          <div className="flex items-center justify-center gap-x-6 lg:justify-start pt-4">
+          <div className="flex items-center justify-center gap-x-6 lg:justify-start pt-6">
             <Button onClick={goToAuth}>
               {t("guest.process.button")}
             </Button>
@@ -44,6 +44,6 @@ const Encourage: FC<Props> = ({ firstName }) => {
       </div>
     </div>
   )
-}
+};
 
 export default Encourage;

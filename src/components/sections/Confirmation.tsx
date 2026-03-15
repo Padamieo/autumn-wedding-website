@@ -16,7 +16,17 @@ export interface Props {
 export const Confirmation: FC<Props> = ({ construct }) => {
   const t = useTranslations("guest.confirmation");
 
-  const stayingWeekend = useMemo(() => construct && construct.guests.map((g) => g.replied === responseOptions.weekend), [construct?.guests]);
+  const stayingWeekend = useMemo(
+    () => construct && construct.guests.reduce(
+      (acc, res) => res.replied !== "" ? [...acc, res.replied] : acc, [] as string[]
+    ) || [],
+  [construct?.guests]);
+
+  const multiplyBy = useMemo(
+    () => stayingWeekend.includes(responseOptions.weekend) && stayingWeekend.reduce(
+      (acc, weekendFlag) => weekendFlag === responseOptions.weekend ? acc+1: acc, 0
+    ) || 0,
+  [stayingWeekend]);
 
   useEffect(() => {
     // NOTE: probably need to only do this once
@@ -28,8 +38,6 @@ export const Confirmation: FC<Props> = ({ construct }) => {
   if (!construct) {
     return;
   }
-
-  const multiplyBy = stayingWeekend && stayingWeekend.includes(true) && stayingWeekend.reduce((acc, weekendFlag) => weekendFlag === true ? acc+1: acc, 0 ) || 0;
 
   return (
     <div 
@@ -57,7 +65,7 @@ export const Confirmation: FC<Props> = ({ construct }) => {
             return (
               <Fragment key={i}>
                 {!i && 
-                  <p key={`by-${guest.id}`} className='pb-2'>
+                  <p key={`by-${guest.id}`} className='pb-2 text-sm/6'>
                     {t("title", { date: time?.toUTCString() || '?' })}
                   </p>
                 }
@@ -68,7 +76,7 @@ export const Confirmation: FC<Props> = ({ construct }) => {
             )
           }
         })}
-        {stayingWeekend && stayingWeekend.includes(true) &&
+        {stayingWeekend.includes(responseOptions.weekend) &&
           <p className='pt-2'>
             {t("payment", {
               euros: `${multiplyBy * costs.euros}`,
@@ -76,9 +84,11 @@ export const Confirmation: FC<Props> = ({ construct }) => {
             })}
           </p>
         }
+        {(stayingWeekend.includes(responseOptions.weekend) || stayingWeekend.includes(responseOptions.day)) &&
           <p className='pt-2'>
             {t("sentiment")}
           </p>
+        }
       </div>
     </div>
   );

@@ -116,27 +116,8 @@ function Page() {
 
   if (user) {
     return (
-      <div className="flex flex-col items-center justify-center h-screen">
-              <div
-                aria-hidden="true"
-                className={classNames(
-                  "absolute inset-x-0 -z-10 transform-gpu",
-                  // 'overflow-hidden'
-                  // "-top-10 sm:-top-10"
-                )}
-              >
-                <Image
-                  className={classNames(
-                    "relative left-[calc(50%-20rem)] aspect-1415/2974 w-100 min-w-7xl -translate-x-1/2 rotate-0",
-                    "sm:left-[calc(50%-0rem)]",
-                  )}
-                  src="/120_Ivory_Element.png"
-                  alt="pretty watercolor wreath of flowers"
-                  width={1415}
-                  height={2974}
-                  priority
-                />
-              </div>
+      <div className="flex flex-col items-center justify-center h-dvh">
+        <AuthBackgroundImage />
         <div className="w-full max-w-xs">
 
           <Wrapper>
@@ -186,7 +167,8 @@ function Page() {
   )
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
+    <div className="flex flex-col items-center justify-center h-dvh">
+      <AuthBackgroundImage />
       <div className="w-full max-w-xs">
         {storedEmail ? (
           apiKey ? <CompleteEmail email={storedEmail.email} complete={completeProcess} /> : <SentEmail stored={storedEmail} clear={clear} />
@@ -197,6 +179,26 @@ function Page() {
     </div>
   );
 };
+
+const AuthBackgroundImage: FC = () => (
+  <div
+    aria-hidden="true"
+    className={classNames(
+      "absolute inset-x-0 -z-10 transform-gpu overflow-hidden h-dvh",
+    )}
+  >
+    <Image
+      className={classNames(
+        "relative aspect-1057/2035",
+        "w-100 min-w-2xl -translate-x-1/2 left-[calc(50%-0rem)] rotate-10",
+      )}
+      src="/025_Green_Leaves_1.webp"
+      alt="background ivory leaf drawing"
+      width={1057}
+      height={2035}
+    />
+  </div>
+);
 
 export interface Props {
   stored: StoredEmail;
@@ -245,7 +247,12 @@ const SentEmail: FC<Props> = ({ stored, clear }) => {
           })}
         </p>
       </div>
-      <Button className="w-full" disabled={disabled} onClick={() => clear()}>
+      <Button
+        className="w-full bg-autumn-pink hover:bg-autumn-pink/75 text-white"
+        noColour
+        disabled={disabled}
+        onClick={() => clear()}
+      >
         {t('auth.sent.button')}
       </Button>
       {disabled && <p className="text-sm mt-4 text-gray-600" >

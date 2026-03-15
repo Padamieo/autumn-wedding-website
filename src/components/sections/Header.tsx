@@ -58,7 +58,7 @@ export default function Header() {
           </h1>
           <p
             className={classNames(
-              "mt-8 px-3 text-lg font-medium text-pretty sm:text-xl/8",
+              "mt-8 px-3 text-lg/6 font-medium text-pretty sm:text-xl/8",
               "text-black sm:text-gray-900"
             )}
           >

@@ -87,9 +87,10 @@ export default function Player() {
       <div className="pb-4 text-center">
         <a
           className={classNames(
-            'px-3 py-2 rounded text-sm text-winter-lighter font-semibold',
+            'px-3 py-2 rounded-full text-sm text-winter-lighter font-semibold',
             "border-2 border-solid",
             ButtonFocus,
+            "hover:text-white/75 hover:bg-winter-lighter/25"
           )}
           href="https://open.spotify.com/playlist/7eGn7rOQOXVbIwIELkjYnj?si=f8137f118e4b4eef"
           target="_blank"
