@@ -25,11 +25,11 @@ export default function Music() {
             {t('title')}
           </h1>
           {/* <NoSound className="size-8" /> */}
-          <span className="mt-6 text-base font-semibold text-gray-300">
+          <div className="mt-6 text-base font-semibold text-gray-300">
             {t.rich('subtitle', {
               mobile: (chunk) => <p className="sm:inline">{chunk}</p>
             })}
-          </span>
+          </div>
         </div>
       }
     </div>

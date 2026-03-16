@@ -42,7 +42,7 @@ export const Confirmation: FC<Props> = ({ construct }) => {
   return (
     <div 
       className={classNames(
-        "relative w-full mx-auto px-4 sm:px-6 pb-4",
+        "relative w-full mx-auto px-4 sm:px-6 pb-4 text-gray-700",
       )}
     >
       <div
