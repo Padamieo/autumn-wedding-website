@@ -1,0 +1,39 @@
+
+.pumpkin {
+  height: 60px;
+  width: auto;
+
+  .st0 {
+    fill: #F5EEE3;
+  }
+
+  .st2 {
+    opacity: 0;
+  }
+
+  .st3 {
+    fill:#D98AB3;
+  }
+
+  .st4 {
+    fill:#231F20;
+  }
+
+  &.white__theme {
+    .st0 {
+      fill: #fff;
+    }
+  }
+
+  &.blush {
+    .st2 {
+      opacity: 0.5;
+    }
+  }
+
+  &:hover {
+    .st2 {
+      opacity: 0.5;
+    }
+  }
+}

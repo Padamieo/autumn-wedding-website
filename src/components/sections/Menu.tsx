@@ -15,6 +15,7 @@ import { useNotificationContext } from '@/context/NotificationContext';
 import classNames from 'classnames';
 import Image from 'next/image';
 import { CloseMenu, Hamburger, Tick } from '../icons';
+import Pumpkin from '../pumpkin/Pumpkin';
 // import { useConfettiContext } from "@/context/ConfettiContext";
 
 export default function Menu() {
@@ -69,23 +70,14 @@ export default function Menu() {
     );
   };
 
-  const siteLogo = () => {
+  const siteLogo = (mobileMenu?: boolean) => {
     return (
       <a
-        href="#" className="-m-1.5 p-1.5 h-2 flex items-center"
-        //onClick={() => setConfetti(true)}
+        href='#'
+        className="-m-1.5 p-1.5 h-2 flex items-center"
       >
         <span className="sr-only">Pumpkin Logo</span>
-        <Image
-          className={classNames(
-            "",
-          )}
-          src="/pumpkin.svg"
-          alt="pretty watercolor wreath of flowers"
-          width={60}
-          height={60}
-          priority
-        />
+        <Pumpkin theme={mobileMenu ? 'white' : undefined} />
       </a>
     );
   };
@@ -127,7 +119,7 @@ export default function Menu() {
           )}
         >
           <div className="flex items-center justify-between">
-            {siteLogo()}
+            {siteLogo(true)}
             <button
               type="button"
               onClick={() => setMobileMenuOpen(false)}
