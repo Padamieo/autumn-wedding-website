@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useTranslations } from "next-intl";
 import classNames from 'classnames';
 import { Chevron } from '../icons';
+import { common } from '../contentLink';
 
 export default function Header() {
   const t = useTranslations();
@@ -42,9 +43,7 @@ export default function Header() {
             "text-black sm:text-gray-900"
           )}
           >
-            {t.rich('header.top', {
-              mobile: (chunk) => <p className="sm:inline">{chunk}</p>
-            })}
+            {t.rich('header.top', common)}
           </div>
         </div>
         <div className="text-center">

@@ -5,7 +5,7 @@ import { useSearchParams } from 'next/navigation'
 import { completeSignIn } from "@/firebase/auth/link";
 import { signIn } from "@/firebase/auth/linkCustom";
 import { useRouter } from 'next/navigation';
-import { FC, useEffect, useMemo, useRef, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import { useAuthContext } from '@/context/AuthContext';
 import { Button } from '@/components';
 import { useNow, useTranslations } from 'next-intl';
@@ -14,6 +14,7 @@ import { useNotificationContext } from '@/context/NotificationContext';
 import { useSearchContext } from '@/context/SearchContext';
 import Input from '@/components/Input';
 import classNames from 'classnames';
+import { common } from '@/components/contentLink';
 
 const storedAuthEmail = 'authEmail'
 
@@ -242,8 +243,8 @@ const SentEmail: FC<Props> = ({ stored, clear }) => {
       <div className="mb-6 wrap-break-word text-gray-700">
         <p>
           {t.rich('auth.sent.body', {
-            email: stored.email, 
-            b: (chunks) => <b>{chunks}</b>
+            email: stored.email,
+            ...common,
           })}
         </p>
       </div>
@@ -282,7 +283,7 @@ const CompleteEmail: FC<Props2> = ({ email, complete }) => {
       <div className="mb-6 text-gray-700">
         <p>{t.rich('auth.complete.body', {
           email, 
-          b: (chunks) => <b>{chunks}</b>
+          ...common,
         })}</p>
       </div>
       <Button className="w-full" disabled={loading} onClick={call}>

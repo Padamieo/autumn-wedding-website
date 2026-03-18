@@ -3,23 +3,19 @@
 import Image from 'next/image'
 import { useTranslations } from "next-intl";
 import classNames from 'classnames';
-import contentLink, { Chunks } from '../contentLink';
-import { Shirt, Time, Location } from '../icons';
+import contentLink, { Chunks, common } from '../contentLink';
+import { Dress, Time, Location } from '../icons';
 
 export default function About() {
   const t = useTranslations();
 
-  const common = {
-    strong: (chunks: Chunks) => <strong className="font-semibold text-gray-900">{chunks}</strong>,
-  };
-
   const points = [{
     id: 'when',
-    icon: <Time className="mt-1 size-5 flex-none text-winter-lighter" />,
+    icon: <Time className="mt-1 size-6 sm:mr-1 flex-none text-winter-lighter" />,
     extra: common,
   }, {
     id: 'where',
-    icon: <Location className="mt-1 size-5 flex-none text-winter-lighter" />,
+    icon: <Location className="mt-1 size-6 sm:mr-1 flex-none text-winter-lighter" />,
     extra: {
       ...common,
       a1: (chunk: Chunks) => contentLink({
@@ -30,7 +26,7 @@ export default function About() {
     }
   }, {
     id: 'what',
-    icon: <Shirt className="mt-1 size-5 flex-none text-winter-lighter" />,
+    icon: <Dress className="mt-1 size-6 sm:size-7 flex-none text-winter-lighter" />,
     extra: common,
   }];
 

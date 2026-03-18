@@ -3,14 +3,10 @@
 import Image from 'next/image';
 import classNames from "classnames";
 import { useTranslations } from "next-intl";
-import contentLink from "../contentLink";
+import contentLink, { common } from "../contentLink";
 
 export default function FoodAndDrink() {
   const t = useTranslations('food_drink');
-
-  const common = {
-    h: ( chunks: any ) => <span className="invisible">{chunks}</span>,
-  };
 
   const sections = [
     {
@@ -156,5 +152,5 @@ export default function FoodAndDrink() {
         </div>
       </section>
     </div>
-  )
-}
+  );
+};

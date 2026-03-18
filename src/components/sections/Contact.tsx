@@ -3,6 +3,7 @@
 import classNames from 'classnames';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image'
+import { common } from '../contentLink';
 
 export default function Contact() {
   const t = useTranslations('contact');
@@ -85,9 +86,7 @@ export default function Contact() {
     <div className="w-full mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
       <div className="relative grid items-center text-center h-24 text-sm/6 text-gray-600">
         <span>
-          {t.rich('end', {
-            mobile: (chunk) => <p className="sm:inline">{chunk}</p>
-          })}
+          {t.rich('end', common)}
         </span>
       </div>
     </div>

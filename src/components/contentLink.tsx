@@ -21,4 +21,12 @@ export const contentLink = ({chunk, href, target, dark }: Props ) => (
   </a>
 );
 
+export const common = {
+  b: (chunks: Chunks) => <b>{chunks}</b>,
+  i: ( chunks: Chunks ) => <i>{chunks}</i>,
+  h: ( chunks: any ) => <span className="invisible">{chunks}</span>,
+  mobile: (chunks: Chunks) => <p className="sm:inline">{chunks}</p>,
+  strong: (chunks: Chunks) => <strong className="font-semibold text-gray-900">{chunks}</strong>,
+};
+
 export default contentLink;

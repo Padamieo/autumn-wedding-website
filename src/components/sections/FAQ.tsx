@@ -1,7 +1,7 @@
 'use client'
 
 import { useTranslations } from "next-intl";
-import contentLink from "../contentLink";
+import contentLink, { common } from "../contentLink";
 
 export default function FAQ() {
   const t = useTranslations();
@@ -15,6 +15,7 @@ export default function FAQ() {
   const faqs = [
     'deadline',
     'plan',
+    'time',
     'location',
     'dress',
     'weather',
@@ -30,8 +31,10 @@ export default function FAQ() {
         a: (chunk) => contentLink({
           chunk,
           href: linkKeys[entry] || ''
-        })}
-      )
+        }),
+        p: (chunks) => <p className="mb-2 last:mb-0">{chunks}</p>,
+        ...common,
+      })
     }
   });
 

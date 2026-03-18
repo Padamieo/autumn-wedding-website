@@ -3,16 +3,10 @@
 import Image from 'next/image'
 import classNames from "classnames";
 import { useTranslations } from "next-intl";
-import { contentLink, Chunks } from '../contentLink';
-
+import { contentLink, common } from '../contentLink';
 
 export default function Directions() {
   const t = useTranslations('directions');
-
-  const common = {
-    b: ( chunks: Chunks ) => <b>{chunks}</b>,
-    i: ( chunks: Chunks ) => <i>{chunks}</i>,
-  };
 
   const methods = [
     {
@@ -131,7 +125,6 @@ export default function Directions() {
         />
       ),
     },
-
   ];
 
   return (

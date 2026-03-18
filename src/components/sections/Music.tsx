@@ -4,6 +4,7 @@ import { useAuthContext } from "@/context/AuthContext";
 import { useTranslations } from "next-intl";
 import Player from "./Player";
 import classNames from "classnames";
+import { common } from "../contentLink";
 
 export default function Music() {
   const t = useTranslations('music.out');
@@ -27,7 +28,7 @@ export default function Music() {
           {/* <NoSound className="size-8" /> */}
           <div className="mt-6 text-base font-semibold text-gray-300">
             {t.rich('subtitle', {
-              mobile: (chunk) => <p className="sm:inline">{chunk}</p>
+              ...common,
             })}
           </div>
         </div>
