@@ -8,15 +8,25 @@
   }
 
   .st2 {
+    fill: #D98AB3;
     opacity: 0;
   }
 
   .st3 {
-    fill:#D98AB3;
+    fill:#231F20;
   }
 
-  .st4 {
+  .st4, .st7 {
     fill:#231F20;
+  }
+
+  .st5, .st6 {
+    fill:red;
+  }
+
+  .st4, .st5, .st6, .st7  {
+    opacity: 0;
+    
   }
 
   &.white__theme {
@@ -25,9 +35,26 @@
     }
   }
 
-  &.blush {
+  &.blush__1 {
     .st2 {
       opacity: 0.5;
+    }
+  }
+
+  &.blush__2 {
+    .st2 {
+      opacity: 0.5;
+    }
+
+    .st4, .st5 {
+      opacity: 1;
+      animation: fade 2s infinite;
+    }
+
+    .st6, .st7 {
+      opacity: 1;
+      animation: fade 2s infinite;
+      animation-delay: 1s;
     }
   }
 
@@ -36,4 +63,11 @@
       opacity: 0.5;
     }
   }
+}
+
+@keyframes fade {
+  0% { opacity: 0 }
+  60% { opacity: 1 }
+  70% { opacity: 1 }
+  100% { opacity: 0 }
 }

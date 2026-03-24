@@ -49,7 +49,7 @@
     "form": {
       "title": "RSVP",
       "unknown": "no form",
-      "intro": "Everyone is invited to the ceremony and reception, we would like to get a little bit of information from you, this will help us plan food, accomidation and costs.",
+      "intro": "Everyone is invited to the ceremony and reception, we would like to get a little bit of information from you, this will help us plan food, accommodation and costs.",
       "disclamer": "Any information we have already or you provide us will only be stored until the event, after which it will deleted.",
       "submit": "Send RSVP",
       "cancel": "Cancel",
