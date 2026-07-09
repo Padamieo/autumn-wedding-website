@@ -16,6 +16,7 @@ export type Stats = {
   not: number;
   weekend: number;
   day: number;
+  children: number;
 };
 
 export const isGuestType = (keyInput: object ): keyInput is GuestData => {
@@ -37,6 +38,8 @@ export default function Admin() {
         return {...acc, day: acc.day + 1};
       case responseOptions.weekend:
         return {...acc, weekend: acc.weekend + 1};
+      case responseOptions.yes:
+        return {...acc, children: acc.children + 1};  
       default:
         return acc;
     }
@@ -45,7 +48,7 @@ export default function Admin() {
   const stats = useMemo(
     () => (guests && guests.reduce(
       (acc, guest) => !guest?.replied ? {...acc, awaiting: acc.awaiting + 1} : readResponses(guest.replied, acc),
-    { awaiting: 0, not: 0, weekend: 0, day: 0 } as Stats
+    { awaiting: 0, not: 0, weekend: 0, day: 0, children: 0 } as Stats
     )),
     [guests],
   );
@@ -155,7 +158,8 @@ export default function Admin() {
   const statsPoints = [
     { name: 'Awaiting a response from', value: `${((stats.awaiting / guests.length) * 100).toFixed(1)}%` },
     { name: 'Are not attending ):', value: stats.not },
-    { name: 'Guests are coming', value: stats.day + stats.weekend },
+    { name: 'Guests are coming', value: stats.day + stats.weekend + stats.children },
+    { name: 'Adults / Children', value: `${stats.day + stats.weekend} / ${stats.children}`},
     // { name: 'More information', value: <Button onClick={updateData}>update</Button> },
   ];
 
