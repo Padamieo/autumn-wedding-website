@@ -13,7 +13,15 @@ export default function FoodAndDrink() {
       id: 'friday',
       title: t('friday.title'),
       paragraphs: [
-        t('friday.body0'),
+        t.rich('friday.body0', {
+          ...common,
+          a: (chunk) => contentLink({
+            chunk,
+            href: 'https://www.instagram.com/rascals.events.catering/',
+            target: '_blank',
+            dark: false,
+          })}
+        ),
         t('friday.body1'),
         t.rich('friday.body2', common ),
       ],

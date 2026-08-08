@@ -105,13 +105,13 @@
     "content": "Here you can find all the information we have about food and drink. Our caterers will work hard to ensure all dietary requirements are correctly handled, so please keep us informed.",
     "friday": {
       "title": "Friday",
-      "body0": "If you are arriving on the Friday we are currently coordinating evening food, We will update this space when we know final numbers.",
-      "body1": "We won't be providing alcoholic beverages, so please bring your own.",
-      "body2": "<h>What about pizza?</h>"
+      "body0": "If you're arriving on Friday, we'll have a pizza van from <a>Rascal's Events & Catering</a> on site serving fresh pizzas from <b>17:00-20:00.</b>",
+      "body1": "Vegan and Gluten free options will be avaliable, for those that need it.",
+      "body2": "We won't be providing alcoholic beverages, so please bring your own."
     },
     "other": {
       "title": "Everything else",
-      "body0": "For those staying on site, a continental breakfast will be supplied by Bore Place, including vegan and gluten free options.",
+      "body0": "For those staying on site, a continental style breakfast will be supplied by Bore Place, including vegan and gluten free options.",
       "body1": "If there is something specific you need or want, you're welcome to bring it with you.",
       "body2": "Tea and coffee will be available in kitchens at anytime."
     },
@@ -179,7 +179,7 @@
     },
     "dress": {
       "question": "What is the dress code?",
-      "answer": "It is a formal dress event, if you need inspiration we are suggesting autumnal colours as it's our theme. Weather permitting we hope to hold the ceremony outdoors and on grass so sensible shoes and something warm is advised."
+      "answer": "It is a formal dress event, if you need inspiration we are suggesting autumnal colours, but color in general is encouraged. Weather permitting we hope to hold the ceremony outdoors and on grass so sensible shoes and something warm is advised."
     },
     "weather": {
       "question": "What about the weather?",
